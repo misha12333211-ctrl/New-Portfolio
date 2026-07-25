@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- ЗАЩИТА Level 0: Ошибка при отключённом JavaScript -->
+    <!-- ЗАЩИТА: Ошибка при отключённом JavaScript -->
     <noscript>
         <style>
             body > *:not(.noscript-overlay) { display: none !important; }
@@ -54,33 +54,33 @@
             }
             .noscript-box {
                 background: #121929;
-                border: 1px solid #233047;
+                border: 1px solid #ef4444;
                 border-radius: 20px;
                 padding: 36px 28px;
-                max-width: 420px;
-                box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+                max-width: 440px;
+                box-shadow: 0 16px 32px rgba(0,0,0,0.5);
             }
             .noscript-icon {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
                 margin-bottom: 12px;
             }
             .noscript-title {
-                font-size: 1.35rem;
+                font-size: 1.4rem;
                 font-weight: 800;
                 margin-bottom: 12px;
                 color: #f8fafc;
             }
             .noscript-desc {
-                font-size: 0.92rem;
+                font-size: 0.95rem;
                 color: #94a3b8;
                 line-height: 1.6;
             }
         </style>
         <div class="noscript-overlay">
             <div class="noscript-box">
-                <div class="noscript-icon">⚠️</div>
-                <div class="noscript-title">Включите JavaScript</div>
-                <div class="noscript-desc">Для корректной работы интерфейса, динамических функций и отображения портфолио этому сайту требуется включённый JavaScript в вашем браузере.</div>
+                <div class="noscript-icon">🚫</div>
+                <div class="noscript-title">Ошибка: JavaScript отключён</div>
+                <div class="noscript-desc">Этот сайт не может работать без включённого JavaScript. Пожалуйста, включите JavaScript в настройках вашего браузера для корректного отображения и работы портфолио.</div>
             </div>
         </div>
     </noscript>
@@ -934,10 +934,9 @@
                 transform: translateX(4px);
             }
 
-            .license-btn:hover {
+            .license-text-link:hover {
                 color: var(--accent);
-                border-color: var(--accent);
-                background: var(--accent-light);
+                opacity: 1;
             }
         }
 
@@ -947,7 +946,7 @@
         .contact-item-card:active,
         .card:active,
         .filter-btn:active,
-        .license-btn:active {
+        .license-text-link:active {
             transform: scale(0.98);
             opacity: 0.92;
         }
@@ -962,7 +961,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 6px;
         }
 
         .footer-line-1 {
@@ -970,22 +969,6 @@
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.01em;
-        }
-
-        .license-btn {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 6px 16px;
-            border-radius: var(--radius-full);
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin: 4px 0;
         }
 
         .footer-line-3 {
@@ -1009,6 +992,18 @@
             background-color: var(--accent);
             border-radius: 50%;
             display: inline-block;
+        }
+
+        .license-text-link {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            margin-top: 6px;
+            display: inline-block;
+            opacity: 0.8;
         }
 
         /* LICENSE MODAL STYLES */
@@ -1440,7 +1435,7 @@
             <div class="projects-filter" id="filterContainer">
                 <button class="filter-btn active" data-filter="all">Все проекты</button>
                 <button class="filter-btn" data-filter="nocode">Tilda & Design</button>
-                <button class="filter-btn" data-filter="fullstack">Веб-разработка</button>
+                <button class="filter-btn" data-filter="fullstack">Веб-разработка & Серверы</button>
             </div>
 
             <div class="projects-grid" id="projectsGrid">
@@ -1712,8 +1707,8 @@
         <!-- FOOTER -->
         <footer class="site-footer">
             <div class="footer-line-1">© 2026 Станислав Алёшкин</div>
-            <button class="license-btn" id="openLicenseModal" type="button">📄 Лицензия / License</button>
             <div class="footer-line-3">обновлено: 25 июля</div>
+            <span class="license-text-link" id="openLicenseModal">Лицензия</span>
         </footer>
 
     </main>
@@ -1731,74 +1726,56 @@
             <div class="license-modal-body">
                 <!-- RUSSIAN VERSION -->
                 <div id="licenseTextRU">
-                    <h3 class="license-title" id="licenseModalTitle">ЛИЦЕНЗИЯ</h3>
-                    <div class="license-copyright">Copyright (c) 2026 misha12333211-ctrl</div>
+                    <h3 class="license-title" id="licenseModalTitle">ПРАВА И ЛИЦЕНЗИРОВАНИЕ</h3>
+                    <div class="license-copyright">Copyright © 2026 Станислав Алёшкин. Все права защищены.</div>
                     
                     <p class="license-paragraph">
-                        Настоящим предоставляется разрешение на просмотр и изучение исходного кода в личных и некоммерческих целях при условии, что данное уведомление будет включено во все копии или существенные части программного обеспечения.
+                        <strong>Все материалы, опубликованные на данном сайте (включая исходный код, графический и веб-дизайн, интерфейсные решения, тексты, структурированные данные и элементы оформления), являются интеллектуальной собственностью автора.</strong>
                     </p>
                     <p class="license-paragraph">
-                        <strong>Любое коммерческое использование или распространение данного программного обеспечения с целью получения прибыли строго запрещено.</strong>
+                        Категорически запрещается любое полное или частичное копирование, дублирование, воспроизведение, тиражирование, заимствование дизайна, парсинг, а также распространение материалов сайта в любых целях (как коммерческих, так и некоммерческих) без предварительного письменного согласия правообладателя.
                     </p>
                     <p class="license-paragraph">
-                        Это произведение доступно по лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерчески») 4.0 Всемирная.
+                        Использование элементов данного портфолио в качестве основы для сторонних проектов или выдача их за собственную работу влечёт ответственность в соответствии с законодательством об авторском праве.
                     </p>
 
-                    <div class="license-section-title">Вы имеете право:</div>
+                    <div class="license-section-title">Ограничения и условия:</div>
                     <ul class="license-list">
-                        <li><strong>Делиться (распространять):</strong> Копировать и распространять материал на любом носителе и в любом формате.</li>
-                        <li><strong>Адаптировать (редактировать):</strong> Вносить изменения, трансформировать и создавать новое, опираясь на этот материал.</li>
-                    </ul>
-
-                    <div class="license-section-title">При соблюдении следующих условий:</div>
-                    <ul class="license-list">
-                        <li><strong>Attribution (Атрибуция):</strong> Вы должны обеспечить соответствующее указание авторства, предоставить ссылку на лицензию и обозначить изменения, если таковые были внесены.</li>
-                        <li><strong>NonCommercial (Некоммерческое использование):</strong> Вы не можете использовать этот материал в коммерческих целях.</li>
+                        <li><strong>Запрет на копирование:</strong> Запрещено копирование кода, стилей, элементов дизайна и текста.</li>
+                        <li><strong>Запрет на коммерческое использование:</strong> Использование любых материалов сайта в коммерческих целях строго запрещено.</li>
+                        <li><strong>Правообладатель:</strong> Станислав Алёшкин (<a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="license-link">@DaggioFellino</a>).</li>
                     </ul>
 
                     <p class="license-paragraph" style="margin-top: 16px;">
-                        Ознакомиться с полной копией этой лицензии можно по ссылке:<br>
-                        <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="license-link">http://creativecommons.org/licenses/by-nc/4.0/</a>
-                    </p>
-                    <p class="license-paragraph">
-                        Ссылка на сайт:<br>
+                        Ссылка на проект:<br>
                         <a href="https://new-portfolio-mkrg.onrender.com" target="_blank" rel="noopener noreferrer" class="license-link">https://new-portfolio-mkrg.onrender.com</a>
                     </p>
                 </div>
 
                 <!-- ENGLISH VERSION -->
                 <div id="licenseTextEN" style="display: none;">
-                    <h3 class="license-title">LICENSE</h3>
-                    <div class="license-copyright">Copyright (c) 2026 misha12333211-ctrl</div>
+                    <h3 class="license-title">RIGHTS & LICENSE</h3>
+                    <div class="license-copyright">Copyright © 2026 Stanislav Aleshkin. All Rights Reserved.</div>
                     
                     <p class="license-paragraph">
-                        Permission is hereby granted to view and learn from the source code for personal, non-commercial purposes, provided that this notice is included in all copies or substantial portions of the software.
+                        <strong>All content and materials on this website (including source code, UI/UX design, visual graphics, text, logos, and layouts) are the exclusive intellectual property of the author.</strong>
                     </p>
                     <p class="license-paragraph">
-                        <strong>Any commercial use or redistribution of this software for profit is strictly prohibited.</strong>
+                        Any copying, reproduction, distribution, cloning, scraping, or modification of any part of this website for commercial or non-commercial purposes without prior written authorization is strictly prohibited.
                     </p>
                     <p class="license-paragraph">
-                        This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+                        Unauthorized use of any assets or code from this portfolio will be subject to applicable copyright and intellectual property laws.
                     </p>
 
-                    <div class="license-section-title">You are free to:</div>
+                    <div class="license-section-title">Restrictions & Terms:</div>
                     <ul class="license-list">
-                        <li><strong>Share:</strong> Copy and redistribute the material in any medium or format.</li>
-                        <li><strong>Adapt:</strong> Remix, transform, and build upon the material.</li>
-                    </ul>
-
-                    <div class="license-section-title">Under the following terms:</div>
-                    <ul class="license-list">
-                        <li><strong>Attribution:</strong> You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li>
-                        <li><strong>NonCommercial:</strong> You may not use this material for commercial purposes.</li>
+                        <li><strong>No Copying / Reuse:</strong> Reproducing or reusing code, assets, or visual designs is strictly forbidden.</li>
+                        <li><strong>Non-Commercial Restriction:</strong> Commercial use of any material from this site is prohibited.</li>
+                        <li><strong>Rights Owner:</strong> Stanislav Aleshkin (<a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="license-link">@DaggioFellino</a>).</li>
                     </ul>
 
                     <p class="license-paragraph" style="margin-top: 16px;">
-                        To view a copy of this license, visit:<br>
-                        <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="license-link">http://creativecommons.org/licenses/by-nc/4.0/</a>
-                    </p>
-                    <p class="license-paragraph">
-                        Website link:<br>
+                        Website Link:<br>
                         <a href="https://new-portfolio-mkrg.onrender.com" target="_blank" rel="noopener noreferrer" class="license-link">https://new-portfolio-mkrg.onrender.com</a>
                     </p>
                 </div>
