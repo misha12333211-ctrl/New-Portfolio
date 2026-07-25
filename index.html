@@ -91,6 +91,11 @@
             html, body {
                 display: none !important;
             }
+            #watermark-layer {
+                display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
         }
 
         /* Эффект защиты при потере фокуса / вызове скриншота */
@@ -100,7 +105,7 @@
             pointer-events: none !important;
         }
 
-        /* Водяной знак поверх контента */
+        /* Водяной знак поверх контента (скрыт по умолчанию) */
         #watermark-layer {
             position: fixed;
             top: 0;
@@ -109,7 +114,8 @@
             height: 100vh;
             pointer-events: none;
             z-index: 99998;
-            opacity: 0.12;
+            opacity: 0;
+            visibility: hidden;
             overflow: hidden;
             display: flex;
             flex-wrap: wrap;
@@ -120,6 +126,14 @@
             color: var(--text-primary);
             text-transform: uppercase;
             letter-spacing: 2px;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        /* Показывается только когда активирован режим защиты */
+        body.security-blur #watermark-layer,
+        #watermark-layer.active {
+            opacity: 0.25;
+            visibility: visible;
         }
 
         :root {
@@ -1560,7 +1574,7 @@
 
     </main>
 
-    <!-- КОМПЛЕКСНЫЙ ЯДЕРНЫЙ СКРИПТ ЗАЩИТЫ, БЛОКИРОВКИ РАСШИРЕНИЙ И РОУТИНГА -->
+    <!-- СКРИПТ ЗАЩИТЫ, БЛОКИРОВКИ РАСШИРЕНИЙ И РОУТИНГА -->
     <script>
         (function() {
             'use strict';
@@ -1570,13 +1584,12 @@
                 Object.freeze(Object.prototype);
             } catch(e) {}
 
-            // Наблюдатель за расширениями (удаляет внедряемые расширениями теги скриптов/стилей)
+            // Наблюдатель за расширениями (удаляет внедряемые расширениями теги)
             const extensionObserver = new MutationObserver((mutations) => {
                 for (let mutation of mutations) {
                     for (let node of mutation.addedNodes) {
-                        if (node.nodeType === 1) { // Element
+                        if (node.nodeType === 1) {
                             const tagName = node.tagName.toLowerCase();
-                            // Удаляем автоматически инжектируемые теги сторонними плагинами
                             if (node.hasAttribute('chrome-extension:') || 
                                 node.className?.toString().includes('extension') || 
                                 node.id?.toString().includes('extension') ||
@@ -1589,7 +1602,7 @@
             });
             extensionObserver.observe(document.documentElement, { childList: true, subtree: true });
 
-            // 2. ДИНАМИЧЕСКИЙ ВОДЯНОЙ ЗНАК (Защита от внешней видеосъемки)
+            // 2. ДИНАМИЧЕСКИЙ ВОДЯНОЙ ЗНАК (Защита от внешней видеосъемки и скриншотов)
             function generateWatermark() {
                 const layer = document.getElementById('watermark-layer');
                 if (!layer) return;
@@ -1604,14 +1617,20 @@
             }
             generateWatermark();
 
-            // 3. БЛОКИРОВКА СКРИНШОТОВ И УХОДА КУРСОРA (Размытие экрана)
-            function enableBlur() { document.body.classList.add('security-blur'); }
-            function disableBlur() { document.body.classList.remove('security-blur'); }
+            // 3. УПРАВЛЕНИЕ ЗАЩИТНЫМ РЕЖИМОМ (Размытие + показ водяного знака только при событии)
+            function enableBlur() { 
+                document.body.classList.add('security-blur');
+                const wm = document.getElementById('watermark-layer');
+                if (wm) wm.classList.add('active');
+            }
+            function disableBlur() { 
+                document.body.classList.remove('security-blur');
+                const wm = document.getElementById('watermark-layer');
+                if (wm) wm.classList.remove('active');
+            }
 
             window.addEventListener('blur', enableBlur, true);
             window.addEventListener('focus', disableBlur, true);
-            document.addEventListener('mouseleave', enableBlur, true);
-            document.addEventListener('mouseenter', disableBlur, true);
 
             // Перехват клавиши PrintScreen и сброс буфера обмена
             window.addEventListener('keyup', function(e) {
@@ -1624,7 +1643,7 @@
                 }
             }, true);
 
-            // 4. ГЛОКАЛЬНАЯ БЛОКИРОВКА КЛАВИШ И ДЕЙСТВИЙ
+            // 4. БЛОКИРОВКА КЛАВИШ И ДЕЙСТВИЙ
             document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
             document.addEventListener('copy', e => e.preventDefault(), true);
             document.addEventListener('cut', e => e.preventDefault(), true);
@@ -1686,13 +1705,13 @@
                 }
 
                 if (currentHash && !validHashes.includes(currentHash) && !document.querySelector(currentHash)) {
-                    // Ошибка 404: Хэш не найден среди секций
+                    // Ошибка 404: Хэш не найден
                     mainContent.style.display = 'none';
                     error500Page.classList.remove('active');
                     error404Page.classList.add('active');
                     window.scrollTo(0, 0);
                 } else {
-                    // Все в порядке: Показываем контент
+                    // Всё отлично: показываем контент
                     error404Page.classList.remove('active');
                     error500Page.classList.remove('active');
                     mainContent.style.display = 'block';
