@@ -83,29 +83,22 @@
             -ms-user-select: none !important;
             user-select: none !important;
             -webkit-user-drag: none !important;
-            -webkit-touch-callout: none !important; /* Отключает меню сохранения фото на iOS */
+            -webkit-touch-callout: none !important;
         }
 
-        /* Защита от печати и сохранения страниц в PDF */
+        /* Защита от печати */
         @media print {
-            html, body {
-                display: none !important;
-            }
-            #watermark-layer {
-                display: flex !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
+            html, body { display: none !important; }
+            #watermark-layer { display: flex !important; opacity: 1 !important; visibility: visible !important; }
         }
 
-        /* Эффект защиты при потере фокуса / вызове скриншота */
+        /* Эффект защиты при потере фокуса */
         body.security-blur {
             filter: blur(30px) opacity(0.1) !important;
             transition: filter 0.1s ease !important;
             pointer-events: none !important;
         }
 
-        /* Водяной знак поверх контента (скрыт по умолчанию) */
         #watermark-layer {
             position: fixed;
             top: 0;
@@ -129,7 +122,6 @@
             transition: opacity 0.2s ease, visibility 0.2s ease;
         }
 
-        /* Показывается только когда активирован режим защиты */
         body.security-blur #watermark-layer,
         #watermark-layer.active {
             opacity: 0.25;
@@ -138,35 +130,27 @@
 
         :root {
             color-scheme: light dark;
-            
-            /* Light Theme */
             --bg: #f4f6f9;
             --surface: #ffffff;
             --surface-subtle: #edf3f8;
             --border: #e1e7ec;
             --border-hover: #cbd5e1;
-            
             --text-primary: #0f172a;
             --text-secondary: #475569;
             --text-muted: #64748b;
-            
             --accent: #0088cc;
             --accent-hover: #0077b3;
             --accent-light: #e6f3ff;
             --accent-border: #b3d7ff;
-
             --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
             --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
             --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.08);
-
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --max-width: 1000px;
-
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 22px;
             --radius-full: 9999px;
-
             --transition-fast: 0.15s ease;
             --transition-base: 0.2s ease;
         }
@@ -177,22 +161,18 @@
             --surface-subtle: #1a2438;
             --border: #233047;
             --border-hover: #334463;
-            
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
-            
             --accent: #229ed9;
             --accent-hover: #38b6ff;
             --accent-light: rgba(34, 158, 217, 0.15);
             --accent-border: rgba(34, 158, 217, 0.3);
-
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
             --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.4);
         }
 
-        /* RESET & BASE STYLES */
         * {
             margin: 0;
             padding: 0;
@@ -263,7 +243,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* СТИЛИ СТРАНИЦ ОШИБОК (404 / 500) */
+        /* ОШИБКИ */
         .error-page-container {
             display: none;
             min-height: 70vh;
@@ -314,7 +294,7 @@
             transform: translateY(0);
         }
 
-        /* HEADER / NAVIGATION */
+        /* HEADER */
         header.nav-header {
             position: sticky;
             top: 0;
@@ -396,9 +376,7 @@
             list-style: none;
         }
 
-        .nav-links li {
-            display: inline-flex;
-        }
+        .nav-links li { display: inline-flex; }
 
         .nav-links a {
             color: var(--text-secondary);
@@ -470,10 +448,7 @@
             flex-shrink: 0;
         }
 
-        .theme-toggle svg {
-            width: 18px;
-            height: 18px;
-        }
+        .theme-toggle svg { width: 18px; height: 18px; }
 
         .hamburger {
             display: none;
@@ -497,18 +472,11 @@
             transition: var(--transition-base);
         }
 
-        .hamburger.is-active .bar:nth-child(1) {
-            transform: translateY(3px) rotate(45deg);
-        }
-
-        .hamburger.is-active .bar:nth-child(2) {
-            transform: translateY(-3px) rotate(-45deg);
-        }
+        .hamburger.is-active .bar:nth-child(1) { transform: translateY(3px) rotate(45deg); }
+        .hamburger.is-active .bar:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
 
         /* HERO SECTION */
-        .hero {
-            padding: 48px 0 36px;
-        }
+        .hero { padding: 48px 0 36px; }
 
         .hero-badge-row {
             display: flex;
@@ -540,9 +508,7 @@
             margin-bottom: 20px;
         }
 
-        .hero-title .highlight {
-            color: var(--accent);
-        }
+        .hero-title .highlight { color: var(--accent); }
 
         .hero-description {
             font-size: 1.08rem;
@@ -980,7 +946,6 @@
             }
         }
 
-        /* TOUCH FEEDBACK */
         .btn-telegram:active,
         .btn-secondary:active,
         .contact-item-card:active,
@@ -1033,7 +998,6 @@
             display: inline-block;
         }
 
-        /* RESPONSIVE MEDIA QUERIES */
         @media (max-width: 900px) {
             .nav-links a {
                 padding: 6px 10px;
@@ -1042,18 +1006,9 @@
         }
 
         @media (max-width: 768px) {
-            .nav-content {
-                height: 64px;
-            }
-
-            .nav-profile .profile-name {
-                font-size: 0.95rem;
-            }
-
-            .nav-profile .profile-status {
-                font-size: 0.72rem;
-            }
-
+            .nav-content { height: 64px; }
+            .nav-profile .profile-name { font-size: 0.95rem; }
+            .nav-profile .profile-status { font-size: 0.72rem; }
             .nav-links {
                 display: flex;
                 position: fixed;
@@ -1085,10 +1040,7 @@
                 padding: 10px;
             }
 
-            .btn-telegram.header-btn span {
-                display: none;
-            }
-
+            .btn-telegram.header-btn span { display: none; }
             .btn-telegram.header-btn {
                 padding: 10px;
                 border-radius: 50%;
@@ -1096,31 +1048,17 @@
                 height: 40px;
             }
 
-            .hamburger {
-                display: flex;
-            }
-
-            .hero {
-                padding: 24px 0 20px;
-            }
-
+            .hamburger { display: flex; }
+            .hero { padding: 24px 0 20px; }
             .hero-cta-group {
                 flex-direction: column;
                 gap: 10px;
             }
 
             .hero-cta-group .btn-telegram,
-            .hero-cta-group .btn-secondary {
-                width: 100%;
-            }
-
-            .contact-box {
-                padding: 24px 16px;
-            }
-
-            .contact-item-card {
-                padding: 14px 16px;
-            }
+            .hero-cta-group .btn-secondary { width: 100%; }
+            .contact-box { padding: 24px 16px; }
+            .contact-item-card { padding: 14px 16px; }
         }
     </style>
 </head>
@@ -1178,23 +1116,22 @@
         </div>
     </header>
 
-    <!-- СТРАНИЦА ОШИБКИ 404 (ОТОБРАЖАЕТСЯ ПРИ НЕСУЩЕСТВУЮЩЕМ ХЭШЕ) -->
+    <!-- ОШИБКИ -->
     <div id="error-404" class="error-page-container container">
         <div class="error-code">404</div>
         <h1 class="error-title">Страница не найдена</h1>
-        <p class="error-desc">Запрошенный адрес или раздел не существует. Возможно, была допущена ошибка в ссылке.</p>
+        <p class="error-desc">Запрошенный адрес или раздел не существует.</p>
         <button class="btn-telegram" onclick="window.location.hash='#about'">Вернуться на главную</button>
     </div>
 
-    <!-- СТРАНИЦА ОШИБКИ 500 -->
     <div id="error-500" class="error-page-container container">
         <div class="error-code">500</div>
         <h1 class="error-title">Внутренняя ошибка сервера</h1>
-        <p class="error-desc">Произошел технический сбой. Мы уже работаем над его устранением.</p>
+        <p class="error-desc">Произошел технический сбой.</p>
         <button class="btn-telegram" onclick="window.location.hash='#about'">Перезагрузить сайт</button>
     </div>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ СЕКЦИЙ -->
+    <!-- MAIN CONTENT -->
     <main class="container" id="main-content">
 
         <!-- HERO SECTION -->
@@ -1265,7 +1202,7 @@
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                     <h3>Дизайн & Figma</h3>
-                    <p>Проектирование красивых и удобных интерфейсов для Ваших проектов: от стильного логотипа до карточки товара.</p>
+                    <p>Проектирование красивых и удобных интерфейсов для Ваших проектов.</p>
                     <ul class="service-list">
                         <li>Разработка стильных логотипов</li>
                         <li>Оформление карточек товаров для маркетплейсов</li>
@@ -1301,15 +1238,12 @@
             </div>
 
             <div class="projects-grid" id="projectsGrid">
-
                 <!-- Project 0: Yerevan Toilet Codes -->
                 <article class="card project-card" data-category="fullstack">
                     <div>
                         <span class="project-tag-top">Civic Web App</span>
                         <h3 class="project-title">Yerevan Toilet Codes</h3>
-                        <p class="project-desc">
-                            Интерактивная краудсорсинговая база проверенных кодов от туалетов в заведениях Еревана для жителей и туристов.
-                        </p>
+                        <p class="project-desc">Интерактивная краудсорсинговая база проверенных кодов от туалетов в заведениях Еревана.</p>
                         <ul class="project-highlights">
                             <li>Мультиязычность: RU, EN, AM</li>
                             <li>Быстрый поиск по заведению или улице</li>
@@ -1330,9 +1264,7 @@
                     <div>
                         <span class="project-tag-top">Educational Site</span>
                         <h3 class="project-title">Латиноамериканские танцы</h3>
-                        <p class="project-desc">
-                            Школьный обучающий веб-проект на испанском языке, посвящённый истории и культуре танцев.
-                        </p>
+                        <p class="project-desc">Школьный обучающий веб-проект на испанском языке, посвящённый истории и культуре танцев.</p>
                         <ul class="project-highlights">
                             <li>Галереи с фото, описаниями и видео</li>
                             <li>Удобная навигация по стилям танцев</li>
@@ -1342,7 +1274,6 @@
                     <div>
                         <div class="project-tags-row">
                             <span class="tech-pill">Tilda</span>
-                            <span class="tech-pill">Готовые блоки</span>
                             <span class="tech-pill">Zero Block</span>
                         </div>
                         <a href="https://lamalybal.tilda.ws/110" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
@@ -1354,9 +1285,7 @@
                     <div>
                         <span class="project-tag-top">Commercial Landing</span>
                         <h3 class="project-title">Profi — Перевозки</h3>
-                        <p class="project-desc">
-                            Лендинг для транспортной компании Profi, обеспечивающей пассажирские перевозки премиум-класса.
-                        </p>
+                        <p class="project-desc">Лендинг для транспортной компании Profi, обеспечивающей пассажирские перевозки премиум-класса.</p>
                         <ul class="project-highlights">
                             <li>Демонстрация автопарка премиум-класса</li>
                             <li>Сборка интерфейса под стиль бренда</li>
@@ -1367,7 +1296,7 @@
                         <div class="project-tags-row">
                             <span class="tech-pill">Tilda</span>
                             <span class="tech-pill">Zero Block</span>
-                            <span class="tech-pill">Figma Design</span>
+                            <span class="tech-pill">Figma</span>
                         </div>
                         <a href="https://lamalybal.tilda.ws/ru" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
                     </div>
@@ -1378,9 +1307,7 @@
                     <div>
                         <span class="project-tag-top">Web Quest App</span>
                         <h3 class="project-title">AENIGMA Mark 2.3</h3>
-                        <p class="project-desc">
-                            Браузерный онлайн-квест с шифрами и логическими головоломками из 24 уникальных уровней.
-                        </p>
+                        <p class="project-desc">Браузерный онлайн-квест с шифрами и логическими головоломками из 24 уникальных уровней.</p>
                         <ul class="project-highlights">
                             <li>Синхронизация данных с сервером</li>
                             <li>Графический интерфейс и анимация</li>
@@ -1390,7 +1317,7 @@
                         <div class="project-tags-row">
                             <span class="tech-pill">Веб-разработка</span>
                             <span class="tech-pill">Сервер</span>
-                            <span class="tech-pill">База данных</span>
+                            <span class="tech-pill">БД</span>
                         </div>
                         <a href="https://aenigma-mark-2-3.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">Открыть квест &rarr;</a>
                     </div>
@@ -1401,9 +1328,7 @@
                     <div>
                         <span class="project-tag-top">Frontend App</span>
                         <h3 class="project-title">BusDrive — Аренда автобусов</h3>
-                        <p class="project-desc">
-                            Сервис заказа пассажирских перевозок с современным интерфейсом и формой заявки.
-                        </p>
+                        <p class="project-desc">Сервис заказа пассажирских перевозок с современным интерфейсом и формой заявки.</p>
                         <ul class="project-highlights">
                             <li>Адаптивная верстка под все экраны</li>
                             <li>Обработчик заявки с отправкой данных</li>
@@ -1423,9 +1348,7 @@
                     <div>
                         <span class="project-tag-top">Civic Web App</span>
                         <h3 class="project-title">Yerevan Pulpulak Status</h3>
-                        <p class="project-desc">
-                            Веб-сервис для проверки работоспособности питьевых источников (пулпулаков) Еревана.
-                        </p>
+                        <p class="project-desc">Веб-сервис для проверки работоспособности питьевых источников (пулпулаков) Еревана.</p>
                         <ul class="project-highlights">
                             <li>Мультиязычный интерфейс (RU, EN, AM)</li>
                             <li>Динамическая генерация QR-кодов</li>
@@ -1439,11 +1362,10 @@
                         <a href="https://yerevan-pulpulak-official.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сервис &rarr;</a>
                     </div>
                 </article>
-
             </div>
         </section>
 
-        <!-- STACK / SKILLS SECTION -->
+        <!-- STACK SECTION -->
         <section id="stack" class="reveal-on-scroll">
             <span class="section-badge">НАВЫКИ & ИНСТРУМЕНТЫ</span>
             <h2 class="section-title">С чем я работаю</h2>
@@ -1451,10 +1373,7 @@
 
             <div class="stack-grid">
                 <div class="card stack-card">
-                    <h3>
-                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                        Tilda
-                    </h3>
+                    <h3>Tilda</h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">Стандартные блоки</div>
@@ -1468,10 +1387,7 @@
                 </div>
 
                 <div class="card stack-card">
-                    <h3>
-                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                        Графика & Дизайн (Figma)
-                    </h3>
+                    <h3>Графика & Дизайн (Figma)</h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">Дизайн сайтов</div>
@@ -1479,16 +1395,13 @@
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Логотипы и карточки товаров</div>
-                            <div class="stack-item-sub">Создание векторных логотипов и сочной инфографики</div>
+                            <div class="stack-item-sub">Создание векторных логотипов и инфографики</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="card stack-card">
-                    <h3>
-                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        Веб-разработка & Серверы
-                    </h3>
+                    <h3>Веб-разработка & Серверы</h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">Серверная часть</div>
@@ -1496,7 +1409,7 @@
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Интерактивный веб</div>
-                            <div class="stack-item-sub">Сложные веб-сервисы, веб-приложения и ИИ</div>
+                            <div class="stack-item-sub">Сложные веб-сервисы и веб-приложения</div>
                         </div>
                     </div>
                 </div>
@@ -1512,15 +1425,15 @@
             <div class="hobbies-grid">
                 <div class="card hobby-card">
                     <h3>🎸 Гитара & Музыка</h3>
-                    <p>Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину, чувство ритма и творческое мышление.</p>
+                    <p>Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину и творческое мышление.</p>
                 </div>
                 <div class="card hobby-card">
                     <h3>🎭 Опера & Пение</h3>
-                    <p>Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и профессиональные партии.</p>
+                    <p>Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и партии.</p>
                 </div>
                 <div class="card hobby-card">
                     <h3>💬 Локальный мессенджер</h3>
-                    <p>Интересный пет-проект: спроектировал и создал собственный локальный мессенджер для обмена сообщениями.</p>
+                    <p>Спроектировал и создал собственный локальный мессенджер для обмена сообщениями.</p>
                 </div>
             </div>
         </section>
@@ -1579,21 +1492,14 @@
         (function() {
             'use strict';
 
-            // 1. ЗАЩИТА ОТ РАСШИРЕНИЙ: Заморозка баз и обнаружение чужеродных DOM-инъекций
-            try {
-                Object.freeze(Object.prototype);
-            } catch(e) {}
-
-            // Наблюдатель за расширениями (удаляет внедряемые расширениями теги)
+            // Наблюдатель за внешними инъекциями (безопасная очистка)
             const extensionObserver = new MutationObserver((mutations) => {
                 for (let mutation of mutations) {
                     for (let node of mutation.addedNodes) {
                         if (node.nodeType === 1) {
                             const tagName = node.tagName.toLowerCase();
                             if (node.hasAttribute('chrome-extension:') || 
-                                node.className?.toString().includes('extension') || 
-                                node.id?.toString().includes('extension') ||
-                                (tagName === 'script' && !node.src.includes(window.location.hostname))) {
+                                (tagName === 'script' && node.src && !node.src.includes(window.location.hostname))) {
                                 try { node.remove(); } catch(e) {}
                             }
                         }
@@ -1602,7 +1508,7 @@
             });
             extensionObserver.observe(document.documentElement, { childList: true, subtree: true });
 
-            // 2. ДИНАМИЧЕСКИЙ ВОДЯНОЙ ЗНАК (Защита от внешней видеосъемки и скриншотов)
+            // Водяной знак
             function generateWatermark() {
                 const layer = document.getElementById('watermark-layer');
                 if (!layer) return;
@@ -1617,7 +1523,7 @@
             }
             generateWatermark();
 
-            // 3. УПРАВЛЕНИЕ ЗАЩИТНЫМ РЕЖИМОМ (Размытие + показ водяного знака только при событии)
+            // Защита при смене фокуса
             function enableBlur() { 
                 document.body.classList.add('security-blur');
                 const wm = document.getElementById('watermark-layer');
@@ -1632,19 +1538,19 @@
             window.addEventListener('blur', enableBlur, true);
             window.addEventListener('focus', disableBlur, true);
 
-            // Перехват клавиши PrintScreen и сброс буфера обмена
+            // Перехват PrintScreen
             window.addEventListener('keyup', function(e) {
                 if (e.key === 'PrintScreen' || e.keyCode === 44) {
                     enableBlur();
                     if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(''); // Очищаем скопированный кадр
+                        navigator.clipboard.writeText('');
                     }
                     setTimeout(disableBlur, 1500);
                 }
             }, true);
 
-            // 4. БЛОКИРОВКА КЛАВИШ И ДЕЙСТВИЙ
-            document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
+            // Блокировка стандартных горячих клавиш
+            document.addEventListener('contextmenu', e => e.preventDefault(), true);
             document.addEventListener('copy', e => e.preventDefault(), true);
             document.addEventListener('cut', e => e.preventDefault(), true);
             document.addEventListener('dragstart', e => e.preventDefault(), true);
@@ -1655,39 +1561,25 @@
                 const modifier = isMac ? e.metaKey : e.ctrlKey;
                 const key = e.key ? e.key.toLowerCase() : '';
 
-                // Блокировка F12
                 if (e.key === 'F12' || e.keyCode === 123) {
                     e.preventDefault(); e.stopPropagation(); return false;
                 }
 
-                // Блокировка Ctrl/Cmd + S, P, U, C, X, A, I, J
                 if (modifier && ['s', 'p', 'u', 'c', 'x', 'a', 'i', 'j'].includes(key)) {
                     e.preventDefault(); e.stopPropagation(); return false;
                 }
 
-                // Блокировка Ctrl/Cmd + Shift + I / J / C / S
                 if (modifier && e.shiftKey && ['i', 'j', 'c', 's', '3', '4', '5'].includes(key)) {
                     e.preventDefault(); e.stopPropagation(); return false;
                 }
 
-                // Вызов скриншотов на Mac (Cmd + Shift + 3/4/5)
                 if (isMac && e.metaKey && e.shiftKey && ['3', '4', '5'].includes(key)) {
                     enableBlur();
                     setTimeout(disableBlur, 2000);
                 }
             }, true);
 
-            // 5. ЛОВУШКА ОТЛАДЧИКА (DEVTOOLS ANTI-DEBUGGER)
-            setInterval(function() {
-                const start = performance.now();
-                (function() {}.constructor("debugger")());
-                const end = performance.now();
-                if (end - start > 100) {
-                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#090d16;color:#ffffff;font-family:sans-serif;font-weight:bold;">Инспектор кода запрещен.</div>';
-                }
-            }, 600);
-
-            // 6. РОУТЕР ДЛЯ ОБРАБОТКИ ОШИБОК (404 И СЕКЦИЙ)
+            // Роутер ошибок
             const validHashes = ['#about', '#services', '#projects', '#stack', '#life', '#contact', '', '#'];
             
             function handleRouting() {
@@ -1695,6 +1587,8 @@
                 const error404Page = document.getElementById('error-404');
                 const error500Page = document.getElementById('error-500');
                 const mainContent = document.getElementById('main-content');
+
+                if (!mainContent || !error404Page || !error500Page) return;
 
                 if (currentHash === '#500') {
                     mainContent.style.display = 'none';
@@ -1705,13 +1599,11 @@
                 }
 
                 if (currentHash && !validHashes.includes(currentHash) && !document.querySelector(currentHash)) {
-                    // Ошибка 404: Хэш не найден
                     mainContent.style.display = 'none';
                     error500Page.classList.remove('active');
                     error404Page.classList.add('active');
                     window.scrollTo(0, 0);
                 } else {
-                    // Всё отлично: показываем контент
                     error404Page.classList.remove('active');
                     error500Page.classList.remove('active');
                     mainContent.style.display = 'block';
@@ -1720,28 +1612,35 @@
 
             window.addEventListener('hashchange', handleRouting);
             window.addEventListener('DOMContentLoaded', handleRouting);
-
         })();
     </script>
 
     <!-- ОСНОВНЫЕ СКРИПТЫ ИНТЕРФЕЙСА -->
     <script>
-        // Automatic Unfocus on Touch Devices
+        // Снятие прелоадера (с гарантированной проверкой состояния документа)
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('loaded');
+            }
+        }
+
+        if (document.readyState === 'complete') {
+            hidePreloader();
+        } else {
+            window.addEventListener('load', hidePreloader);
+            // Резервный таймер на случай задержки внешних шрифтов/ресурсов
+            setTimeout(hidePreloader, 1500);
+        }
+
+        // Автоматический сброс фокуса на тач-устройствах
         document.addEventListener('touchend', () => {
             if (document.activeElement && document.activeElement !== document.body) {
                 document.activeElement.blur();
             }
         }, { passive: true });
 
-        // Preloader Logic
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('loaded');
-            }
-        });
-
-        // Theme Toggle Logic
+        // Переключение темы
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const html = document.documentElement;
@@ -1767,7 +1666,7 @@
             });
         }
 
-        // Mobile Menu Logic
+        // Мобильное меню
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -1791,15 +1690,9 @@
             });
         }
 
-        // Scrollspy Navigation Active Highlight
+        // Scrollspy Подсветка меню
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.nav-links a');
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -60% 0px',
-            threshold: 0
-        };
-
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1812,13 +1705,11 @@
                     });
                 }
             });
-        }, observerOptions);
+        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
 
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
+        sections.forEach(section => sectionObserver.observe(section));
 
-        // Fast & Responsive Reveal on Scroll
+        // Анимация появление при скролле
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1829,7 +1720,7 @@
 
         document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
 
-        // Filter Projects Logic
+        // Фильтрация проектов
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
 
