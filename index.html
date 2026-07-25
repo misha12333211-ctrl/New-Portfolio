@@ -2,7 +2,7 @@
 <html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Станислав Алёшкин — Веб-дизайн & Веб-разработка</title>
     
     <!-- SEO Meta Tags -->
@@ -34,49 +34,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- ЗАЩИТА: Экран ошибки, если у пользователя отключен JavaScript -->
+    <!-- ЗАЩИТА Level 0: Без JS страница не работает -->
     <noscript>
         <style>
-            #main-content, #preloader, header, footer { display: none !important; }
-            .noscript-overlay {
-                position: fixed;
-                inset: 0;
-                background-color: #0f172a;
-                color: #ffffff;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding: 24px;
-                z-index: 999999;
-                font-family: sans-serif;
-            }
-            .noscript-card {
-                background: #1e293b;
-                padding: 32px;
-                border-radius: 20px;
-                max-width: 450px;
-                border: 1px solid #334155;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            }
-            .noscript-icon { font-size: 48px; margin-bottom: 16px; }
-            .noscript-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: #f8fafc; }
-            .noscript-text { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+            html, body { display: none !important; }
         </style>
-        <div class="noscript-overlay">
-            <div class="noscript-card">
-                <div class="noscript-icon">⚠️</div>
-                <div class="noscript-title">JavaScript отключен</div>
-                <div class="noscript-text">
-                    Для защиты контента и корректного отображения портфолио необходимо включить JavaScript в настройках вашего браузера.
-                </div>
-            </div>
-        </div>
     </noscript>
 
-    <style>
-        /* ЗАЩИТА CSS: Запрет выделения, драга и вызова контекстных меню на мобильных */
+    <style id="security-styles">
+        /* ЗАЩИТА: Запрет выделения текста, копирования и перетаскивания */
         *, *::before, *::after {
             -webkit-user-select: none !important;
             -moz-user-select: none !important;
@@ -86,71 +52,70 @@
             -webkit-touch-callout: none !important;
         }
 
-        /* Защита от печати */
+        /* ЗАЩИТА: Скрытие контента при печати или сохранении в PDF */
         @media print {
-            html, body { display: none !important; }
-            #watermark-layer { display: flex !important; opacity: 1 !important; visibility: visible !important; }
+            html, body {
+                display: none !important;
+            }
         }
 
-        /* Эффект защиты при потере фокуса */
-        body.security-blur {
-            filter: blur(30px) opacity(0.1) !important;
-            transition: filter 0.1s ease !important;
+        /* ЗАЩИТА ОТ СКРИНШОТОВ И ПОТЕРИ ФОКУСА */
+        body.screen-protected {
+            filter: blur(25px) grayscale(100%) !important;
             pointer-events: none !important;
         }
 
-        #watermark-layer {
+        #screenshot-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 99998;
-            opacity: 0;
-            visibility: hidden;
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-content: space-around;
-            font-size: 11px;
+            inset: 0;
+            background: rgba(9, 13, 22, 0.97);
+            color: #ffffff;
+            z-index: 999999;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             font-weight: 800;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
+            font-size: 1.2rem;
+            padding: 20px;
+            backdrop-filter: blur(10px);
         }
 
-        body.security-blur #watermark-layer,
-        #watermark-layer.active {
-            opacity: 0.25;
-            visibility: visible;
+        body.screen-protected #screenshot-overlay {
+            display: flex !important;
         }
 
         :root {
             color-scheme: light dark;
+            
             --bg: #f4f6f9;
             --surface: #ffffff;
             --surface-subtle: #edf3f8;
             --border: #e1e7ec;
             --border-hover: #cbd5e1;
+            
             --text-primary: #0f172a;
             --text-secondary: #475569;
             --text-muted: #64748b;
+            
             --accent: #0088cc;
             --accent-hover: #0077b3;
             --accent-light: #e6f3ff;
             --accent-border: #b3d7ff;
+
             --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
             --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
             --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.08);
+
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --max-width: 1000px;
+
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 22px;
             --radius-full: 9999px;
+
             --transition-fast: 0.15s ease;
             --transition-base: 0.2s ease;
         }
@@ -161,18 +126,22 @@
             --surface-subtle: #1a2438;
             --border: #233047;
             --border-hover: #334463;
+            
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
+            
             --accent: #229ed9;
             --accent-hover: #38b6ff;
             --accent-light: rgba(34, 158, 217, 0.15);
             --accent-border: rgba(34, 158, 217, 0.3);
+
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
             --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.4);
         }
 
+        /* RESET & BASE STYLES */
         * {
             margin: 0;
             padding: 0;
@@ -203,6 +172,7 @@
             line-height: 1.6;
             padding-bottom: 40px;
             overflow-x: hidden;
+            position: relative;
         }
 
         .container {
@@ -243,44 +213,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ОШИБКИ */
-        .error-page-container {
-            display: none;
-            min-height: 70vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .error-page-container.active {
-            display: flex;
-        }
-
-        .error-code {
-            font-size: clamp(4rem, 12vw, 8rem);
-            font-weight: 900;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-        }
-
-        .error-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .error-desc {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 480px;
-            margin-bottom: 28px;
-        }
-
         /* REVEAL ANIMATIONS */
         .reveal-on-scroll {
             opacity: 0;
@@ -294,7 +226,7 @@
             transform: translateY(0);
         }
 
-        /* HEADER */
+        /* HEADER / NAVIGATION */
         header.nav-header {
             position: sticky;
             top: 0;
@@ -376,7 +308,9 @@
             list-style: none;
         }
 
-        .nav-links li { display: inline-flex; }
+        .nav-links li {
+            display: inline-flex;
+        }
 
         .nav-links a {
             color: var(--text-secondary);
@@ -430,7 +364,6 @@
             gap: 8px;
             transition: var(--transition-base);
             white-space: nowrap;
-            cursor: pointer;
         }
 
         .theme-toggle {
@@ -448,7 +381,10 @@
             flex-shrink: 0;
         }
 
-        .theme-toggle svg { width: 18px; height: 18px; }
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
 
         .hamburger {
             display: none;
@@ -472,11 +408,18 @@
             transition: var(--transition-base);
         }
 
-        .hamburger.is-active .bar:nth-child(1) { transform: translateY(3px) rotate(45deg); }
-        .hamburger.is-active .bar:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
+        .hamburger.is-active .bar:nth-child(1) {
+            transform: translateY(3px) rotate(45deg);
+        }
+
+        .hamburger.is-active .bar:nth-child(2) {
+            transform: translateY(-3px) rotate(-45deg);
+        }
 
         /* HERO SECTION */
-        .hero { padding: 48px 0 36px; }
+        .hero {
+            padding: 48px 0 36px;
+        }
 
         .hero-badge-row {
             display: flex;
@@ -508,7 +451,9 @@
             margin-bottom: 20px;
         }
 
-        .hero-title .highlight { color: var(--accent); }
+        .hero-title .highlight {
+            color: var(--accent);
+        }
 
         .hero-description {
             font-size: 1.08rem;
@@ -900,7 +845,7 @@
             color: var(--text-muted);
         }
 
-        /* HOVER STATES */
+        /* HOVER STATES FOR POINTER DEVICES ONLY */
         @media (hover: hover) {
             .nav-links a:hover {
                 color: var(--accent);
@@ -946,6 +891,7 @@
             }
         }
 
+        /* TOUCH / ACTIVE FEEDBACK FOR MOBILE */
         .btn-telegram:active,
         .btn-secondary:active,
         .contact-item-card:active,
@@ -955,7 +901,7 @@
             opacity: 0.92;
         }
 
-        /* FOOTER */
+        /* STYLISH FOOTER */
         footer.site-footer {
             margin-top: 60px;
             padding: 32px 0 16px;
@@ -998,6 +944,7 @@
             display: inline-block;
         }
 
+        /* RESPONSIVE MEDIA QUERIES */
         @media (max-width: 900px) {
             .nav-links a {
                 padding: 6px 10px;
@@ -1006,9 +953,18 @@
         }
 
         @media (max-width: 768px) {
-            .nav-content { height: 64px; }
-            .nav-profile .profile-name { font-size: 0.95rem; }
-            .nav-profile .profile-status { font-size: 0.72rem; }
+            .nav-content {
+                height: 64px;
+            }
+
+            .nav-profile .profile-name {
+                font-size: 0.95rem;
+            }
+
+            .nav-profile .profile-status {
+                font-size: 0.72rem;
+            }
+
             .nav-links {
                 display: flex;
                 position: fixed;
@@ -1040,7 +996,10 @@
                 padding: 10px;
             }
 
-            .btn-telegram.header-btn span { display: none; }
+            .btn-telegram.header-btn span {
+                display: none;
+            }
+
             .btn-telegram.header-btn {
                 padding: 10px;
                 border-radius: 50%;
@@ -1048,24 +1007,43 @@
                 height: 40px;
             }
 
-            .hamburger { display: flex; }
-            .hero { padding: 24px 0 20px; }
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 24px 0 20px;
+            }
+
             .hero-cta-group {
                 flex-direction: column;
                 gap: 10px;
             }
 
             .hero-cta-group .btn-telegram,
-            .hero-cta-group .btn-secondary { width: 100%; }
-            .contact-box { padding: 24px 16px; }
-            .contact-item-card { padding: 14px 16px; }
+            .hero-cta-group .btn-secondary {
+                width: 100%;
+            }
+
+            .contact-box {
+                padding: 24px 16px;
+            }
+
+            .contact-item-card {
+                padding: 14px 16px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ВОДЯНОЙ ЗНАК ЗАЩИТЫ -->
-    <div id="watermark-layer"></div>
+    <!-- ЭКРАН ЗАЩИТЫ ОТ СКРИНШОТОВ -->
+    <div id="screenshot-overlay">
+        <div>🔒 Защищенный контент</div>
+        <div style="font-size: 0.88rem; font-weight: normal; margin-top: 8px; color: #94a3b8;">
+            Создание скриншотов и копирование материалов ограничено авторами.
+        </div>
+    </div>
 
     <!-- PRELOADER -->
     <div id="preloader">
@@ -1097,7 +1075,9 @@
                     </ul>
 
                     <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">
-                        <svg id="themeIcon" viewBox="0 0 24 24"></svg>
+                        <svg id="themeIcon" viewBox="0 0 24 24">
+                            <!-- SVG Path renders via JavaScript -->
+                        </svg>
                     </button>
 
                     <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram">
@@ -1116,23 +1096,7 @@
         </div>
     </header>
 
-    <!-- ОШИБКИ -->
-    <div id="error-404" class="error-page-container container">
-        <div class="error-code">404</div>
-        <h1 class="error-title">Страница не найдена</h1>
-        <p class="error-desc">Запрошенный адрес или раздел не существует.</p>
-        <button class="btn-telegram" onclick="window.location.hash='#about'">Вернуться на главную</button>
-    </div>
-
-    <div id="error-500" class="error-page-container container">
-        <div class="error-code">500</div>
-        <h1 class="error-title">Внутренняя ошибка сервера</h1>
-        <p class="error-desc">Произошел технический сбой.</p>
-        <button class="btn-telegram" onclick="window.location.hash='#about'">Перезагрузить сайт</button>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <main class="container" id="main-content">
+    <main class="container">
 
         <!-- HERO SECTION -->
         <section class="hero reveal-on-scroll" id="about">
@@ -1202,7 +1166,7 @@
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                     <h3>Дизайн & Figma</h3>
-                    <p>Проектирование красивых и удобных интерфейсов для Ваших проектов.</p>
+                    <p>Проектирование красивых и удобных интерфейсов для Ваших проектов: от стильного логотипа до карточки товара.</p>
                     <ul class="service-list">
                         <li>Разработка стильных логотипов</li>
                         <li>Оформление карточек товаров для маркетплейсов</li>
@@ -1238,12 +1202,15 @@
             </div>
 
             <div class="projects-grid" id="projectsGrid">
+
                 <!-- Project 0: Yerevan Toilet Codes -->
                 <article class="card project-card" data-category="fullstack">
                     <div>
                         <span class="project-tag-top">Civic Web App</span>
                         <h3 class="project-title">Yerevan Toilet Codes</h3>
-                        <p class="project-desc">Интерактивная краудсорсинговая база проверенных кодов от туалетов в заведениях Еревана.</p>
+                        <p class="project-desc">
+                            Интерактивная краудсорсинговая база проверенных кодов от туалетов в заведениях Еревана для жителей и туристов.
+                        </p>
                         <ul class="project-highlights">
                             <li>Мультиязычность: RU, EN, AM</li>
                             <li>Быстрый поиск по заведению или улице</li>
@@ -1264,7 +1231,9 @@
                     <div>
                         <span class="project-tag-top">Educational Site</span>
                         <h3 class="project-title">Латиноамериканские танцы</h3>
-                        <p class="project-desc">Школьный обучающий веб-проект на испанском языке, посвящённый истории и культуре танцев.</p>
+                        <p class="project-desc">
+                            Школьный обучающий веб-проект на испанском языке, посвящённый истории и культуре танцев.
+                        </p>
                         <ul class="project-highlights">
                             <li>Галереи с фото, описаниями и видео</li>
                             <li>Удобная навигация по стилям танцев</li>
@@ -1274,6 +1243,7 @@
                     <div>
                         <div class="project-tags-row">
                             <span class="tech-pill">Tilda</span>
+                            <span class="tech-pill">Готовые блоки</span>
                             <span class="tech-pill">Zero Block</span>
                         </div>
                         <a href="https://lamalybal.tilda.ws/110" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
@@ -1285,7 +1255,9 @@
                     <div>
                         <span class="project-tag-top">Commercial Landing</span>
                         <h3 class="project-title">Profi — Перевозки</h3>
-                        <p class="project-desc">Лендинг для транспортной компании Profi, обеспечивающей пассажирские перевозки премиум-класса.</p>
+                        <p class="project-desc">
+                            Лендинг для транспортной компании Profi, обеспечивающей пассажирские перевозки премиум-класса.
+                        </p>
                         <ul class="project-highlights">
                             <li>Демонстрация автопарка премиум-класса</li>
                             <li>Сборка интерфейса под стиль бренда</li>
@@ -1296,7 +1268,7 @@
                         <div class="project-tags-row">
                             <span class="tech-pill">Tilda</span>
                             <span class="tech-pill">Zero Block</span>
-                            <span class="tech-pill">Figma</span>
+                            <span class="tech-pill">Figma Design</span>
                         </div>
                         <a href="https://lamalybal.tilda.ws/ru" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
                     </div>
@@ -1307,7 +1279,9 @@
                     <div>
                         <span class="project-tag-top">Web Quest App</span>
                         <h3 class="project-title">AENIGMA Mark 2.3</h3>
-                        <p class="project-desc">Браузерный онлайн-квест с шифрами и логическими головоломками из 24 уникальных уровней.</p>
+                        <p class="project-desc">
+                            Браузерный онлайн-квест с шифрами и логическими головоломками из 24 уникальных уровней.
+                        </p>
                         <ul class="project-highlights">
                             <li>Синхронизация данных с сервером</li>
                             <li>Графический интерфейс и анимация</li>
@@ -1317,7 +1291,7 @@
                         <div class="project-tags-row">
                             <span class="tech-pill">Веб-разработка</span>
                             <span class="tech-pill">Сервер</span>
-                            <span class="tech-pill">БД</span>
+                            <span class="tech-pill">База данных</span>
                         </div>
                         <a href="https://aenigma-mark-2-3.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">Открыть квест &rarr;</a>
                     </div>
@@ -1328,7 +1302,9 @@
                     <div>
                         <span class="project-tag-top">Frontend App</span>
                         <h3 class="project-title">BusDrive — Аренда автобусов</h3>
-                        <p class="project-desc">Сервис заказа пассажирских перевозок с современным интерфейсом и формой заявки.</p>
+                        <p class="project-desc">
+                            Сервис заказа пассажирских перевозок с современным интерфейсом и формой заявки.
+                        </p>
                         <ul class="project-highlights">
                             <li>Адаптивная верстка под все экраны</li>
                             <li>Обработчик заявки с отправкой данных</li>
@@ -1348,7 +1324,9 @@
                     <div>
                         <span class="project-tag-top">Civic Web App</span>
                         <h3 class="project-title">Yerevan Pulpulak Status</h3>
-                        <p class="project-desc">Веб-сервис для проверки работоспособности питьевых источников (пулпулаков) Еревана.</p>
+                        <p class="project-desc">
+                            Веб-сервис для проверки работоспособности питьевых источников (пулпулаков) Еревана.
+                        </p>
                         <ul class="project-highlights">
                             <li>Мультиязычный интерфейс (RU, EN, AM)</li>
                             <li>Динамическая генерация QR-кодов</li>
@@ -1362,10 +1340,11 @@
                         <a href="https://yerevan-pulpulak-official.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сервис &rarr;</a>
                     </div>
                 </article>
+
             </div>
         </section>
 
-        <!-- STACK SECTION -->
+        <!-- STACK / SKILLS SECTION -->
         <section id="stack" class="reveal-on-scroll">
             <span class="section-badge">НАВЫКИ & ИНСТРУМЕНТЫ</span>
             <h2 class="section-title">С чем я работаю</h2>
@@ -1373,7 +1352,10 @@
 
             <div class="stack-grid">
                 <div class="card stack-card">
-                    <h3>Tilda</h3>
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Tilda
+                    </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">Стандартные блоки</div>
@@ -1387,7 +1369,10 @@
                 </div>
 
                 <div class="card stack-card">
-                    <h3>Графика & Дизайн (Figma)</h3>
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                        Графика & Дизайн (Figma)
+                    </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">Дизайн сайтов</div>
@@ -1395,13 +1380,16 @@
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Логотипы и карточки товаров</div>
-                            <div class="stack-item-sub">Создание векторных логотипов и инфографики</div>
+                            <div class="stack-item-sub">Создание векторных логотипов и сочной инфографики</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="card stack-card">
-                    <h3>Веб-разработка & Серверы</h3>
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Веб-разработка & Серверы
+                    </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">Серверная часть</div>
@@ -1409,7 +1397,7 @@
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Интерактивный веб</div>
-                            <div class="stack-item-sub">Сложные веб-сервисы и веб-приложения</div>
+                            <div class="stack-item-sub">Сложные веб-сервисы, веб-приложения и ИИ</div>
                         </div>
                     </div>
                 </div>
@@ -1425,15 +1413,15 @@
             <div class="hobbies-grid">
                 <div class="card hobby-card">
                     <h3>🎸 Гитара & Музыка</h3>
-                    <p>Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину и творческое мышление.</p>
+                    <p>Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину, чувство ритма и творческое мышление.</p>
                 </div>
                 <div class="card hobby-card">
                     <h3>🎭 Опера & Пение</h3>
-                    <p>Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и партии.</p>
+                    <p>Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и профессиональные партии.</p>
                 </div>
                 <div class="card hobby-card">
                     <h3>💬 Локальный мессенджер</h3>
-                    <p>Спроектировал и создал собственный локальный мессенджер для обмена сообщениями.</p>
+                    <p>Интересный пет-проект: спроектировал и создал собственный локальный мессенджер для обмена сообщениями.</p>
                 </div>
             </div>
         </section>
@@ -1487,160 +1475,142 @@
 
     </main>
 
-    <!-- СКРИПТ ЗАЩИТЫ, БЛОКИРОВКИ РАСШИРЕНИЙ И РОУТИНГА -->
-    <script>
+    <!-- МАКСИМАЛЬНЫЙ КОМПЛЕКС ЗАЩИТЫ ВЕБ-СТРАНИЦЫ -->
+    <script id="security-script">
         (function() {
             'use strict';
 
-            // Наблюдатель за внешними инъекциями (безопасная очистка)
-            const extensionObserver = new MutationObserver((mutations) => {
-                for (let mutation of mutations) {
-                    for (let node of mutation.addedNodes) {
-                        if (node.nodeType === 1) {
-                            const tagName = node.tagName.toLowerCase();
-                            if (node.hasAttribute('chrome-extension:') || 
-                                (tagName === 'script' && node.src && !node.src.includes(window.location.hostname))) {
-                                try { node.remove(); } catch(e) {}
-                            }
-                        }
-                    }
-                }
-            });
-            extensionObserver.observe(document.documentElement, { childList: true, subtree: true });
-
-            // Водяной знак
-            function generateWatermark() {
-                const layer = document.getElementById('watermark-layer');
-                if (!layer) return;
-                const sessionID = Math.random().toString(36).substring(2, 8).toUpperCase();
-                const text = `STAS ALESHKIN // ${new Date().toLocaleDateString()} // ID:${sessionID}`;
-                
-                let html = '';
-                for(let i = 0; i < 24; i++) {
-                    html += `<div>${text}</div>`;
-                }
-                layer.innerHTML = html;
-            }
-            generateWatermark();
-
-            // Защита при смене фокуса
-            function enableBlur() { 
-                document.body.classList.add('security-blur');
-                const wm = document.getElementById('watermark-layer');
-                if (wm) wm.classList.add('active');
-            }
-            function disableBlur() { 
-                document.body.classList.remove('security-blur');
-                const wm = document.getElementById('watermark-layer');
-                if (wm) wm.classList.remove('active');
-            }
-
-            window.addEventListener('blur', enableBlur, true);
-            window.addEventListener('focus', disableBlur, true);
-
-            // Перехват PrintScreen
-            window.addEventListener('keyup', function(e) {
-                if (e.key === 'PrintScreen' || e.keyCode === 44) {
-                    enableBlur();
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText('');
-                    }
-                    setTimeout(disableBlur, 1500);
-                }
-            }, true);
-
-            // Блокировка стандартных горячих клавиш
-            document.addEventListener('contextmenu', e => e.preventDefault(), true);
-            document.addEventListener('copy', e => e.preventDefault(), true);
-            document.addEventListener('cut', e => e.preventDefault(), true);
-            document.addEventListener('dragstart', e => e.preventDefault(), true);
-            document.addEventListener('selectstart', e => e.preventDefault(), true);
+            // 1. БЛОКИРОВКА КЛАВИАТУРНЫХ СОЧЕТАНИЙ (ВКЛЮЧАЯ РУССКУЮ РАСКЛАДКУ ЧЕРЕЗ e.code)
+            const blockedCodes = new Set([
+                'KeyS', // Ctrl + S
+                'KeyU', // Ctrl + U
+                'KeyP', // Ctrl + P
+                'KeyC', // Ctrl + C
+                'KeyX', // Ctrl + X
+                'KeyA', // Ctrl + A
+                'KeyI', // DevTools (Ctrl+Shift+I)
+                'KeyJ', // DevTools (Ctrl+Shift+J)
+                'F12'   // F12
+            ]);
 
             window.addEventListener('keydown', function(e) {
-                const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-                const modifier = isMac ? e.metaKey : e.ctrlKey;
-                const key = e.key ? e.key.toLowerCase() : '';
-
-                if (e.key === 'F12' || e.keyCode === 123) {
-                    e.preventDefault(); e.stopPropagation(); return false;
+                // Игнорируем F12
+                if (e.code === 'F12' || e.keyCode === 123) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
                 }
 
-                if (modifier && ['s', 'p', 'u', 'c', 'x', 'a', 'i', 'j'].includes(key)) {
-                    e.preventDefault(); e.stopPropagation(); return false;
-                }
-
-                if (modifier && e.shiftKey && ['i', 'j', 'c', 's', '3', '4', '5'].includes(key)) {
-                    e.preventDefault(); e.stopPropagation(); return false;
-                }
-
-                if (isMac && e.metaKey && e.shiftKey && ['3', '4', '5'].includes(key)) {
-                    enableBlur();
-                    setTimeout(disableBlur, 2000);
+                // Перехват Ctrl / Cmd (macOS)
+                if (e.ctrlKey || e.metaKey) {
+                    if (blockedCodes.has(e.code)) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
                 }
             }, true);
 
-            // Роутер ошибок
-            const validHashes = ['#about', '#services', '#projects', '#stack', '#life', '#contact', '', '#'];
-            
-            function handleRouting() {
-                const currentHash = window.location.hash;
-                const error404Page = document.getElementById('error-404');
-                const error500Page = document.getElementById('error-500');
-                const mainContent = document.getElementById('main-content');
-
-                if (!mainContent || !error404Page || !error500Page) return;
-
-                if (currentHash === '#500') {
-                    mainContent.style.display = 'none';
-                    error404Page.classList.remove('active');
-                    error500Page.classList.add('active');
-                    window.scrollTo(0, 0);
-                    return;
+            // 2. БЛОКИРОВКА МЫШИ (ПКМ, Выделение, Drag&Drop)
+            window.addEventListener('contextmenu', e => e.preventDefault(), true);
+            window.addEventListener('copy', e => {
+                e.preventDefault();
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText('Запрещено к копированию.');
                 }
+            }, true);
+            window.addEventListener('cut', e => e.preventDefault(), true);
+            window.addEventListener('dragstart', e => e.preventDefault(), true);
 
-                if (currentHash && !validHashes.includes(currentHash) && !document.querySelector(currentHash)) {
-                    mainContent.style.display = 'none';
-                    error500Page.classList.remove('active');
-                    error404Page.classList.add('active');
-                    window.scrollTo(0, 0);
-                } else {
-                    error404Page.classList.remove('active');
-                    error500Page.classList.remove('active');
-                    mainContent.style.display = 'block';
-                }
+            // 3. ЗАЩИТА ОТ СНИМКОВ ЭКРАНА (Anti-Screenshot / Blur Shield)
+            // При потере фокуса или вызове ножниц (Win+Shift+S) браузер блюрит весь контент
+            function shieldOn() {
+                document.body.classList.add('screen-protected');
             }
 
-            window.addEventListener('hashchange', handleRouting);
-            window.addEventListener('DOMContentLoaded', handleRouting);
+            function shieldOff() {
+                document.body.classList.remove('screen-protected');
+            }
+
+            window.addEventListener('blur', shieldOn);
+            window.addEventListener('focus', shieldOff);
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    shieldOn();
+                } else {
+                    shieldOff();
+                }
+            });
+
+            // Очистка буфера обмена при нажатии PrintScreen
+            window.addEventListener('keyup', e => {
+                if (e.code === 'PrintScreen' || e.key === 'PrintScreen') {
+                    shieldOn();
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText('Скриншот заблокирован.');
+                    }
+                    setTimeout(shieldOff, 2000);
+                }
+            });
+
+            // 4. ЛОВУШКА ОТЛАДЧИКА DEVTOOLS (Debugger Trap)
+            setInterval(function() {
+                const startTime = performance.now();
+                (function() {}.constructor("debugger")());
+                const endTime = performance.now();
+
+                // Если DevTools открыт, выполнение задержится более чем на 100мс
+                if (endTime - startTime > 100) {
+                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;font-weight:bold;color:#0f172a;background:#f4f6f9;">Доступ ограничен.</div>';
+                }
+            }, 400);
+
+            // 5. ДЕТЕКТОР ИЗМЕНЕНИЯ РАЗМЕРОВ ОКОН (Side-Panel DevTools Trap)
+            window.addEventListener('resize', () => {
+                const widthThreshold = window.outerWidth - window.innerWidth > 160;
+                const heightThreshold = window.outerHeight - window.innerHeight > 160;
+                if (widthThreshold || heightThreshold) {
+                    shieldOn();
+                }
+            });
+
+            // 6. DOM GUARD (MUTATION OBSERVER): Защита от удаления стилей и скриптов в DevTools
+            const domGuard = new MutationObserver(() => {
+                const secStyles = document.getElementById('security-styles');
+                const secScript = document.getElementById('security-script');
+                if (!secStyles || !secScript) {
+                    document.body.innerHTML = '';
+                    window.location.reload();
+                }
+            });
+
+            domGuard.observe(document.documentElement, {
+                childList: true,
+                subtree: true
+            });
+
         })();
     </script>
 
-    <!-- ОСНОВНЫЕ СКРИПТЫ ИНТЕРФЕЙСА -->
+    <!-- ОСНОВНЫЕ СКРИПТЫ САЙТА -->
     <script>
-        // Снятие прелоадера (с гарантированной проверкой состояния документа)
-        function hidePreloader() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('loaded');
-            }
-        }
-
-        if (document.readyState === 'complete') {
-            hidePreloader();
-        } else {
-            window.addEventListener('load', hidePreloader);
-            // Резервный таймер на случай задержки внешних шрифтов/ресурсов
-            setTimeout(hidePreloader, 1500);
-        }
-
-        // Автоматический сброс фокуса на тач-устройствах
+        // Automatic Unfocus on Mobile Touch to prevent stuck hover/focus state
         document.addEventListener('touchend', () => {
             if (document.activeElement && document.activeElement !== document.body) {
                 document.activeElement.blur();
             }
         }, { passive: true });
 
-        // Переключение темы
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('loaded');
+            }
+        });
+
+        // Theme Toggle Logic
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const html = document.documentElement;
@@ -1651,48 +1621,47 @@
         function setTheme(theme) {
             html.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            if (themeIcon) {
-                themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
-            }
+            themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
         }
 
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
 
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = html.getAttribute('data-theme');
-                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-            });
-        }
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
 
-        // Мобильное меню
+        // Mobile Menu Logic
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                const isOpen = navLinks.classList.toggle('open');
-                hamburger.classList.toggle('is-active', isOpen);
-                hamburger.setAttribute('aria-expanded', isOpen);
-            });
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('is-active', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
 
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('open');
-                    hamburger.classList.remove('is-active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                    
-                    navItems.forEach(el => el.classList.remove('active'));
-                    link.classList.add('active');
-                });
-            });
-        }
-
-        // Scrollspy Подсветка меню
-        const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('is-active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                
+                navItems.forEach(el => el.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Scrollspy Navigation Active Highlight
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1705,11 +1674,13 @@
                     });
                 }
             });
-        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+        }, observerOptions);
 
-        sections.forEach(section => sectionObserver.observe(section));
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
 
-        // Анимация появление при скролле
+        // Fast & Responsive Reveal on Scroll Animation
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1720,7 +1691,7 @@
 
         document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
 
-        // Фильтрация проектов
+        // Filter Projects Logic
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
 
