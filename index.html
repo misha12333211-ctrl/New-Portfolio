@@ -2,7 +2,7 @@
 <html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Станислав Алёшкин — Веб-дизайн & Веб-разработка</title>
     
     <!-- SEO Meta Tags -->
@@ -58,6 +58,7 @@
                 border-radius: 20px;
                 padding: 36px 28px;
                 max-width: 440px;
+                width: 100%;
                 box-shadow: 0 16px 32px rgba(0,0,0,0.5);
             }
             .noscript-icon {
@@ -153,7 +154,8 @@
             --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.08);
 
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --max-width: 1000px;
+            --max-width: 1040px;
+            --container-padding: clamp(14px, 4vw, 24px);
 
             --radius-sm: 10px;
             --radius-md: 16px;
@@ -186,7 +188,7 @@
         }
 
         /* RESET & BASE STYLES */
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -210,19 +212,24 @@
             font-family: var(--font-sans);
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
+            text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
             line-height: 1.6;
-            padding-bottom: 40px;
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
             overflow-x: hidden;
             position: relative;
+            min-width: 280px;
         }
 
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 20px;
+            padding-left: max(var(--container-padding), env(safe-area-inset-left));
+            padding-right: max(var(--container-padding), env(safe-area-inset-right));
+            width: 100%;
         }
 
         /* PRELOADER */
@@ -260,8 +267,8 @@
         /* REVEAL ANIMATIONS */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(12px);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
 
@@ -280,6 +287,7 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             transition: background 0.3s ease;
+            padding-top: env(safe-area-inset-top);
         }
 
         [data-theme="dark"] header.nav-header {
@@ -287,11 +295,11 @@
         }
 
         .nav-content {
-            height: 70px;
+            height: 66px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 12px;
         }
 
         .nav-profile {
@@ -300,22 +308,26 @@
             text-decoration: none;
             color: var(--text-primary);
             flex-shrink: 0;
+            min-width: 0;
         }
 
         .profile-info {
             display: flex;
             flex-direction: column;
+            min-width: 0;
         }
 
         .profile-name {
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
             line-height: 1.2;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .profile-status {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -332,6 +344,7 @@
             display: inline-block;
             box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
             animation: pulse-dot 2s infinite;
+            flex-shrink: 0;
         }
 
         @keyframes pulse-dot {
@@ -342,7 +355,8 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-shrink: 0;
         }
 
         .nav-links {
@@ -378,6 +392,7 @@
             background: var(--accent);
             color: #ffffff;
             padding: 10px 18px;
+            min-height: 44px;
             border-radius: var(--radius-full);
             font-size: 0.88rem;
             font-weight: 700;
@@ -393,11 +408,25 @@
             white-space: nowrap;
         }
 
+        /* КРУГЛАЯ КНОПКА ТЕЛЕГРАМА В ХЕДЕРЕ */
+        .btn-telegram.header-btn {
+            padding: 0;
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            min-height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .btn-secondary {
             background: var(--surface);
             color: var(--accent);
             border: 1.5px solid var(--accent-border);
             padding: 10px 18px;
+            min-height: 44px;
             border-radius: var(--radius-full);
             font-size: 0.88rem;
             font-weight: 700;
@@ -414,8 +443,9 @@
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-primary);
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -435,8 +465,9 @@
             background: var(--surface);
             border: 1px solid var(--border);
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
             border-radius: 50%;
             flex-direction: column;
             justify-content: center;
@@ -462,14 +493,14 @@
 
         /* HERO SECTION */
         .hero {
-            padding: 48px 0 36px;
+            padding: clamp(28px, 6vw, 48px) 0 clamp(20px, 4vw, 36px);
         }
 
         .hero-badge-row {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .badge-pill {
@@ -480,19 +511,20 @@
             color: var(--accent);
             padding: 6px 14px;
             border-radius: var(--radius-full);
-            font-size: 0.78rem;
+            font-size: clamp(0.72rem, 2vw, 0.78rem);
             font-weight: 800;
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
         .hero-title {
-            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-size: clamp(1.75rem, 5.5vw, 3.2rem);
             font-weight: 900;
             line-height: 1.2;
             letter-spacing: -0.03em;
             color: var(--text-primary);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            overflow-wrap: break-word;
         }
 
         .hero-title .highlight {
@@ -500,7 +532,7 @@
         }
 
         .hero-description {
-            font-size: 1.08rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
             color: var(--text-secondary);
             max-width: 680px;
             line-height: 1.6;
@@ -520,20 +552,22 @@
             flex-direction: column;
             gap: 10px;
             max-width: 540px;
+            width: 100%;
         }
 
         .benefit-item {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 12px 18px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             gap: 12px;
             box-shadow: var(--shadow-sm);
-            font-size: 0.92rem;
+            font-size: clamp(0.85rem, 2vw, 0.92rem);
             font-weight: 600;
             color: var(--text-primary);
+            overflow-wrap: break-word;
         }
 
         .benefit-icon {
@@ -546,12 +580,14 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 0.82rem;
+            font-weight: 800;
         }
 
         /* SECTION HEADINGS */
         section {
-            padding: 48px 0;
-            scroll-margin-top: 80px;
+            padding: clamp(32px, 6vw, 48px) 0;
+            scroll-margin-top: 76px;
         }
 
         .section-badge {
@@ -568,17 +604,18 @@
         }
 
         .section-title {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 10px;
             color: var(--text-primary);
+            overflow-wrap: break-word;
         }
 
         .section-subtitle {
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--text-secondary);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             max-width: 600px;
         }
 
@@ -587,15 +624,16 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 24px;
+            padding: clamp(18px, 3vw, 24px);
             box-shadow: var(--shadow-sm);
             transition: var(--transition-base);
+            width: 100%;
         }
 
         /* SERVICES SECTION */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
             gap: 16px;
         }
 
@@ -605,8 +643,8 @@
         }
 
         .service-icon-box {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             background: var(--accent-light);
             color: var(--accent);
             border-radius: var(--radius-md);
@@ -614,6 +652,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
+            flex-shrink: 0;
         }
 
         .service-card h3 {
@@ -664,11 +703,15 @@
             border: 1px solid var(--border);
             color: var(--text-secondary);
             padding: 8px 16px;
+            min-height: 38px;
             border-radius: var(--radius-full);
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .filter-btn.active {
@@ -680,7 +723,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
             gap: 20px;
         }
 
@@ -705,10 +748,11 @@
         }
 
         .project-title {
-            font-size: 1.25rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
             font-weight: 800;
             margin-bottom: 10px;
             color: var(--text-primary);
+            overflow-wrap: break-word;
         }
 
         .project-desc {
@@ -730,7 +774,7 @@
             font-size: 0.84rem;
             color: var(--text-muted);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
         }
 
@@ -738,13 +782,14 @@
             content: "✓";
             color: var(--accent);
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         .project-tags-row {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .tech-pill {
@@ -767,12 +812,13 @@
             text-decoration: none;
             margin-top: auto;
             transition: var(--transition-fast);
+            padding: 4px 0;
         }
 
         /* STACK SECTION */
         .stack-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
             gap: 16px;
         }
 
@@ -815,7 +861,7 @@
         /* HOBBIES SECTION */
         .hobbies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
             gap: 16px;
         }
 
@@ -836,8 +882,9 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 32px 24px;
+            padding: clamp(20px, 4vw, 32px) clamp(16px, 3vw, 24px);
             box-shadow: var(--shadow-sm);
+            width: 100%;
         }
 
         .contact-cards-list {
@@ -851,25 +898,29 @@
             background: var(--surface-subtle);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 16px 20px;
+            padding: 14px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             text-decoration: none;
             color: var(--text-primary);
             transition: var(--transition-base);
-            word-break: break-word;
+            overflow-wrap: break-word;
+            gap: 12px;
+            min-height: 52px;
         }
 
         .contact-item-left {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
+            min-width: 0;
         }
 
         .contact-icon-circle {
             width: 40px;
             height: 40px;
+            min-width: 40px;
             border-radius: 50%;
             background: var(--accent);
             color: #ffffff;
@@ -881,12 +932,23 @@
 
         .contact-title-text {
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: clamp(0.88rem, 2vw, 0.95rem);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .contact-sub-text {
-            font-size: 0.82rem;
+            font-size: clamp(0.78rem, 1.8vw, 0.82rem);
             color: var(--text-muted);
+            overflow-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .contact-arrow {
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
         }
 
         /* HOVER STATES FOR POINTER DEVICES ONLY */
@@ -953,7 +1015,7 @@
 
         /* STYLISH FOOTER */
         footer.site-footer {
-            margin-top: 60px;
+            margin-top: clamp(40px, 8vw, 60px);
             padding: 32px 0 16px;
             border-top: 1px solid var(--border);
             text-align: center;
@@ -995,7 +1057,7 @@
         }
 
         .license-text-link {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
             text-decoration: underline;
             text-underline-offset: 3px;
@@ -1003,21 +1065,22 @@
             transition: var(--transition-fast);
             margin-top: 6px;
             display: inline-block;
-            opacity: 0.8;
+            opacity: 0.85;
+            padding: 6px 12px;
         }
 
         /* LICENSE MODAL STYLES */
         .license-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(9, 13, 22, 0.75);
+            background: rgba(9, 13, 22, 0.78);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: clamp(12px, 3vw, 20px);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -1034,7 +1097,7 @@
             border-radius: var(--radius-lg);
             max-width: 620px;
             width: 100%;
-            max-height: 85vh;
+            max-height: calc(88vh - env(safe-area-inset-top));
             display: flex;
             flex-direction: column;
             box-shadow: var(--shadow-lg);
@@ -1048,12 +1111,13 @@
         }
 
         .license-modal-header {
-            padding: 16px 20px;
+            padding: 14px 18px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: var(--surface-subtle);
+            flex-shrink: 0;
         }
 
         .license-lang-switch {
@@ -1090,7 +1154,7 @@
             font-size: 1.5rem;
             line-height: 1;
             cursor: pointer;
-            padding: 4px 10px;
+            padding: 6px 10px;
             border-radius: 50%;
             transition: var(--transition-fast);
             display: flex;
@@ -1104,8 +1168,9 @@
         }
 
         .license-modal-body {
-            padding: 24px;
+            padding: clamp(16px, 4vw, 24px);
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             font-size: 0.9rem;
             line-height: 1.6;
             color: var(--text-secondary);
@@ -1113,7 +1178,7 @@
         }
 
         .license-title {
-            font-size: 1.25rem;
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 8px;
@@ -1121,7 +1186,7 @@
 
         .license-copyright {
             font-family: monospace;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             background: var(--surface-subtle);
             padding: 6px 12px;
             border-radius: var(--radius-sm);
@@ -1129,6 +1194,8 @@
             color: var(--accent);
             display: inline-block;
             margin-bottom: 16px;
+            overflow-wrap: break-word;
+            max-width: 100%;
         }
 
         .license-paragraph {
@@ -1183,34 +1250,29 @@
 
         @media (max-width: 768px) {
             .nav-content {
-                height: 64px;
-            }
-
-            .nav-profile .profile-name {
-                font-size: 0.95rem;
-            }
-
-            .nav-profile .profile-status {
-                font-size: 0.72rem;
+                height: 60px;
             }
 
             .nav-links {
                 display: flex;
                 position: fixed;
-                top: 70px;
-                left: 16px;
-                right: 16px;
+                top: calc(60px + env(safe-area-inset-top) + 8px);
+                left: max(12px, env(safe-area-inset-left));
+                right: max(12px, env(safe-area-inset-right));
                 background: var(--surface);
                 border: 1px solid var(--border);
                 border-radius: var(--radius-md);
                 flex-direction: column;
-                padding: 12px;
+                padding: 10px;
                 box-shadow: var(--shadow-lg);
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-10px);
                 transition: var(--transition-base);
                 z-index: 101;
+                max-height: calc(100vh - 80px - env(safe-area-inset-top));
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .nav-links.open {
@@ -1222,31 +1284,26 @@
             .nav-links a {
                 width: 100%;
                 text-align: center;
-                padding: 10px;
-            }
-
-            .btn-telegram.header-btn span {
-                display: none;
+                padding: 12px;
+                font-size: 0.95rem;
             }
 
             .btn-telegram.header-btn {
-                padding: 10px;
+                padding: 0;
                 border-radius: 50%;
-                width: 40px;
-                height: 40px;
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
             }
 
             .hamburger {
                 display: flex;
             }
 
-            .hero {
-                padding: 24px 0 20px;
-            }
-
             .hero-cta-group {
                 flex-direction: column;
                 gap: 10px;
+                width: 100%;
             }
 
             .hero-cta-group .btn-telegram,
@@ -1254,20 +1311,37 @@
                 width: 100%;
             }
 
-            .contact-box {
-                padding: 24px 16px;
-            }
-
             .contact-item-card {
-                padding: 14px 16px;
+                padding: 12px 14px;
             }
 
             .license-modal-card {
-                max-height: 90vh;
+                max-height: calc(92vh - env(safe-area-inset-top));
+            }
+        }
+
+        @media (max-width: 360px) {
+            .profile-status {
+                display: none;
             }
 
-            .license-modal-body {
-                padding: 18px;
+            .btn-telegram.header-btn {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                min-height: 38px;
+            }
+
+            .theme-toggle, .hamburger {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                min-height: 38px;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -1317,11 +1391,10 @@
                         </svg>
                     </button>
 
-                    <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram">
+                    <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram" aria-label="Написать в Telegram">
                         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
                         </svg>
-                        <span>Написать</span>
                     </a>
 
                     <button class="hamburger" id="hamburger" aria-label="Открыть меню" aria-expanded="false">
@@ -1608,7 +1681,7 @@
                 <div class="card stack-card">
                     <h3>
                         <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                        Графика & Дизайн (Figma)
+                        Графика & Дизайн
                     </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
@@ -1683,7 +1756,7 @@
                                 <div class="contact-sub-text">@DaggioFellino — личные сообщения</div>
                             </div>
                         </div>
-                        <span style="color: var(--accent); font-weight: 700;">&rarr;</span>
+                        <span class="contact-arrow">&rarr;</span>
                     </a>
 
                     <a href="mailto:stasaleskin80@gmail.com" class="contact-item-card">
@@ -1698,7 +1771,7 @@
                                 <div class="contact-sub-text">stasaleskin80@gmail.com</div>
                             </div>
                         </div>
-                        <span style="color: var(--accent); font-weight: 700;">&rarr;</span>
+                        <span class="contact-arrow">&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -1838,13 +1911,13 @@
                 window.addEventListener('dragstart', function(e) { e.preventDefault(); }, true);
 
                 // 3. ЗАЩИТА ОТ СНИМКОВ ЭКРАНА (Anti-Screenshot / Blur Shield)
-                //function shieldOn() {
-                    //if (document.body) document.body.classList.add('screen-protected');
-                //}
+                function shieldOn() {
+                    if (document.body) document.body.classList.add('screen-protected');
+                }
 
-                //function shieldOff() {
-                   // if (document.body) document.body.classList.remove('screen-protected');
-               // }
+                function shieldOff() {
+                    if (document.body) document.body.classList.remove('screen-protected');
+                }
 
                 window.addEventListener('blur', shieldOn);
                 window.addEventListener('focus', shieldOff);
