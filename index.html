@@ -2,7 +2,7 @@
 <html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Станислав Алёшкин — Веб-дизайн & Веб-разработка</title>
     
     <!-- SEO Meta Tags -->
@@ -34,30 +34,92 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- ЗАЩИТА: Если JS отключен, полностью скрываем страницу -->
+    <!-- ЗАЩИТА: Экран ошибки, если у пользователя отключен JavaScript -->
     <noscript>
         <style>
-            html, body {
-                display: none !important;
+            #main-content, #preloader, header, footer { display: none !important; }
+            .noscript-overlay {
+                position: fixed;
+                inset: 0;
+                background-color: #0f172a;
+                color: #ffffff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 24px;
+                z-index: 999999;
+                font-family: sans-serif;
             }
+            .noscript-card {
+                background: #1e293b;
+                padding: 32px;
+                border-radius: 20px;
+                max-width: 450px;
+                border: 1px solid #334155;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            }
+            .noscript-icon { font-size: 48px; margin-bottom: 16px; }
+            .noscript-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: #f8fafc; }
+            .noscript-text { font-size: 14px; color: #94a3b8; line-height: 1.6; }
         </style>
+        <div class="noscript-overlay">
+            <div class="noscript-card">
+                <div class="noscript-icon">⚠️</div>
+                <div class="noscript-title">JavaScript отключен</div>
+                <div class="noscript-text">
+                    Для защиты контента и корректного отображения портфолио необходимо включить JavaScript в настройках вашего браузера.
+                </div>
+            </div>
+        </div>
     </noscript>
 
     <style>
-        /* ЗАЩИТА: Запрет выделения текста, копирования и перетаскивания */
-        * {
+        /* ЗАЩИТА CSS: Запрет выделения, драга и вызова контекстных меню на мобильных */
+        *, *::before, *::after {
             -webkit-user-select: none !important;
             -moz-user-select: none !important;
             -ms-user-select: none !important;
             user-select: none !important;
             -webkit-user-drag: none !important;
+            -webkit-touch-callout: none !important; /* Отключает меню сохранения фото на iOS */
         }
 
-        /* ЗАЩИТА: Скрытие контента при попытке печати/сохранения в PDF */
+        /* Защита от печати и сохранения страниц в PDF */
         @media print {
             html, body {
                 display: none !important;
             }
+        }
+
+        /* Эффект защиты при потере фокуса / вызове скриншота */
+        body.security-blur {
+            filter: blur(30px) opacity(0.1) !important;
+            transition: filter 0.1s ease !important;
+            pointer-events: none !important;
+        }
+
+        /* Водяной знак поверх контента */
+        #watermark-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 99998;
+            opacity: 0.12;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         :root {
@@ -185,6 +247,44 @@
 
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        /* СТИЛИ СТРАНИЦ ОШИБОК (404 / 500) */
+        .error-page-container {
+            display: none;
+            min-height: 70vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .error-page-container.active {
+            display: flex;
+        }
+
+        .error-code {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .error-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .error-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 28px;
         }
 
         /* REVEAL ANIMATIONS */
@@ -338,6 +438,7 @@
             gap: 8px;
             transition: var(--transition-base);
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .theme-toggle {
@@ -819,7 +920,7 @@
             color: var(--text-muted);
         }
 
-        /* HOVER STATES FOR POINTER DEVICES ONLY */
+        /* HOVER STATES */
         @media (hover: hover) {
             .nav-links a:hover {
                 color: var(--accent);
@@ -865,7 +966,7 @@
             }
         }
 
-        /* TOUCH / ACTIVE FEEDBACK FOR MOBILE */
+        /* TOUCH FEEDBACK */
         .btn-telegram:active,
         .btn-secondary:active,
         .contact-item-card:active,
@@ -875,7 +976,7 @@
             opacity: 0.92;
         }
 
-        /* STYLISH FOOTER */
+        /* FOOTER */
         footer.site-footer {
             margin-top: 60px;
             padding: 32px 0 16px;
@@ -893,12 +994,6 @@
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.01em;
-        }
-
-        .footer-line-2 {
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--text-secondary);
         }
 
         .footer-line-3 {
@@ -1017,6 +1112,9 @@
 </head>
 <body>
 
+    <!-- ВОДЯНОЙ ЗНАК ЗАЩИТЫ -->
+    <div id="watermark-layer"></div>
+
     <!-- PRELOADER -->
     <div id="preloader">
         <div class="loader-spinner"></div>
@@ -1047,9 +1145,7 @@
                     </ul>
 
                     <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">
-                        <svg id="themeIcon" viewBox="0 0 24 24">
-                            <!-- SVG Path renders via JavaScript -->
-                        </svg>
+                        <svg id="themeIcon" viewBox="0 0 24 24"></svg>
                     </button>
 
                     <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram">
@@ -1068,7 +1164,24 @@
         </div>
     </header>
 
-    <main class="container">
+    <!-- СТРАНИЦА ОШИБКИ 404 (ОТОБРАЖАЕТСЯ ПРИ НЕСУЩЕСТВУЮЩЕМ ХЭШЕ) -->
+    <div id="error-404" class="error-page-container container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Страница не найдена</h1>
+        <p class="error-desc">Запрошенный адрес или раздел не существует. Возможно, была допущена ошибка в ссылке.</p>
+        <button class="btn-telegram" onclick="window.location.hash='#about'">Вернуться на главную</button>
+    </div>
+
+    <!-- СТРАНИЦА ОШИБКИ 500 -->
+    <div id="error-500" class="error-page-container container">
+        <div class="error-code">500</div>
+        <h1 class="error-title">Внутренняя ошибка сервера</h1>
+        <p class="error-desc">Произошел технический сбой. Мы уже работаем над его устранением.</p>
+        <button class="btn-telegram" onclick="window.location.hash='#about'">Перезагрузить сайт</button>
+    </div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ СЕКЦИЙ -->
+    <main class="container" id="main-content">
 
         <!-- HERO SECTION -->
         <section class="hero reveal-on-scroll" id="about">
@@ -1447,73 +1560,154 @@
 
     </main>
 
-    <!-- СМУТНЫЙ СКРИПТ ЗАЩИТЫ КОДА И ДЕЙСТВИЙ ПОЛЬЗОВАТЕЛЯ -->
+    <!-- КОМПЛЕКСНЫЙ ЯДЕРНЫЙ СКРИПТ ЗАЩИТЫ, БЛОКИРОВКИ РАСШИРЕНИЙ И РОУТИНГА -->
     <script>
         (function() {
-            // 1. Блокировка ПКМ (Контекстного меню)
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            }, true);
+            'use strict';
 
-            // 2. Блокировка Копирования, Вырезания и Перетаскивания
-            document.addEventListener('copy', function(e) { e.preventDefault(); }, true);
-            document.addEventListener('cut', function(e) { e.preventDefault(); }, true);
-            document.addEventListener('dragstart', function(e) { e.preventDefault(); }, true);
+            // 1. ЗАЩИТА ОТ РАСШИРЕНИЙ: Заморозка баз и обнаружение чужеродных DOM-инъекций
+            try {
+                Object.freeze(Object.prototype);
+            } catch(e) {}
 
-            // 3. Блокировка сочетаний клавиш (F12, Shift+U, Ctrl+U, DevTools, Ctrl+S)
-            document.addEventListener('keydown', function(e) {
-                // F12
-                if (e.key === 'F12' || e.keyCode === 123) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-
-                // Shift + U (и верхний/нижний регистр)
-                if (e.shiftKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-
-                // Сочетания с Ctrl / Cmd (Mac)
-                if (e.ctrlKey || e.metaKey) {
-                    const key = e.key ? e.key.toLowerCase() : '';
-                    
-                    // Ctrl + U (исходный код), Ctrl + S (сохранение), Ctrl + P (печать)
-                    if (['u', 's', 'p', 'c', 'x', 'a'].includes(key)) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        return false;
-                    }
-
-                    // Ctrl + Shift + I / J / C (Панель разработчика)
-                    if (e.shiftKey && ['i', 'j', 'c'].includes(key)) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        return false;
+            // Наблюдатель за расширениями (удаляет внедряемые расширениями теги скриптов/стилей)
+            const extensionObserver = new MutationObserver((mutations) => {
+                for (let mutation of mutations) {
+                    for (let node of mutation.addedNodes) {
+                        if (node.nodeType === 1) { // Element
+                            const tagName = node.tagName.toLowerCase();
+                            // Удаляем автоматически инжектируемые теги сторонними плагинами
+                            if (node.hasAttribute('chrome-extension:') || 
+                                node.className?.toString().includes('extension') || 
+                                node.id?.toString().includes('extension') ||
+                                (tagName === 'script' && !node.src.includes(window.location.hostname))) {
+                                try { node.remove(); } catch(e) {}
+                            }
+                        }
                     }
                 }
-            }, true);
+            });
+            extensionObserver.observe(document.documentElement, { childList: true, subtree: true });
 
-            // 4. Ловушка для DevTools (Зацикливание отладчика)
-            setInterval(function() {
-                const startTime = performance.now();
-                (function() {}.constructor("debugger")());
-                const endTime = performance.now();
+            // 2. ДИНАМИЧЕСКИЙ ВОДЯНОЙ ЗНАК (Защита от внешней видеосъемки)
+            function generateWatermark() {
+                const layer = document.getElementById('watermark-layer');
+                if (!layer) return;
+                const sessionID = Math.random().toString(36).substring(2, 8).toUpperCase();
+                const text = `STAS ALESHKIN // ${new Date().toLocaleDateString()} // ID:${sessionID}`;
                 
-                // Если задержка отладчика больше 100мс — DevTools открыт, очищаем страницу
-                if (endTime - startTime > 100) {
-                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;font-weight:bold;color:#0f172a;">Доступ запрещен.</div>';
+                let html = '';
+                for(let i = 0; i < 24; i++) {
+                    html += `<div>${text}</div>`;
                 }
-            }, 500);
+                layer.innerHTML = html;
+            }
+            generateWatermark();
+
+            // 3. БЛОКИРОВКА СКРИНШОТОВ И УХОДА КУРСОРA (Размытие экрана)
+            function enableBlur() { document.body.classList.add('security-blur'); }
+            function disableBlur() { document.body.classList.remove('security-blur'); }
+
+            window.addEventListener('blur', enableBlur, true);
+            window.addEventListener('focus', disableBlur, true);
+            document.addEventListener('mouseleave', enableBlur, true);
+            document.addEventListener('mouseenter', disableBlur, true);
+
+            // Перехват клавиши PrintScreen и сброс буфера обмена
+            window.addEventListener('keyup', function(e) {
+                if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                    enableBlur();
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(''); // Очищаем скопированный кадр
+                    }
+                    setTimeout(disableBlur, 1500);
+                }
+            }, true);
+
+            // 4. ГЛОКАЛЬНАЯ БЛОКИРОВКА КЛАВИШ И ДЕЙСТВИЙ
+            document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
+            document.addEventListener('copy', e => e.preventDefault(), true);
+            document.addEventListener('cut', e => e.preventDefault(), true);
+            document.addEventListener('dragstart', e => e.preventDefault(), true);
+            document.addEventListener('selectstart', e => e.preventDefault(), true);
+
+            window.addEventListener('keydown', function(e) {
+                const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+                const modifier = isMac ? e.metaKey : e.ctrlKey;
+                const key = e.key ? e.key.toLowerCase() : '';
+
+                // Блокировка F12
+                if (e.key === 'F12' || e.keyCode === 123) {
+                    e.preventDefault(); e.stopPropagation(); return false;
+                }
+
+                // Блокировка Ctrl/Cmd + S, P, U, C, X, A, I, J
+                if (modifier && ['s', 'p', 'u', 'c', 'x', 'a', 'i', 'j'].includes(key)) {
+                    e.preventDefault(); e.stopPropagation(); return false;
+                }
+
+                // Блокировка Ctrl/Cmd + Shift + I / J / C / S
+                if (modifier && e.shiftKey && ['i', 'j', 'c', 's', '3', '4', '5'].includes(key)) {
+                    e.preventDefault(); e.stopPropagation(); return false;
+                }
+
+                // Вызов скриншотов на Mac (Cmd + Shift + 3/4/5)
+                if (isMac && e.metaKey && e.shiftKey && ['3', '4', '5'].includes(key)) {
+                    enableBlur();
+                    setTimeout(disableBlur, 2000);
+                }
+            }, true);
+
+            // 5. ЛОВУШКА ОТЛАДЧИКА (DEVTOOLS ANTI-DEBUGGER)
+            setInterval(function() {
+                const start = performance.now();
+                (function() {}.constructor("debugger")());
+                const end = performance.now();
+                if (end - start > 100) {
+                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#090d16;color:#ffffff;font-family:sans-serif;font-weight:bold;">Инспектор кода запрещен.</div>';
+                }
+            }, 600);
+
+            // 6. РОУТЕР ДЛЯ ОБРАБОТКИ ОШИБОК (404 И СЕКЦИЙ)
+            const validHashes = ['#about', '#services', '#projects', '#stack', '#life', '#contact', '', '#'];
+            
+            function handleRouting() {
+                const currentHash = window.location.hash;
+                const error404Page = document.getElementById('error-404');
+                const error500Page = document.getElementById('error-500');
+                const mainContent = document.getElementById('main-content');
+
+                if (currentHash === '#500') {
+                    mainContent.style.display = 'none';
+                    error404Page.classList.remove('active');
+                    error500Page.classList.add('active');
+                    window.scrollTo(0, 0);
+                    return;
+                }
+
+                if (currentHash && !validHashes.includes(currentHash) && !document.querySelector(currentHash)) {
+                    // Ошибка 404: Хэш не найден среди секций
+                    mainContent.style.display = 'none';
+                    error500Page.classList.remove('active');
+                    error404Page.classList.add('active');
+                    window.scrollTo(0, 0);
+                } else {
+                    // Все в порядке: Показываем контент
+                    error404Page.classList.remove('active');
+                    error500Page.classList.remove('active');
+                    mainContent.style.display = 'block';
+                }
+            }
+
+            window.addEventListener('hashchange', handleRouting);
+            window.addEventListener('DOMContentLoaded', handleRouting);
+
         })();
     </script>
 
-    <!-- ОСНОВНЫЕ СКРИПТЫ САЙТА -->
+    <!-- ОСНОВНЫЕ СКРИПТЫ ИНТЕРФЕЙСА -->
     <script>
-        // Automatic Unfocus on Mobile Touch to prevent stuck hover/focus state
+        // Automatic Unfocus on Touch Devices
         document.addEventListener('touchend', () => {
             if (document.activeElement && document.activeElement !== document.body) {
                 document.activeElement.blur();
@@ -1539,41 +1733,48 @@
         function setTheme(theme) {
             html.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
+            if (themeIcon) {
+                themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
+            }
         }
 
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme);
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        });
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            });
+        }
 
         // Mobile Menu Logic
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('open');
-            hamburger.classList.toggle('is-active', isOpen);
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                hamburger.classList.remove('is-active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                
-                navItems.forEach(el => el.classList.remove('active'));
-                link.classList.add('active');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                const isOpen = navLinks.classList.toggle('open');
+                hamburger.classList.toggle('is-active', isOpen);
+                hamburger.setAttribute('aria-expanded', isOpen);
             });
-        });
+
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('open');
+                    hamburger.classList.remove('is-active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    
+                    navItems.forEach(el => el.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+        }
 
         // Scrollspy Navigation Active Highlight
         const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
         const observerOptions = {
             root: null,
             rootMargin: '-20% 0px -60% 0px',
@@ -1598,7 +1799,7 @@
             sectionObserver.observe(section);
         });
 
-        // Fast & Responsive Reveal on Scroll Animation
+        // Fast & Responsive Reveal on Scroll
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
