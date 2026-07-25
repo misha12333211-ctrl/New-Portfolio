@@ -34,11 +34,55 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- ЗАЩИТА Level 0: Без JS страница не работает -->
+    <!-- ЗАЩИТА Level 0: Ошибка при отключённом JavaScript -->
     <noscript>
         <style>
-            html, body { display: none !important; }
+            body > *:not(.noscript-overlay) { display: none !important; }
+            .noscript-overlay {
+                position: fixed;
+                inset: 0;
+                background: #090d16;
+                color: #ffffff;
+                z-index: 9999999;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 24px;
+                font-family: 'Inter', -apple-system, sans-serif;
+            }
+            .noscript-box {
+                background: #121929;
+                border: 1px solid #233047;
+                border-radius: 20px;
+                padding: 36px 28px;
+                max-width: 420px;
+                box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+            }
+            .noscript-icon {
+                font-size: 2.5rem;
+                margin-bottom: 12px;
+            }
+            .noscript-title {
+                font-size: 1.35rem;
+                font-weight: 800;
+                margin-bottom: 12px;
+                color: #f8fafc;
+            }
+            .noscript-desc {
+                font-size: 0.92rem;
+                color: #94a3b8;
+                line-height: 1.6;
+            }
         </style>
+        <div class="noscript-overlay">
+            <div class="noscript-box">
+                <div class="noscript-icon">⚠️</div>
+                <div class="noscript-title">Включите JavaScript</div>
+                <div class="noscript-desc">Для корректной работы интерфейса, динамических функций и отображения портфолио этому сайту требуется включённый JavaScript в вашем браузере.</div>
+            </div>
+        </div>
     </noscript>
 
     <style id="security-styles">
@@ -889,6 +933,12 @@
                 background: var(--accent-light);
                 transform: translateX(4px);
             }
+
+            .license-btn:hover {
+                color: var(--accent);
+                border-color: var(--accent);
+                background: var(--accent-light);
+            }
         }
 
         /* TOUCH / ACTIVE FEEDBACK FOR MOBILE */
@@ -896,7 +946,8 @@
         .btn-secondary:active,
         .contact-item-card:active,
         .card:active,
-        .filter-btn:active {
+        .filter-btn:active,
+        .license-btn:active {
             transform: scale(0.98);
             opacity: 0.92;
         }
@@ -921,6 +972,22 @@
             letter-spacing: -0.01em;
         }
 
+        .license-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 4px 0;
+        }
+
         .footer-line-3 {
             display: inline-flex;
             align-items: center;
@@ -942,6 +1009,173 @@
             background-color: var(--accent);
             border-radius: 50%;
             display: inline-block;
+        }
+
+        /* LICENSE MODAL STYLES */
+        .license-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(9, 13, 22, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .license-modal-overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .license-modal-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            max-width: 620px;
+            width: 100%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .license-modal-overlay.is-active .license-modal-card {
+            transform: scale(1);
+        }
+
+        .license-modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--surface-subtle);
+        }
+
+        .license-lang-switch {
+            display: flex;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 136, 204, 0.2);
+        }
+
+        .license-modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 50%;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .license-modal-close:hover {
+            color: var(--text-primary);
+            background: var(--border);
+        }
+
+        .license-modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .license-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .license-copyright {
+            font-family: monospace;
+            font-size: 0.85rem;
+            background: var(--surface-subtle);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .license-paragraph {
+            margin-bottom: 14px;
+        }
+
+        .license-section-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+
+        .license-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 14px;
+        }
+
+        .license-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+        }
+
+        .license-list li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .license-link {
+            color: var(--accent);
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .license-link:hover {
+            text-decoration: underline;
         }
 
         /* RESPONSIVE MEDIA QUERIES */
@@ -1031,6 +1265,14 @@
 
             .contact-item-card {
                 padding: 14px 16px;
+            }
+
+            .license-modal-card {
+                max-height: 90vh;
+            }
+
+            .license-modal-body {
+                padding: 18px;
             }
         }
     </style>
@@ -1470,247 +1712,466 @@
         <!-- FOOTER -->
         <footer class="site-footer">
             <div class="footer-line-1">© 2026 Станислав Алёшкин</div>
+            <button class="license-btn" id="openLicenseModal" type="button">📄 Лицензия / License</button>
             <div class="footer-line-3">обновлено: 25 июля</div>
         </footer>
 
     </main>
 
-    <!-- МАКСИМАЛЬНЫЙ КОМПЛЕКС ЗАЩИТЫ ВЕБ-СТРАНИЦЫ -->
+    <!-- MODAL LICENSE -->
+    <div class="license-modal-overlay" id="licenseModal" role="dialog" aria-modal="true" aria-labelledby="licenseModalTitle">
+        <div class="license-modal-card">
+            <div class="license-modal-header">
+                <div class="license-lang-switch">
+                    <button class="lang-btn active" data-lang="ru" type="button">RU</button>
+                    <button class="lang-btn" data-lang="en" type="button">EN</button>
+                </div>
+                <button class="license-modal-close" id="closeLicenseModal" aria-label="Закрыть" type="button">&times;</button>
+            </div>
+            <div class="license-modal-body">
+                <!-- RUSSIAN VERSION -->
+                <div id="licenseTextRU">
+                    <h3 class="license-title" id="licenseModalTitle">ЛИЦЕНЗИЯ</h3>
+                    <div class="license-copyright">Copyright (c) 2026 misha12333211-ctrl</div>
+                    
+                    <p class="license-paragraph">
+                        Настоящим предоставляется разрешение на просмотр и изучение исходного кода в личных и некоммерческих целях при условии, что данное уведомление будет включено во все копии или существенные части программного обеспечения.
+                    </p>
+                    <p class="license-paragraph">
+                        <strong>Любое коммерческое использование или распространение данного программного обеспечения с целью получения прибыли строго запрещено.</strong>
+                    </p>
+                    <p class="license-paragraph">
+                        Это произведение доступно по лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерчески») 4.0 Всемирная.
+                    </p>
+
+                    <div class="license-section-title">Вы имеете право:</div>
+                    <ul class="license-list">
+                        <li><strong>Делиться (распространять):</strong> Копировать и распространять материал на любом носителе и в любом формате.</li>
+                        <li><strong>Адаптировать (редактировать):</strong> Вносить изменения, трансформировать и создавать новое, опираясь на этот материал.</li>
+                    </ul>
+
+                    <div class="license-section-title">При соблюдении следующих условий:</div>
+                    <ul class="license-list">
+                        <li><strong>Attribution (Атрибуция):</strong> Вы должны обеспечить соответствующее указание авторства, предоставить ссылку на лицензию и обозначить изменения, если таковые были внесены.</li>
+                        <li><strong>NonCommercial (Некоммерческое использование):</strong> Вы не можете использовать этот материал в коммерческих целях.</li>
+                    </ul>
+
+                    <p class="license-paragraph" style="margin-top: 16px;">
+                        Ознакомиться с полной копией этой лицензии можно по ссылке:<br>
+                        <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="license-link">http://creativecommons.org/licenses/by-nc/4.0/</a>
+                    </p>
+                    <p class="license-paragraph">
+                        Ссылка на сайт:<br>
+                        <a href="https://new-portfolio-mkrg.onrender.com" target="_blank" rel="noopener noreferrer" class="license-link">https://new-portfolio-mkrg.onrender.com</a>
+                    </p>
+                </div>
+
+                <!-- ENGLISH VERSION -->
+                <div id="licenseTextEN" style="display: none;">
+                    <h3 class="license-title">LICENSE</h3>
+                    <div class="license-copyright">Copyright (c) 2026 misha12333211-ctrl</div>
+                    
+                    <p class="license-paragraph">
+                        Permission is hereby granted to view and learn from the source code for personal, non-commercial purposes, provided that this notice is included in all copies or substantial portions of the software.
+                    </p>
+                    <p class="license-paragraph">
+                        <strong>Any commercial use or redistribution of this software for profit is strictly prohibited.</strong>
+                    </p>
+                    <p class="license-paragraph">
+                        This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+                    </p>
+
+                    <div class="license-section-title">You are free to:</div>
+                    <ul class="license-list">
+                        <li><strong>Share:</strong> Copy and redistribute the material in any medium or format.</li>
+                        <li><strong>Adapt:</strong> Remix, transform, and build upon the material.</li>
+                    </ul>
+
+                    <div class="license-section-title">Under the following terms:</div>
+                    <ul class="license-list">
+                        <li><strong>Attribution:</strong> You must give appropriate credit, provide a link to the license, and indicate if changes were made.</li>
+                        <li><strong>NonCommercial:</strong> You may not use this material for commercial purposes.</li>
+                    </ul>
+
+                    <p class="license-paragraph" style="margin-top: 16px;">
+                        To view a copy of this license, visit:<br>
+                        <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="license-link">http://creativecommons.org/licenses/by-nc/4.0/</a>
+                    </p>
+                    <p class="license-paragraph">
+                        Website link:<br>
+                        <a href="https://new-portfolio-mkrg.onrender.com" target="_blank" rel="noopener noreferrer" class="license-link">https://new-portfolio-mkrg.onrender.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ГЛОБАЛЬНЫЙ ПЕРЕХВАТ ОШИБОК И БЕЗОПАСНАЯ СИСТЕМА ЗАЩИТЫ -->
     <script id="security-script">
         (function() {
             'use strict';
 
-            // 1. БЛОКИРОВКА КЛАВИАТУРНЫХ СОЧЕТАНИЙ (ВКЛЮЧАЯ РУССКУЮ РАСКЛАДКУ ЧЕРЕЗ e.code)
-            const blockedCodes = new Set([
-                'KeyS', // Ctrl + S
-                'KeyU', // Ctrl + U
-                'KeyP', // Ctrl + P
-                'KeyC', // Ctrl + C
-                'KeyX', // Ctrl + X
-                'KeyA', // Ctrl + A
-                'KeyI', // DevTools (Ctrl+Shift+I)
-                'KeyJ', // DevTools (Ctrl+Shift+J)
-                'F12'   // F12
-            ]);
-
-            window.addEventListener('keydown', function(e) {
-                // Игнорируем F12
-                if (e.code === 'F12' || e.keyCode === 123) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-
-                // Перехват Ctrl / Cmd (macOS)
-                if (e.ctrlKey || e.metaKey) {
-                    if (blockedCodes.has(e.code)) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        return false;
-                    }
-                }
+            // Глобальные обработчики исключений для предотвращения сбоев
+            window.addEventListener('error', function(err) {
+                console.warn('Caught runtime exception:', err.message || err);
             }, true);
 
-            // 2. БЛОКИРОВКА МЫШИ (ПКМ, Выделение, Drag&Drop)
-            window.addEventListener('contextmenu', e => e.preventDefault(), true);
-            window.addEventListener('copy', e => {
-                e.preventDefault();
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText('Запрещено к копированию.');
-                }
+            window.addEventListener('unhandledrejection', function(evt) {
+                console.warn('Unhandled promise rejection:', evt.reason);
             }, true);
-            window.addEventListener('cut', e => e.preventDefault(), true);
-            window.addEventListener('dragstart', e => e.preventDefault(), true);
 
-            // 3. ЗАЩИТА ОТ СНИМКОВ ЭКРАНА (Anti-Screenshot / Blur Shield)
-            // При потере фокуса или вызове ножниц (Win+Shift+S) браузер блюрит весь контент
-            function shieldOn() {
-                document.body.classList.add('screen-protected');
-            }
+            try {
+                // 1. БЛОКИРОВКА КЛАВИАТУРНЫХ СОЧЕТАНИЙ (ВКЛЮЧАЯ РУССКУЮ РАСКЛАДКУ ЧЕРЕЗ e.code)
+                const blockedCodes = new Set([
+                    'KeyS', // Ctrl + S
+                    'KeyU', // Ctrl + U
+                    'KeyP', // Ctrl + P
+                    'KeyC', // Ctrl + C
+                    'KeyX', // Ctrl + X
+                    'KeyA', // Ctrl + A
+                    'KeyI', // DevTools (Ctrl+Shift+I)
+                    'KeyJ', // DevTools (Ctrl+Shift+J)
+                    'F12'   // F12
+                ]);
 
-            function shieldOff() {
-                document.body.classList.remove('screen-protected');
-            }
+                window.addEventListener('keydown', function(e) {
+                    try {
+                        if (e.code === 'F12' || e.keyCode === 123) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }
 
-            window.addEventListener('blur', shieldOn);
-            window.addEventListener('focus', shieldOff);
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    shieldOn();
-                } else {
-                    shieldOff();
-                }
-            });
-
-            // Очистка буфера обмена при нажатии PrintScreen
-            window.addEventListener('keyup', e => {
-                if (e.code === 'PrintScreen' || e.key === 'PrintScreen') {
-                    shieldOn();
-                    if (navigator.clipboard) {
-                        navigator.clipboard.writeText('Скриншот заблокирован.');
+                        if (e.ctrlKey || e.metaKey) {
+                            if (blockedCodes.has(e.code)) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                return false;
+                            }
+                        }
+                    } catch (err) {
+                        /* Safe Fail */
                     }
-                    setTimeout(shieldOff, 2000);
+                }, true);
+
+                // 2. БЛОКИРОВКА МЫШИ (ПКМ, Выделение, Drag&Drop, Без запросов Clipboard)
+                window.addEventListener('contextmenu', function(e) { e.preventDefault(); }, true);
+                window.addEventListener('copy', function(e) { e.preventDefault(); }, true);
+                window.addEventListener('cut', function(e) { e.preventDefault(); }, true);
+                window.addEventListener('dragstart', function(e) { e.preventDefault(); }, true);
+
+                // 3. ЗАЩИТА ОТ СНИМКОВ ЭКРАНА (Anti-Screenshot / Blur Shield)
+                function shieldOn() {
+                    if (document.body) document.body.classList.add('screen-protected');
                 }
-            });
 
-            // 4. ЛОВУШКА ОТЛАДЧИКА DEVTOOLS (Debugger Trap)
-            setInterval(function() {
-                const startTime = performance.now();
-                (function() {}.constructor("debugger")());
-                const endTime = performance.now();
-
-                // Если DevTools открыт, выполнение задержится более чем на 100мс
-                if (endTime - startTime > 100) {
-                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;font-weight:bold;color:#0f172a;background:#f4f6f9;">Доступ ограничен.</div>';
+                function shieldOff() {
+                    if (document.body) document.body.classList.remove('screen-protected');
                 }
-            }, 400);
 
-            // 5. ДЕТЕКТОР ИЗМЕНЕНИЯ РАЗМЕРОВ ОКОН (Side-Panel DevTools Trap)
-            window.addEventListener('resize', () => {
-                const widthThreshold = window.outerWidth - window.innerWidth > 160;
-                const heightThreshold = window.outerHeight - window.innerHeight > 160;
-                if (widthThreshold || heightThreshold) {
-                    shieldOn();
+                window.addEventListener('blur', shieldOn);
+                window.addEventListener('focus', shieldOff);
+
+                document.addEventListener('visibilitychange', function() {
+                    if (document.hidden) {
+                        shieldOn();
+                    } else {
+                        shieldOff();
+                    }
+                });
+
+                // Перехват клавиши PrintScreen
+                window.addEventListener('keyup', function(e) {
+                    if (e.code === 'PrintScreen' || e.key === 'PrintScreen') {
+                        shieldOn();
+                        setTimeout(shieldOff, 2000);
+                    }
+                });
+
+                // 4. ЛОВУШКА ОТЛАДЧИКА DEVTOOLS (Debugger Trap)
+                setInterval(function() {
+                    try {
+                        const startTime = performance.now();
+                        (function() {}.constructor("debugger")());
+                        const endTime = performance.now();
+
+                        if (endTime - startTime > 100) {
+                            if (document.body) {
+                                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;font-weight:bold;color:#0f172a;background:#f4f6f9;">Доступ ограничен.</div>';
+                            }
+                        }
+                    } catch (err) {
+                        /* Ignore in sandbox environments */
+                    }
+                }, 400);
+
+                // 5. ДЕТЕКТОР ИЗМЕНЕНИЯ РАЗМЕРОВ ОКОН (Side-Panel DevTools Trap)
+                window.addEventListener('resize', function() {
+                    try {
+                        const widthThreshold = window.outerWidth - window.innerWidth > 160;
+                        const heightThreshold = window.outerHeight - window.innerHeight > 160;
+                        if (widthThreshold || heightThreshold) {
+                            shieldOn();
+                        }
+                    } catch (err) {}
+                });
+
+                // 6. DOM GUARD (MUTATION OBSERVER): Защита от удаления стилей и скриптов в DevTools
+                if (window.MutationObserver) {
+                    const domGuard = new MutationObserver(function() {
+                        try {
+                            const secStyles = document.getElementById('security-styles');
+                            const secScript = document.getElementById('security-script');
+                            if (!secStyles || !secScript) {
+                                if (document.body) document.body.innerHTML = '';
+                                window.location.reload();
+                            }
+                        } catch (err) {}
+                    });
+
+                    domGuard.observe(document.documentElement, {
+                        childList: true,
+                        subtree: true
+                    });
                 }
-            });
-
-            // 6. DOM GUARD (MUTATION OBSERVER): Защита от удаления стилей и скриптов в DevTools
-            const domGuard = new MutationObserver(() => {
-                const secStyles = document.getElementById('security-styles');
-                const secScript = document.getElementById('security-script');
-                if (!secStyles || !secScript) {
-                    document.body.innerHTML = '';
-                    window.location.reload();
-                }
-            });
-
-            domGuard.observe(document.documentElement, {
-                childList: true,
-                subtree: true
-            });
-
+            } catch (globalErr) {
+                console.warn('Security initializer bypassed smoothly:', globalErr);
+            }
         })();
     </script>
 
-    <!-- ОСНОВНЫЕ СКРИПТЫ САЙТА -->
+    <!-- ОСНОВНЫЕ СКРИПТЫ САЙТА С ЗАЩИТОЙ ОТ СБОЕВ -->
     <script>
-        // Automatic Unfocus on Mobile Touch to prevent stuck hover/focus state
-        document.addEventListener('touchend', () => {
-            if (document.activeElement && document.activeElement !== document.body) {
-                document.activeElement.blur();
-            }
-        }, { passive: true });
+        (function() {
+            'use strict';
 
-        // Preloader Logic
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('loaded');
-            }
-        });
+            // Безопасная работа с LocalStorage
+            const safeStorage = {
+                getItem: function(key) {
+                    try { return localStorage.getItem(key); } catch (e) { return null; }
+                },
+                setItem: function(key, val) {
+                    try { localStorage.setItem(key, val); } catch (e) {}
+                }
+            };
 
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const html = document.documentElement;
+            // Automatic Unfocus on Mobile Touch
+            document.addEventListener('touchend', function() {
+                try {
+                    if (document.activeElement && document.activeElement !== document.body) {
+                        document.activeElement.blur();
+                    }
+                } catch (e) {}
+            }, { passive: true });
 
-        const sunSVG = `<path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41M16 12a4 4 0 11-8 0 4 4 0 018 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
-        const moonSVG = `<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" fill="currentColor"/>`;
-
-        function setTheme(theme) {
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
-        }
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        setTheme(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        });
-
-        // Mobile Menu Logic
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('open');
-            hamburger.classList.toggle('is-active', isOpen);
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                hamburger.classList.remove('is-active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                
-                navItems.forEach(el => el.classList.remove('active'));
-                link.classList.add('active');
+            // Preloader Logic
+            window.addEventListener('load', function() {
+                try {
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) {
+                        preloader.classList.add('loaded');
+                    }
+                } catch (e) {}
             });
-        });
 
-        // Scrollspy Navigation Active Highlight
-        const sections = document.querySelectorAll('section');
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -60% 0px',
-            threshold: 0
-        };
+            // Theme Toggle Logic
+            try {
+                const themeToggle = document.getElementById('themeToggle');
+                const themeIcon = document.getElementById('themeIcon');
+                const html = document.documentElement;
 
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    navItems.forEach(link => {
-                        if (link.getAttribute('href') === `#${id}`) {
-                            navItems.forEach(el => el.classList.remove('active'));
-                            link.classList.add('active');
-                        }
+                const sunSVG = `<path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41M16 12a4 4 0 11-8 0 4 4 0 018 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+                const moonSVG = `<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" fill="currentColor"/>`;
+
+                function setTheme(theme) {
+                    if (!html) return;
+                    html.setAttribute('data-theme', theme);
+                    safeStorage.setItem('theme', theme);
+                    if (themeIcon) {
+                        themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
+                    }
+                }
+
+                const savedTheme = safeStorage.getItem('theme') || 'light';
+                setTheme(savedTheme);
+
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', function() {
+                        const currentTheme = html.getAttribute('data-theme');
+                        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
                     });
                 }
-            });
-        }, observerOptions);
+            } catch (e) {
+                console.warn('Theme switch error fallback:', e);
+            }
 
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
+            // Mobile Menu Logic
+            try {
+                const hamburger = document.getElementById('hamburger');
+                const navLinks = document.getElementById('navLinks');
 
-        // Fast & Responsive Reveal on Scroll Animation
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+                if (hamburger && navLinks) {
+                    hamburger.addEventListener('click', function() {
+                        const isOpen = navLinks.classList.toggle('open');
+                        hamburger.classList.toggle('is-active', isOpen);
+                        hamburger.setAttribute('aria-expanded', isOpen);
+                    });
                 }
-            });
-        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+                const navItems = document.querySelectorAll('.nav-links a');
+                navItems.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        if (navLinks) navLinks.classList.remove('open');
+                        if (hamburger) {
+                            hamburger.classList.remove('is-active');
+                            hamburger.setAttribute('aria-expanded', 'false');
+                        }
+                        
+                        navItems.forEach(function(el) { el.classList.remove('active'); });
+                        link.classList.add('active');
+                    });
+                });
+            } catch (e) {
+                console.warn('Navigation script error fallback:', e);
+            }
 
-        // Filter Projects Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
+            // Scrollspy Navigation Active Highlight
+            try {
+                const navItems = document.querySelectorAll('.nav-links a');
+                const sections = document.querySelectorAll('section');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                if ('IntersectionObserver' in window && sections.length > 0) {
+                    const observerOptions = {
+                        root: null,
+                        rootMargin: '-20% 0px -60% 0px',
+                        threshold: 0
+                    };
 
-                const filter = btn.getAttribute('data-filter');
+                    const sectionObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                const id = entry.target.getAttribute('id');
+                                navItems.forEach(function(link) {
+                                    if (link.getAttribute('href') === `#${id}`) {
+                                        navItems.forEach(function(el) { el.classList.remove('active'); });
+                                        link.classList.add('active');
+                                    }
+                                });
+                            }
+                        });
+                    }, observerOptions);
 
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.removeAttribute('hidden');
-                    } else {
-                        card.setAttribute('hidden', 'true');
+                    sections.forEach(function(section) {
+                        sectionObserver.observe(section);
+                    });
+                }
+            } catch (e) {
+                console.warn('Scrollspy observer error fallback:', e);
+            }
+
+            // Reveal on Scroll Animation
+            try {
+                const revealElements = document.querySelectorAll('.reveal-on-scroll');
+                if ('IntersectionObserver' in window && revealElements.length > 0) {
+                    const revealObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                            }
+                        });
+                    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+                    revealElements.forEach(function(el) { revealObserver.observe(el); });
+                } else {
+                    revealElements.forEach(function(el) { el.classList.add('is-visible'); });
+                }
+            } catch (e) {
+                document.querySelectorAll('.reveal-on-scroll').forEach(function(el) { el.classList.add('is-visible'); });
+            }
+
+            // Filter Projects Logic
+            try {
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const projectCards = document.querySelectorAll('.project-card');
+
+                filterBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+
+                        const filter = btn.getAttribute('data-filter');
+
+                        projectCards.forEach(function(card) {
+                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                                card.removeAttribute('hidden');
+                            } else {
+                                card.setAttribute('hidden', 'true');
+                            }
+                        });
+                    });
+                });
+            } catch (e) {
+                console.warn('Project filter error fallback:', e);
+            }
+
+            // LICENSE MODAL LOGIC
+            try {
+                const openBtn = document.getElementById('openLicenseModal');
+                const closeBtn = document.getElementById('closeLicenseModal');
+                const modal = document.getElementById('licenseModal');
+                const langBtns = document.querySelectorAll('.lang-btn');
+                const ruText = document.getElementById('licenseTextRU');
+                const enText = document.getElementById('licenseTextEN');
+
+                function openModal() {
+                    if (modal) {
+                        modal.classList.add('is-active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+
+                function closeModal() {
+                    if (modal) {
+                        modal.classList.remove('is-active');
+                        document.body.style.overflow = '';
+                    }
+                }
+
+                if (openBtn) openBtn.addEventListener('click', openModal);
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+                if (modal) {
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) closeModal();
+                    });
+                }
+
+                window.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+                        closeModal();
                     }
                 });
-            });
-        });
+
+                // Language Switcher Logic inside Modal
+                langBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        langBtns.forEach(function(b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+
+                        const lang = btn.getAttribute('data-lang');
+                        if (lang === 'en') {
+                            if (ruText) ruText.style.display = 'none';
+                            if (enText) enText.style.display = 'block';
+                        } else {
+                            if (enText) enText.style.display = 'none';
+                            if (ruText) ruText.style.display = 'block';
+                        }
+                    });
+                });
+            } catch (e) {
+                console.warn('License modal error fallback:', e);
+            }
+        })();
     </script>
 </body>
 </html>
