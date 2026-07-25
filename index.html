@@ -1838,13 +1838,13 @@
                 window.addEventListener('dragstart', function(e) { e.preventDefault(); }, true);
 
                 // 3. ЗАЩИТА ОТ СНИМКОВ ЭКРАНА (Anti-Screenshot / Blur Shield)
-                function shieldOn() {
-                    if (document.body) document.body.classList.add('screen-protected');
-                }
+                //function shieldOn() {
+                    //if (document.body) document.body.classList.add('screen-protected');
+                //}
 
-                function shieldOff() {
-                    if (document.body) document.body.classList.remove('screen-protected');
-                }
+                //function shieldOff() {
+                   // if (document.body) document.body.classList.remove('screen-protected');
+               // }
 
                 window.addEventListener('blur', shieldOn);
                 window.addEventListener('focus', shieldOff);
