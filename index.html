@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка</title>
+    <title id="pageTitle">Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Портфолио Станислава Алёшкина: Frontend &amp; Backend разработка (HTML, CSS, JS, Node.js, Go), Tilda Zero Block, Figma, дизайн и серверная инфраструктура.">
-    <meta name="keywords" content="веб-дизайн, веб-разработка, HTML, CSS, JavaScript, Node.js, Go, Tilda, Zero Block, Figma, карточка товара, логотип, разработка сайтов, сервер, VLESS, портфолио">
+    <meta name="description" id="pageDescription" content="Портфолио Станислава Алёшкина: Frontend &amp; Backend разработка (HTML, CSS, JS, Node.js, Go), Tilda Zero Block, Figma, дизайн и серверная инфраструктура.">
+    <meta name="keywords" content="веб-дизайн, веб-разработка, HTML, CSS, JavaScript, Node.js, Go, Tilda, Zero Block, Figma, разработка сайтов, сервер, VLESS, web design, web development, fullstack">
     <meta name="author" content="Станислав Алёшкин">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#ffffff" id="themeColorMeta">
@@ -15,16 +15,16 @@
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale" content="ru_RU" id="ogLocale">
     <meta property="og:url" content="https://new-portfolio-mkrg.onrender.com">
-    <meta property="og:title" content="Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка">
-    <meta property="og:description" content="Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go (VLESS сервисы), делаю дизайн в Figma.">
+    <meta property="og:title" id="ogTitle" content="Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка">
+    <meta property="og:description" id="ogDescription" content="Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go (VLESS сервисы), делаю дизайн в Figma.">
     <meta property="og:image" content="https://new-portfolio-mkrg.onrender.com/og-image.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка">
-    <meta name="twitter:description" content="Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go, делаю дизайн в Figma.">
+    <meta name="twitter:title" id="twTitle" content="Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка">
+    <meta name="twitter:description" id="twDescription" content="Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go, делаю дизайн в Figma.">
     <meta name="twitter:image" content="https://new-portfolio-mkrg.onrender.com/og-image.jpg">
 
     <!-- Favicon -->
@@ -152,7 +152,7 @@
             background-color: var(--bg);
             color: var(--text-primary);
             font-family: var(--font-sans);
-            font-size: 16.5px; /* Увеличено для лучшей читаемости */
+            font-size: 16.5px;
             -webkit-font-smoothing: antialiased;
             text-size-adjust: 100%;
         }
@@ -325,7 +325,6 @@
             display: inline-flex;
         }
 
-        /* Увеличен размер текста и кликабельная область меню */
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -394,20 +393,28 @@
             word-break: normal;
         }
 
-        .theme-toggle {
+        .theme-toggle, .lang-toggle {
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-primary);
-            width: clamp(34px, 8vw, 44px);
             height: clamp(34px, 8vw, 44px);
             min-width: clamp(34px, 8vw, 44px);
-            border-radius: 50%;
+            border-radius: var(--radius-full);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: var(--transition-fast);
             flex-shrink: 0;
+            font-weight: 700;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            padding: 0 10px;
+        }
+
+        .theme-toggle {
+            width: clamp(34px, 8vw, 44px);
+            border-radius: 50%;
+            padding: 0;
         }
 
         .theme-toggle svg {
@@ -932,7 +939,7 @@
                 border-color: var(--accent);
             }
 
-            .theme-toggle:hover {
+            .theme-toggle:hover, .lang-toggle:hover {
                 border-color: var(--border-hover);
                 background: var(--surface-subtle);
             }
@@ -1058,7 +1065,7 @@
                 width: 100%;
                 text-align: center;
                 padding: 12px;
-                font-size: 1.05rem; /* Крупное меню на мобильных */
+                font-size: 1.05rem;
             }
 
             .hamburger {
@@ -1077,7 +1084,7 @@
             }
         }
 
-        /* SMARTWATCHES & Apple Watch Adaptive (< 280px) */
+        /* SMARTWATCHES Adaptive (< 280px) */
         @media (max-width: 280px) {
             :root {
                 --container-padding: 6px;
@@ -1168,10 +1175,10 @@
             <div class="nav-content">
                 <a href="#" class="nav-profile">
                     <div class="profile-info">
-                        <span class="profile-name">Станислав Алёшкин</span>
+                        <span class="profile-name" data-i18n="nav_name">Станислав Алёшкин</span>
                         <span class="profile-status">
                             <span class="status-dot"></span>
-                            Принимаю заказы
+                            <span data-i18n="nav_status">Принимаю заказы</span>
                         </span>
                     </div>
                 </a>
@@ -1179,22 +1186,28 @@
                 <div class="nav-right">
                     <nav id="mainNav" aria-label="Основная навигация">
                         <ul class="nav-links" id="navLinks">
-                            <li><a href="#about" class="active">Обо мне</a></li>
-                            <li><a href="#services">Услуги</a></li>
-                            <li><a href="#projects">Портфолио</a></li>
-                            <li><a href="#stack">Навыки</a></li>
-                            <li><a href="#life">Хобби</a></li>
-                            <li><a href="#contact">Контакты</a></li>
+                            <li><a href="#about" class="active" data-i18n="nav_about">Обо мне</a></li>
+                            <li><a href="#services" data-i18n="nav_services">Услуги</a></li>
+                            <li><a href="#projects" data-i18n="nav_projects">Портфолио</a></li>
+                            <li><a href="#stack" data-i18n="nav_stack">Навыки</a></li>
+                            <li><a href="#life" data-i18n="nav_life">Хобби</a></li>
+                            <li><a href="#contact" data-i18n="nav_contact">Контакты</a></li>
                         </ul>
                     </nav>
 
+                    <!-- Language Toggle -->
+                    <button class="lang-toggle" id="langToggle" title="Switch Language" aria-label="Switch Language">
+                        EN
+                    </button>
+
+                    <!-- Theme Toggle -->
                     <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">
                         <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true">
                             <!-- SVG Path renders via JavaScript -->
                         </svg>
                     </button>
 
-                    <a href="https://t.me/MiGiTi_official" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram" aria-label="Написать в Telegram">
+                    <a href="https://t.me/MiGiTi_official" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram" aria-label="Написать в Telegram" id="headerTgBtn">
                         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
                         </svg>
@@ -1214,15 +1227,15 @@
         <!-- HERO SECTION -->
         <section class="hero reveal-on-scroll" id="about">
             <div class="hero-badge-row">
-                <span class="badge-pill">Веб-дизайн &amp; Веб-разработка</span>
+                <span class="badge-pill" data-i18n="hero_badge">Веб-дизайн &amp; Веб-разработка</span>
             </div>
 
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-i18n="hero_title">
                 Веб-дизайн, Frontend &amp; Backend, <br>
                 <span class="highlight">Tilda, Figma, Go и серверные решения</span>
             </h1>
 
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero_desc">
                 Привет! Я занимаюсь веб-дизайном и веб-разработкой: верстаю на HTML/CSS/JavaScript, разрабатываю бэкенд на Node.js и Go, собираю сайты на Tilda (включая Zero Block), проектирую интерфейсы в Figma, создаю логотипы и карточки товаров, а также конфигурирую и настраиваю сервера.
             </p>
 
@@ -1231,9 +1244,9 @@
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
                     </svg>
-                    Обсудить проект в Telegram
+                    <span data-i18n="hero_cta_tg">Обсудить проект в Telegram</span>
                 </a>
-                <a href="#projects" class="btn-secondary">
+                <a href="#projects" class="btn-secondary" data-i18n="hero_cta_portfolio">
                     Смотреть портфолио
                 </a>
             </div>
@@ -1241,36 +1254,36 @@
             <div class="benefits-list">
                 <div class="benefit-item">
                     <div class="benefit-icon" aria-hidden="true">✓</div>
-                    <span>Веб-разработка: HTML, CSS, JavaScript, Node.js, Go</span>
+                    <span data-i18n="benefit_1">Веб-разработка: HTML, CSS, JavaScript, Node.js, Go</span>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-icon" aria-hidden="true">✓</div>
-                    <span>Сайты на Tilda (обычные блоки &amp; Zero Block)</span>
+                    <span data-i18n="benefit_2">Сайты на Tilda (обычные блоки &amp; Zero Block)</span>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-icon" aria-hidden="true">✓</div>
-                    <span>Дизайн в Figma, карточки товаров и логотипы</span>
+                    <span data-i18n="benefit_3">Дизайн в Figma, карточки товаров и логотипы</span>
                 </div>
             </div>
         </section>
 
         <!-- SERVICES SECTION -->
         <section id="services" class="reveal-on-scroll">
-            <span class="section-badge">Услуги</span>
-            <h2 class="section-title">Чем я могу помочь</h2>
-            <p class="section-subtitle">Создаю визуальные материалы, разрабатываю сайты и настраиваю серверную часть.</p>
+            <span class="section-badge" data-i18n="services_badge">Услуги</span>
+            <h2 class="section-title" data-i18n="services_title">Чем я могу помочь</h2>
+            <p class="section-subtitle" data-i18n="services_subtitle">Создаю визуальные материалы, разрабатываю сайты и настраиваю серверную часть.</p>
 
             <div class="services-grid">
                 <div class="card service-card">
                     <div class="service-icon-box" aria-hidden="true">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                     </div>
-                    <h3>Веб-разработка &amp; Кодинг</h3>
-                    <p>Создание чистых интерактивных сайтов и скриптов с нуля на HTML, CSS, JS, Node.js и Go.</p>
+                    <h3 data-i18n="srv1_title">Веб-разработка &amp; Кодинг</h3>
+                    <p data-i18n="srv1_desc">Создание чистых интерактивных сайтов и скриптов с нуля на HTML, CSS, JS, Node.js и Go.</p>
                     <ul class="service-list">
-                        <li>Адаптивная верстка (HTML/CSS/JS)</li>
-                        <li>Разработка бэкенда и скриптов на Node.js</li>
-                        <li>Высокопроизводительные сервисы на Go</li>
+                        <li data-i18n="srv1_li1">Адаптивная верстка (HTML/CSS/JS)</li>
+                        <li data-i18n="srv1_li2">Разработка бэкенда и скриптов на Node.js</li>
+                        <li data-i18n="srv1_li3">Высокопроизводительные сервисы на Go</li>
                     </ul>
                 </div>
 
@@ -1278,12 +1291,12 @@
                     <div class="service-icon-box" aria-hidden="true">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     </div>
-                    <h3>Сайты на Tilda</h3>
-                    <p>Создание лендингов, многостраничников и визиток с нужной структурой и дизайном.</p>
+                    <h3 data-i18n="srv2_title">Сайты на Tilda</h3>
+                    <p data-i18n="srv2_desc">Создание лендингов, многостраничников и визиток с нужной структурой и дизайном.</p>
                     <ul class="service-list">
-                        <li>Сборка из обычных стандартных блоков</li>
-                        <li>Уникальный дизайн в Zero Block</li>
-                        <li>Полный адаптив под мобильные устройства</li>
+                        <li data-i18n="srv2_li1">Сборка из обычных стандартных блоков</li>
+                        <li data-i18n="srv2_li2">Уникальный дизайн в Zero Block</li>
+                        <li data-i18n="srv2_li3">Полный адаптив под мобильные устройства</li>
                     </ul>
                 </div>
 
@@ -1291,12 +1304,12 @@
                     <div class="service-icon-box" aria-hidden="true">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
-                    <h3>Дизайн &amp; Figma</h3>
-                    <p>Проектирование красивых и удобных интерфейсов: от стильного логотипа до карточки товара.</p>
+                    <h3 data-i18n="srv3_title">Дизайн &amp; Figma</h3>
+                    <p data-i18n="srv3_desc">Проектирование красивых и удобных интерфейсов: от стильного логотипа до карточки товара.</p>
                     <ul class="service-list">
-                        <li>Разработка стильных логотипов</li>
-                        <li>Оформление карточек товаров для маркетплейсов</li>
-                        <li>Макеты сайтов и баннеры в Figma</li>
+                        <li data-i18n="srv3_li1">Разработка стильных логотипов</li>
+                        <li data-i18n="srv3_li2">Оформление карточек товаров для маркетплейсов</li>
+                        <li data-i18n="srv3_li3">Макеты сайтов и баннеры в Figma</li>
                     </ul>
                 </div>
             </div>
@@ -1304,14 +1317,14 @@
 
         <!-- PROJECTS SECTION -->
         <section id="projects" class="reveal-on-scroll">
-            <span class="section-badge">Портфолио</span>
-            <h2 class="section-title">Примеры моих работ</h2>
-            <p class="section-subtitle">Перейдите по ссылке любого проекта, чтобы посмотреть его вживую.</p>
+            <span class="section-badge" data-i18n="proj_badge">Портфолио</span>
+            <h2 class="section-title" data-i18n="proj_title">Примеры моих работ</h2>
+            <p class="section-subtitle" data-i18n="proj_subtitle">Перейдите по ссылке любого проекта, чтобы посмотреть его вживую.</p>
 
             <div class="projects-filter" id="filterContainer" role="tablist" aria-label="Фильтр проектов">
-                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Все проекты</button>
-                <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false">Веб-разработка &amp; Backend</button>
-                <button class="filter-btn" data-filter="nocode" role="tab" aria-selected="false">Tilda &amp; Design</button>
+                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" data-i18n="filter_all">Все проекты</button>
+                <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false" data-i18n="filter_fullstack">Веб-разработка &amp; Backend</button>
+                <button class="filter-btn" data-filter="nocode" role="tab" aria-selected="false" data-i18n="filter_nocode">Tilda &amp; Design</button>
             </div>
 
             <div class="projects-grid" id="projectsGrid">
@@ -1321,13 +1334,13 @@
                     <div>
                         <span class="project-tag-top">Backend Service / Go</span>
                         <h3 class="project-title">VLESS Sub Aggregator</h3>
-                        <p class="project-desc">
+                        <p class="project-desc" data-i18n="p_vless_desc">
                             Агрегатор и генератор VLESS-подписок для быстрого обхода блокировок и объединения серверов.
                         </p>
                         <ul class="project-highlights">
-                            <li>Высокая скорость обработки благодаря языку Go</li>
-                            <li>Автоматический парсинг, валидация и фильтрация узлов</li>
-                            <li>Удобная выдача подписки под различные клиенты</li>
+                            <li data-i18n="p_vless_li1">Высокая скорость обработки благодаря языку Go</li>
+                            <li data-i18n="p_vless_li2">Автоматический парсинг, валидация и фильтрация узлов</li>
+                            <li data-i18n="p_vless_li3">Удобная выдача подписки под различные клиенты</li>
                         </ul>
                     </div>
                     <div>
@@ -1337,10 +1350,10 @@
                             <span class="tech-pill">Proxy</span>
                         </div>
                         <div class="project-links-group">
-                            <a href="https://misha12333211.yonote.ru/share/f11dd25b-fdb6-4bac-b130-c92ee01b6aee" target="_blank" rel="noopener noreferrer" class="project-link">📖 Гайд по настройке v2rayNG &rarr;</a>
-                            <a href="https://t.me/MiGiTi_official_channel" target="_blank" rel="noopener noreferrer" class="project-link">📢 Telegram-канал подписок &rarr;</a>
-                            <a href="https://t.me/MiGiTiProxySubscriptionsBot" target="_blank" rel="noopener noreferrer" class="project-link">🤖 Telegram-бот &rarr;</a>
-                            <a href="https://misha12333211-ctrl.github.io/MiGiTi/" target="_blank" rel="noopener noreferrer" class="project-link">🌐 Веб-сайт с подписками &rarr;</a>
+                            <a href="https://misha12333211.yonote.ru/share/f11dd25b-fdb6-4bac-b130-c92ee01b6aee" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="p_vless_l1">📖 Гайд по настройке v2rayNG &rarr;</a>
+                            <a href="https://t.me/MiGiTi_official_channel" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="p_vless_l2">📢 Telegram-канал подписок &rarr;</a>
+                            <a href="https://t.me/MiGiTiProxySubscriptionsBot" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="p_vless_l3">🤖 Telegram-бот &rarr;</a>
+                            <a href="https://misha12333211-ctrl.github.io/MiGiTi/" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="p_vless_l4">🌐 Веб-сайт с подписками &rarr;</a>
                         </div>
                     </div>
                 </article>
@@ -1350,13 +1363,13 @@
                     <div>
                         <span class="project-tag-top">Web Application</span>
                         <h3 class="project-title">Restaurant Menu &amp; QR</h3>
-                        <p class="project-desc">
+                        <p class="project-desc" data-i18n="p_menu_desc">
                             Интерактивное электронное меню для ресторанов и кафе с быстрой загрузкой по QR-коду.
                         </p>
                         <ul class="project-highlights">
-                            <li>Поддержка русского и английского языков (RU / EN)</li>
-                            <li>Динамическая конвертация валют в реальном времени</li>
-                            <li>Удобный QR-код для мгновенного доступа со смартфона</li>
+                            <li data-i18n="p_menu_li1">Поддержка русского и английского языков (RU / EN)</li>
+                            <li data-i18n="p_menu_li2">Динамическая конвертация валют в реальном времени</li>
+                            <li data-i18n="p_menu_li3">Удобный QR-код для мгновенного доступа со смартфона</li>
                         </ul>
                     </div>
                     <div>
@@ -1365,7 +1378,7 @@
                             <span class="tech-pill">QR-Code</span>
                             <span class="tech-pill">i18n &amp; Currency</span>
                         </div>
-                        <a href="https://restaurant-qr-on6v.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">Открыть меню &rarr;</a>
+                        <a href="https://restaurant-qr-on6v.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="p_menu_link">Открыть меню &rarr;</a>
                     </div>
                 </article>
 
@@ -1373,23 +1386,23 @@
                 <article class="card project-card" data-category="nocode">
                     <div>
                         <span class="project-tag-top">Educational Site</span>
-                        <h3 class="project-title">Латиноамериканские танцы</h3>
-                        <p class="project-desc">
+                        <h3 class="project-title" data-i18n="p_dance_title">Латиноамериканские танцы</h3>
+                        <p class="project-desc" data-i18n="p_dance_desc">
                             Школьный обучающий веб-проект на испанском языке, посвящённый истории и культуре танцев.
                         </p>
                         <ul class="project-highlights">
-                            <li>Галереи с фото, описаниями и видео</li>
-                            <li>Удобная навигация по стилям танцев</li>
-                            <li>Комбинация готовых блоков и Zero Block</li>
+                            <li data-i18n="p_dance_li1">Галереи с фото, описаниями и видео</li>
+                            <li data-i18n="p_dance_li2">Удобная навигация по стилям танцев</li>
+                            <li data-i18n="p_dance_li3">Комбинация готовых блоков и Zero Block</li>
                         </ul>
                     </div>
                     <div>
                         <div class="project-tags-row">
                             <span class="tech-pill">Tilda</span>
-                            <span class="tech-pill">Готовые блоки</span>
+                            <span class="tech-pill" data-i18n="tag_standard">Готовые блоки</span>
                             <span class="tech-pill">Zero Block</span>
                         </div>
-                        <a href="https://lamalybal.tilda.ws/110" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
+                        <a href="https://lamalybal.tilda.ws/110" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="open_site">Открыть сайт &rarr;</a>
                     </div>
                 </article>
 
@@ -1397,14 +1410,14 @@
                 <article class="card project-card" data-category="nocode">
                     <div>
                         <span class="project-tag-top">Commercial Landing</span>
-                        <h3 class="project-title">Profi — Перевозки</h3>
-                        <p class="project-desc">
+                        <h3 class="project-title" data-i18n="p_profi_title">Profi — Перевозки</h3>
+                        <p class="project-desc" data-i18n="p_profi_desc">
                             Лендинг для транспортной компании Profi, обеспечивающей пассажирские перевозки премиум-класса.
                         </p>
                         <ul class="project-highlights">
-                            <li>Демонстрация автопарка премиум-класса</li>
-                            <li>Сборка интерфейса под стиль бренда</li>
-                            <li>Полная мобильная адаптация</li>
+                            <li data-i18n="p_profi_li1">Демонстрация автопарка премиум-класса</li>
+                            <li data-i18n="p_profi_li2">Сборка интерфейса под стиль бренда</li>
+                            <li data-i18n="p_profi_li3">Полная мобильная адаптация</li>
                         </ul>
                     </div>
                     <div>
@@ -1413,7 +1426,7 @@
                             <span class="tech-pill">Zero Block</span>
                             <span class="tech-pill">Figma Design</span>
                         </div>
-                        <a href="https://lamalybal.tilda.ws/ru" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
+                        <a href="https://lamalybal.tilda.ws/ru" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="open_site">Открыть сайт &rarr;</a>
                     </div>
                 </article>
 
@@ -1422,21 +1435,21 @@
                     <div>
                         <span class="project-tag-top">Web Quest App</span>
                         <h3 class="project-title">AENIGMA Mark 2.3</h3>
-                        <p class="project-desc">
+                        <p class="project-desc" data-i18n="p_aen_desc">
                             Браузерный онлайн-квест с шифрами и логическими головоломками из 24 уникальных уровней.
                         </p>
                         <ul class="project-highlights">
-                            <li>Синхронизация данных с сервером</li>
-                            <li>Графический интерфейс и анимация</li>
+                            <li data-i18n="p_aen_li1">Синхронизация данных с сервером</li>
+                            <li data-i18n="p_aen_li2">Графический интерфейс и анимация</li>
                         </ul>
                     </div>
                     <div>
                         <div class="project-tags-row">
                             <span class="tech-pill">HTML/CSS/JS</span>
                             <span class="tech-pill">Node.js</span>
-                            <span class="tech-pill">База данных</span>
+                            <span class="tech-pill" data-i18n="tag_db">База данных</span>
                         </div>
-                        <a href="https://aenigma-mark-2-3.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">Открыть квест &rarr;</a>
+                        <a href="https://aenigma-mark-2-3.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="open_quest">Открыть квест &rarr;</a>
                     </div>
                 </article>
 
@@ -1444,13 +1457,13 @@
                 <article class="card project-card" data-category="fullstack">
                     <div>
                         <span class="project-tag-top">Frontend App</span>
-                        <h3 class="project-title">BusDrive — Аренда автобусов</h3>
-                        <p class="project-desc">
+                        <h3 class="project-title" data-i18n="p_bus_title">BusDrive — Аренда автобусов</h3>
+                        <p class="project-desc" data-i18n="p_bus_desc">
                             Сервис заказа пассажирских перевозок с современным интерфейсом и формой заявки.
                         </p>
                         <ul class="project-highlights">
-                            <li>Адаптивная верстка под все экраны</li>
-                            <li>Обработчик заявки с отправкой данных</li>
+                            <li data-i18n="p_bus_li1">Адаптивная верстка под все экраны</li>
+                            <li data-i18n="p_bus_li2">Обработчик заявки с отправкой данных</li>
                         </ul>
                     </div>
                     <div>
@@ -1458,7 +1471,7 @@
                             <span class="tech-pill">HTML5/CSS3</span>
                             <span class="tech-pill">JavaScript</span>
                         </div>
-                        <a href="https://busdrivecompany.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
+                        <a href="https://busdrivecompany.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="open_site">Открыть сайт &rarr;</a>
                     </div>
                 </article>
 
@@ -1467,12 +1480,12 @@
                     <div>
                         <span class="project-tag-top">Civic Web App</span>
                         <h3 class="project-title">Yerevan Pulpulak Status</h3>
-                        <p class="project-desc">
+                        <p class="project-desc" data-i18n="p_pulp_desc">
                             Веб-сервис для проверки работоспособности питьевых источников (пулпулаков) Еревана.
                         </p>
                         <ul class="project-highlights">
-                            <li>Мультиязычный интерфейс (RU, EN, AM)</li>
-                            <li>Динамическая генерация QR-кодов</li>
+                            <li data-i18n="p_pulp_li1">Мультиязычный интерфейс (RU, EN, AM)</li>
+                            <li data-i18n="p_pulp_li2">Динамическая генерация QR-кодов</li>
                         </ul>
                     </div>
                     <div>
@@ -1480,7 +1493,7 @@
                             <span class="tech-pill">JS Web App</span>
                             <span class="tech-pill">Node.js</span>
                         </div>
-                        <a href="https://yerevan-pulpulak-official.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сервис &rarr;</a>
+                        <a href="https://yerevan-pulpulak-official.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link" data-i18n="open_service">Открыть сервис &rarr;</a>
                     </div>
                 </article>
 
@@ -1489,24 +1502,24 @@
 
         <!-- STACK / SKILLS SECTION -->
         <section id="stack" class="reveal-on-scroll">
-            <span class="section-badge">Навыки &amp; Инструменты</span>
-            <h2 class="section-title">С чем я работаю</h2>
-            <p class="section-subtitle">Технологии и направления, которые я использую при создании проектов.</p>
+            <span class="section-badge" data-i18n="stack_badge">Навыки &amp; Инструменты</span>
+            <h2 class="section-title" data-i18n="stack_title">С чем я работаю</h2>
+            <p class="section-subtitle" data-i18n="stack_subtitle">Технологии и направления, которые я использую при создании проектов.</p>
 
             <div class="stack-grid">
                 <div class="card stack-card">
                     <h3>
                         <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        Веб-разработка
+                        <span data-i18n="stk1_title">Веб-разработка</span>
                     </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
                             <div class="stack-item-name">HTML5, CSS3, JavaScript</div>
-                            <div class="stack-item-sub">Создание верстки, интерактивных веб-страниц и скриптов</div>
+                            <div class="stack-item-sub" data-i18n="stk1_sub1">Создание верстки, интерактивных веб-страниц и скриптов</div>
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Node.js &amp; Go</div>
-                            <div class="stack-item-sub">Серверная логика, работа с API, VLESS-сервисами и БД</div>
+                            <div class="stack-item-sub" data-i18n="stk1_sub2">Серверная логика, работа с API, VLESS-сервисами и БД</div>
                         </div>
                     </div>
                 </div>
@@ -1518,12 +1531,12 @@
                     </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
-                            <div class="stack-item-name">Стандартные блоки</div>
-                            <div class="stack-item-sub">Быстрая сборка функциональных сайтов</div>
+                            <div class="stack-item-name" data-i18n="stk2_name1">Стандартные блоки</div>
+                            <div class="stack-item-sub" data-i18n="stk2_sub1">Быстрая сборка функциональных сайтов</div>
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Zero Block</div>
-                            <div class="stack-item-sub">Уникальный дизайн, кастомные анимации и сетки</div>
+                            <div class="stack-item-sub" data-i18n="stk2_sub2">Уникальный дизайн, кастомные анимации и сетки</div>
                         </div>
                     </div>
                 </div>
@@ -1531,16 +1544,16 @@
                 <div class="card stack-card">
                     <h3>
                         <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                        Графика &amp; Дизайн
+                        <span data-i18n="stk3_title">Графика &amp; Дизайн</span>
                     </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
-                            <div class="stack-item-name">Figma &amp; Дизайн сайтов</div>
-                            <div class="stack-item-sub">Проектирование удобных интерфейсов и прототипов</div>
+                            <div class="stack-item-name" data-i18n="stk3_name1">Figma &amp; Дизайн сайтов</div>
+                            <div class="stack-item-sub" data-i18n="stk3_sub1">Проектирование удобных интерфейсов и прототипов</div>
                         </div>
                         <div class="stack-item-box">
-                            <div class="stack-item-name">Логотипы и карточки товаров</div>
-                            <div class="stack-item-sub">Создание векторных логотипов и инфографики</div>
+                            <div class="stack-item-name" data-i18n="stk3_name2">Логотипы и карточки товаров</div>
+                            <div class="stack-item-sub" data-i18n="stk3_sub2">Создание векторных логотипов и инфографики</div>
                         </div>
                     </div>
                 </div>
@@ -1549,22 +1562,22 @@
 
         <!-- HOBBIES SECTION -->
         <section id="life" class="reveal-on-scroll">
-            <span class="section-badge">Личное</span>
-            <h2 class="section-title">Хобби и интересы</h2>
-            <p class="section-subtitle">Чем я увлекаюсь в свободное время.</p>
+            <span class="section-badge" data-i18n="life_badge">Личное</span>
+            <h2 class="section-title" data-i18n="life_title">Хобби и интересы</h2>
+            <p class="section-subtitle" data-i18n="life_subtitle">Чем я увлекаюсь в свободное время.</p>
 
             <div class="hobbies-grid">
                 <div class="card hobby-card">
-                    <h3>🎸 Гитара &amp; Музыка</h3>
-                    <p>Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину, чувство ритма и творческое мышление.</p>
+                    <h3 data-i18n="hob1_title">🎸 Гитара &amp; Музыка</h3>
+                    <p data-i18n="hob1_desc">Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину, чувство ритма и творческое мышление.</p>
                 </div>
                 <div class="card hobby-card">
-                    <h3>🎭 Опера &amp; Пение</h3>
-                    <p>Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и профессиональные партии.</p>
+                    <h3 data-i18n="hob2_title">🎭 Опера &amp; Пение</h3>
+                    <p data-i18n="hob2_desc">Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и профессиональные партии.</p>
                 </div>
                 <div class="card hobby-card">
-                    <h3>💬 Локальный мессенджер</h3>
-                    <p>Интересный пет-проект: спроектировал и создал собственный локальный мессенджер для обмена сообщениями.</p>
+                    <h3 data-i18n="hob3_title">💬 Локальный мессенджер</h3>
+                    <p data-i18n="hob3_desc">Интересный пет-проект: спроектировал и создал собственный локальный мессенджер для обмена сообщениями.</p>
                 </div>
             </div>
         </section>
@@ -1572,9 +1585,9 @@
         <!-- CONTACT SECTION -->
         <section id="contact" class="reveal-on-scroll">
             <div class="contact-box">
-                <span class="section-badge">Контакты</span>
-                <h2 class="section-title">Готов обсудить ваш проект</h2>
-                <p class="section-subtitle">Напишите мне в Telegram или на почту. Бесплатно проконсультирую и предложу лучшее решение.</p>
+                <span class="section-badge" data-i18n="contact_badge">Контакты</span>
+                <h2 class="section-title" data-i18n="contact_title">Готов обсудить ваш проект</h2>
+                <p class="section-subtitle" data-i18n="contact_subtitle">Напишите мне в Telegram или на почту. Бесплатно проконсультирую и предложу лучшее решение.</p>
 
                 <div class="contact-cards-list">
                     <a href="https://t.me/MiGiTi_official" target="_blank" rel="noopener noreferrer" class="contact-item-card">
@@ -1585,8 +1598,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <div class="contact-title-text">Написать в Telegram</div>
-                                <div class="contact-sub-text">@MiGiTi_official — личные сообщения</div>
+                                <div class="contact-title-text" data-i18n="cnt_tg_title">Написать в Telegram</div>
+                                <div class="contact-sub-text" data-i18n="cnt_tg_sub">@MiGiTi_official — личные сообщения</div>
                             </div>
                         </div>
                         <span class="contact-arrow" aria-hidden="true">&rarr;</span>
@@ -1600,7 +1613,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <div class="contact-title-text">Написать на Email</div>
+                                <div class="contact-title-text" data-i18n="cnt_mail_title">Написать на Email</div>
                                 <div class="contact-sub-text">stasaleskin80@gmail.com</div>
                             </div>
                         </div>
@@ -1612,8 +1625,8 @@
 
         <!-- FOOTER -->
         <footer class="site-footer">
-            <div class="footer-line-1">&copy; 2026 Станислав Алёшкин</div>
-            <div class="footer-line-3">обновлено: 14 августа 2026 г.</div>
+            <div class="footer-line-1" data-i18n="footer_copy">&copy; 2026 Станислав Алёшкин</div>
+            <div class="footer-line-3" data-i18n="footer_update">обновлено: 14 августа 2026 г.</div>
         </footer>
 
     </main>
@@ -1629,6 +1642,242 @@
                 },
                 setItem: function(key, val) {
                     try { localStorage.setItem(key, val); } catch (e) {}
+                }
+            };
+
+            // i18n Translations Dictionary
+            const translations = {
+                ru: {
+                    page_title: "Станислав Алёшкин — Веб-дизайн & Веб-разработка",
+                    page_desc: "Портфолио Станислава Алёшкина: Frontend & Backend разработка (HTML, CSS, JS, Node.js, Go), Tilda Zero Block, Figma, дизайн и серверная инфраструктура.",
+                    og_title: "Станислав Алёшкин — Веб-дизайн & Веб-разработка",
+                    og_desc: "Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go (VLESS сервисы), делаю дизайн в Figma.",
+                    nav_name: "Станислав Алёшкин",
+                    nav_status: "Принимаю заказы",
+                    nav_about: "Обо мне",
+                    nav_services: "Услуги",
+                    nav_projects: "Портфолио",
+                    nav_stack: "Навыки",
+                    nav_life: "Хобби",
+                    nav_contact: "Контакты",
+                    hero_badge: "Веб-дизайн & Веб-разработка",
+                    hero_title: 'Веб-дизайн, Frontend & Backend, <br><span class="highlight">Tilda, Figma, Go и серверные решения</span>',
+                    hero_desc: "Привет! Я занимаюсь веб-дизайном и веб-разработкой: верстаю на HTML/CSS/JavaScript, разрабатываю бэкенд на Node.js и Go, собираю сайты на Tilda (включая Zero Block), проектирую интерфейсы в Figma, создаю логотипы и карточки товаров, а также конфигурирую и настраиваю сервера.",
+                    hero_cta_tg: "Обсудить проект в Telegram",
+                    hero_cta_portfolio: "Смотреть портфолио",
+                    benefit_1: "Веб-разработка: HTML, CSS, JavaScript, Node.js, Go",
+                    benefit_2: "Сайты на Tilda (обычные блоки & Zero Block)",
+                    benefit_3: "Дизайн в Figma, карточки товаров и логотипы",
+                    services_badge: "Услуги",
+                    services_title: "Чем я могу помочь",
+                    services_subtitle: "Создаю визуальные материалы, разрабатываю сайты и настраиваю серверную часть.",
+                    srv1_title: "Веб-разработка & Кодинг",
+                    srv1_desc: "Создание чистых интерактивных сайтов и скриптов с нуля на HTML, CSS, JS, Node.js и Go.",
+                    srv1_li1: "Адаптивная верстка (HTML/CSS/JS)",
+                    srv1_li2: "Разработка бэкенда и скриптов на Node.js",
+                    srv1_li3: "Высокопроизводительные сервисы на Go",
+                    srv2_title: "Сайты на Tilda",
+                    srv2_desc: "Создание лендингов, многостраничников и визиток с нужной структурой и дизайном.",
+                    srv2_li1: "Сборка из обычных стандартных блоков",
+                    srv2_li2: "Уникальный дизайн в Zero Block",
+                    srv2_li3: "Полный адаптив под мобильные устройства",
+                    srv3_title: "Дизайн & Figma",
+                    srv3_desc: "Проектирование красивых и удобных интерфейсов: от стильного логотипа до карточки товара.",
+                    srv3_li1: "Разработка стильных логотипов",
+                    srv3_li2: "Оформление карточек товаров для маркетплейсов",
+                    srv3_li3: "Макеты сайтов и баннеры в Figma",
+                    proj_badge: "Портфолио",
+                    proj_title: "Примеры моих работ",
+                    proj_subtitle: "Перейдите по ссылке любого проекта, чтобы посмотреть его вживую.",
+                    filter_all: "Все проекты",
+                    filter_fullstack: "Веб-разработка & Backend",
+                    filter_nocode: "Tilda & Design",
+                    p_vless_desc: "Агрегатор и генератор VLESS-подписок для быстрого обхода блокировок и объединения серверов.",
+                    p_vless_li1: "Высокая скорость обработки благодаря языку Go",
+                    p_vless_li2: "Автоматический парсинг, валидация и фильтрация узлов",
+                    p_vless_li3: "Удобная выдача подписки под различные клиенты",
+                    p_vless_l1: "📖 Гайд по настройке v2rayNG →",
+                    p_vless_l2: "📢 Telegram-канал подписок →",
+                    p_vless_l3: "🤖 Telegram-бот →",
+                    p_vless_l4: "🌐 Веб-сайт с подписками →",
+                    p_menu_desc: "Интерактивное электронное меню для ресторанов и кафе с быстрой загрузкой по QR-коду.",
+                    p_menu_li1: "Поддержка русского и английского языков (RU / EN)",
+                    p_menu_li2: "Динамическая конвертация валют в реальном времени",
+                    p_menu_li3: "Удобный QR-код для мгновенного доступа со смартфона",
+                    p_menu_link: "Открыть меню →",
+                    p_dance_title: "Латиноамериканские танцы",
+                    p_dance_desc: "Школьный обучающий веб-проект на испанском языке, посвящённый истории и культуре танцев.",
+                    p_dance_li1: "Галереи с фото, описаниями и видео",
+                    p_dance_li2: "Удобная навигация по стилям танцев",
+                    p_dance_li3: "Комбинация готовых блоков и Zero Block",
+                    tag_standard: "Готовые блоки",
+                    open_site: "Открыть сайт →",
+                    p_profi_title: "Profi — Перевозки",
+                    p_profi_desc: "Лендинг для транспортной компании Profi, обеспечивающей пассажирские перевозки премиум-класса.",
+                    p_profi_li1: "Демонстрация автопарка премиум-класса",
+                    p_profi_li2: "Сборка интерфейса под стиль бренда",
+                    p_profi_li3: "Полная мобильная адаптация",
+                    p_aen_desc: "Браузерный онлайн-квест с шифрами и логическими головоломками из 24 уникальных уровней.",
+                    p_aen_li1: "Синхронизация данных с сервером",
+                    p_aen_li2: "Графический интерфейс и анимация",
+                    tag_db: "База данных",
+                    open_quest: "Открыть квест →",
+                    p_bus_title: "BusDrive — Аренда автобусов",
+                    p_bus_desc: "Сервис заказа пассажирских перевозок с современным интерфейсом и формой заявки.",
+                    p_bus_li1: "Адаптивная верстка под все экраны",
+                    p_bus_li2: "Обработчик заявки с отправкой данных",
+                    p_pulp_desc: "Веб-сервис для проверки работоспособности питьевых источников (пулпулаков) Еревана.",
+                    p_pulp_li1: "Мультиязычный интерфейс (RU, EN, AM)",
+                    p_pulp_li2: "Динамическая генерация QR-кодов",
+                    open_service: "Открыть сервис →",
+                    stack_badge: "Навыки & Инструменты",
+                    stack_title: "С чем я работаю",
+                    stack_subtitle: "Технологии и направления, которые я использую при создании проектов.",
+                    stk1_title: "Веб-разработка",
+                    stk1_sub1: "Создание верстки, интерактивных веб-страниц и скриптов",
+                    stk1_sub2: "Серверная логика, работа с API, VLESS-сервисами и БД",
+                    stk2_name1: "Стандартные блоки",
+                    stk2_sub1: "Быстрая сборка функциональных сайтов",
+                    stk2_sub2: "Уникальный дизайн, кастомные анимации и сетки",
+                    stk3_title: "Графика & Дизайн",
+                    stk3_name1: "Figma & Дизайн сайтов",
+                    stk3_sub1: "Проектирование удобных интерфейсов и прототипов",
+                    stk3_name2: "Логотипы и карточки товаров",
+                    stk3_sub2: "Создание векторных логотипов и инфографики",
+                    life_badge: "Личное",
+                    life_title: "Хобби и интересы",
+                    life_subtitle: "Чем я увлекаюсь в свободное время.",
+                    hob1_title: "🎸 Гитара & Музыка",
+                    hob1_desc: "Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину, чувство ритма и творческое мышление.",
+                    hob2_title: "🎭 Опера & Пение",
+                    hob2_desc: "Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и профессиональные партии.",
+                    hob3_title: "💬 Локальный мессенджер",
+                    hob3_desc: "Интересный пет-проект: спроектировал и создал собственный локальный мессенджер для обмена сообщениями.",
+                    contact_badge: "Контакты",
+                    contact_title: "Готов обсудить ваш проект",
+                    contact_subtitle: "Напишите мне в Telegram или на почту. Бесплатно проконсультирую и предложу лучшее решение.",
+                    cnt_tg_title: "Написать в Telegram",
+                    cnt_tg_sub: "@MiGiTi_official — личные сообщения",
+                    cnt_mail_title: "Написать на Email",
+                    footer_copy: "© 2026 Станислав Алёшкин",
+                    footer_update: "обновлено: 14 августа 2026 г.",
+                    tg_aria: "Написать в Telegram"
+                },
+                en: {
+                    page_title: "Stanislav Aleshkin — Web Design & Web Development",
+                    page_desc: "Portfolio of Stanislav Aleshkin: Full-Stack Development (HTML, CSS, JS, Node.js, Go), Tilda Zero Block, Figma, Graphic Design, and Server Infrastructure.",
+                    og_title: "Stanislav Aleshkin — Web Design & Web Development",
+                    og_desc: "I build websites using HTML/CSS/JS, Tilda, develop backends in Node.js and Go (VLESS services), and create UI/UX designs in Figma.",
+                    nav_name: "Stanislav Aleshkin",
+                    nav_status: "Available for projects",
+                    nav_about: "About",
+                    nav_services: "Services",
+                    nav_projects: "Portfolio",
+                    nav_stack: "Skills",
+                    nav_life: "Hobbies",
+                    nav_contact: "Contact",
+                    hero_badge: "Web Design & Web Development",
+                    hero_title: 'Web Design, Frontend & Backend, <br><span class="highlight">Tilda, Figma, Go & Server Solutions</span>',
+                    hero_desc: "Hello! I specialize in web design and web development: crafting custom layouts in HTML/CSS/JavaScript, engineering backend systems in Node.js and Go, assembling sites in Tilda (including Zero Block), designing UI/UX in Figma, creating logos and e-commerce product cards, and configuring server infrastructure.",
+                    hero_cta_tg: "Discuss Project on Telegram",
+                    hero_cta_portfolio: "View Portfolio",
+                    benefit_1: "Web Development: HTML, CSS, JavaScript, Node.js, Go",
+                    benefit_2: "Tilda Websites (Standard Blocks & Zero Block)",
+                    benefit_3: "Figma UI/UX, Product Cards & Logo Design",
+                    services_badge: "Services",
+                    services_title: "How I Can Help You",
+                    services_subtitle: "Designing visual assets, developing responsive websites, and setting up server-side infrastructure.",
+                    srv1_title: "Web Development & Coding",
+                    srv1_desc: "Building clean, interactive websites and custom backend logic from scratch using HTML, CSS, JS, Node.js, and Go.",
+                    srv1_li1: "Responsive Frontend Layouts (HTML/CSS/JS)",
+                    srv1_li2: "Backend Services & Node.js Scripts",
+                    srv1_li3: "High-Performance Services in Go",
+                    srv2_title: "Tilda Website Builder",
+                    srv2_desc: "Designing landing pages, multi-page websites, and digital business cards tailored to your brand.",
+                    srv2_li1: "Structured Layouts with Standard Blocks",
+                    srv2_li2: "Bespoke Design & Animations in Zero Block",
+                    srv2_li3: "Flawless Mobile Responsiveness",
+                    srv3_title: "Design & Figma",
+                    srv3_desc: "Crafting beautiful and intuitive user interfaces: from eye-catching logos to high-converting product cards.",
+                    srv3_li1: "Modern Vector Logo Design",
+                    srv3_li2: "Marketplace Product Card Graphics",
+                    srv3_li3: "Interactive Website Prototypes in Figma",
+                    proj_badge: "Portfolio",
+                    proj_title: "Featured Projects",
+                    proj_subtitle: "Click on any project link to explore live applications and demonstrations.",
+                    filter_all: "All Projects",
+                    filter_fullstack: "Web Dev & Backend",
+                    filter_nocode: "Tilda & Design",
+                    p_vless_desc: "Aggregator and generator for VLESS proxy subscriptions designed for reliable connectivity and server unification.",
+                    p_vless_li1: "High-speed processing engineered in Go",
+                    p_vless_li2: "Automated node parsing, validation, and filtering",
+                    p_vless_li3: "Seamless subscription delivery across multiple clients",
+                    p_vless_l1: "📖 v2rayNG Setup Guide →",
+                    p_vless_l2: "📢 Telegram Subscriptions Channel →",
+                    p_vless_l3: "🤖 Telegram Subscription Bot →",
+                    p_vless_l4: "🌐 Live Subscription Portal →",
+                    p_menu_desc: "Interactive digital menu for restaurants and cafes featuring instant QR-code access.",
+                    p_menu_li1: "Bilingual interface support (RU / EN)",
+                    p_menu_li2: "Real-time dynamic currency conversion",
+                    p_menu_li3: "Optimized QR code for quick smartphone access",
+                    p_menu_link: "Open Menu →",
+                    p_dance_title: "Latin American Dances",
+                    p_dance_desc: "An educational web platform in Spanish dedicated to the rich culture and history of Latin dance.",
+                    p_dance_li1: "Media galleries with photos, descriptions, and video",
+                    p_dance_li2: "Intuitive navigation across dance genres",
+                    p_dance_li3: "Hybrid structure using Standard & Zero Blocks",
+                    tag_standard: "Standard Blocks",
+                    open_site: "Visit Website →",
+                    p_profi_title: "Profi — Transport & Passenger Fleet",
+                    p_profi_desc: "A commercial landing page for Profi, a company providing premium passenger transportation.",
+                    p_profi_li1: "Showcase of premium fleet vehicles",
+                    p_profi_li2: "Custom branding and tailored layout",
+                    p_profi_li3: "Fully responsive across mobile devices",
+                    p_aen_desc: "An online browser-based web quest featuring cipher puzzles and 24 unique logic levels.",
+                    p_aen_li1: "Real-time server data synchronization",
+                    p_aen_li2: "Custom graphical interface and smooth animations",
+                    tag_db: "Database",
+                    open_quest: "Launch Web Quest →",
+                    p_bus_title: "BusDrive — Bus Rental Service",
+                    p_bus_desc: "A passenger transport booking web platform with a modern interface and inquiry form.",
+                    p_bus_li1: "Adaptive design for desktop and mobile displays",
+                    p_bus_li2: "Integrated form submission handler",
+                    p_pulp_desc: "A civic web app for checking the active status of public drinking fountains (pulpulaks) in Yerevan.",
+                    p_pulp_li1: "Multilingual interface (RU, EN, AM)",
+                    p_pulp_li2: "Dynamic QR-code generation",
+                    open_service: "Open Service →",
+                    stack_badge: "Skills & Tools",
+                    stack_title: "Tech Stack & Tools",
+                    stack_subtitle: "Core technologies and disciplines I utilize when building modern web solutions.",
+                    stk1_title: "Web Development",
+                    stk1_sub1: "Crafting responsive layouts, interactive pages, and client scripts",
+                    stk1_sub2: "Server architecture, API integration, VLESS protocols, and databases",
+                    stk2_name1: "Standard Blocks",
+                    stk2_sub1: "Rapid assembly of functional, business-ready sites",
+                    stk2_sub2: "Bespoke UI, custom animations, and responsive grids",
+                    stk3_title: "Graphics & Design",
+                    stk3_name1: "Figma & Web Design",
+                    stk3_sub1: "Prototyping user-friendly web interfaces and component systems",
+                    stk3_name2: "Logos & Product Infographics",
+                    stk3_sub2: "Creating vector branding and e-commerce promotional graphics",
+                    life_badge: "Personal",
+                    life_title: "Hobbies & Interests",
+                    life_subtitle: "What keeps me inspired outside of software engineering.",
+                    hob1_title: "🎸 Classical Guitar & Music",
+                    hob1_desc: "Attended music school and have been playing guitar for 3 years. It fosters discipline, rhythm, and creative thinking.",
+                    hob2_title: "🎭 Opera & Classical Vocal",
+                    hob2_desc: "Passionate about classical opera and vocal arts. Enjoy studying masterworks and technical vocal repertoire.",
+                    hob3_title: "💬 Local Messenger Project",
+                    hob3_desc: "An engaging pet-project: architected and built a custom local network messenger for instant messaging.",
+                    contact_badge: "Get in Touch",
+                    contact_title: "Ready to Discuss Your Project",
+                    contact_subtitle: "Feel free to reach out via Telegram or Email. I offer free consultations to help find the optimal solution.",
+                    cnt_tg_title: "Contact on Telegram",
+                    cnt_tg_sub: "@MiGiTi_official — direct messages",
+                    cnt_mail_title: "Send an Email",
+                    footer_copy: "© 2026 Stanislav Aleshkin",
+                    footer_update: "updated: August 14, 2026",
+                    tg_aria: "Contact on Telegram"
                 }
             };
 
@@ -1675,6 +1924,67 @@
                 }
             } catch (e) {
                 console.warn('Theme switch error fallback:', e);
+            }
+
+            // Language Toggle Logic
+            try {
+                const langToggle = document.getElementById('langToggle');
+                const html = document.documentElement;
+
+                function setLanguage(lang) {
+                    const dict = translations[lang] || translations.ru;
+                    html.setAttribute('lang', lang);
+                    safeStorage.setItem('lang', lang);
+
+                    if (langToggle) {
+                        langToggle.textContent = lang === 'ru' ? 'EN' : 'RU';
+                    }
+
+                    // Update DOM elements
+                    document.querySelectorAll('[data-i18n]').forEach(el => {
+                        const key = el.getAttribute('data-i18n');
+                        if (dict[key]) {
+                            el.innerHTML = dict[key];
+                        }
+                    });
+
+                    // Update SEO / Meta attributes
+                    const pageTitle = document.getElementById('pageTitle');
+                    const pageDescription = document.getElementById('pageDescription');
+                    const ogTitle = document.getElementById('ogTitle');
+                    const ogDescription = document.getElementById('ogDescription');
+                    const twTitle = document.getElementById('twTitle');
+                    const twDescription = document.getElementById('twDescription');
+                    const ogLocale = document.getElementById('ogLocale');
+                    const headerTgBtn = document.getElementById('headerTgBtn');
+
+                    if (pageTitle) pageTitle.textContent = dict.page_title;
+                    if (pageDescription) pageDescription.setAttribute('content', dict.page_desc);
+                    if (ogTitle) ogTitle.setAttribute('content', dict.og_title);
+                    if (ogDescription) ogDescription.setAttribute('content', dict.og_desc);
+                    if (twTitle) twTitle.setAttribute('content', dict.og_title);
+                    if (twDescription) twDescription.setAttribute('content', dict.og_desc);
+                    if (ogLocale) ogLocale.setAttribute('content', lang === 'ru' ? 'ru_RU' : 'en_US');
+                    if (headerTgBtn) {
+                        headerTgBtn.setAttribute('title', dict.tg_aria);
+                        headerTgBtn.setAttribute('aria-label', dict.tg_aria);
+                    }
+                }
+
+                // Detect initial language: saved -> browser language -> fallback to 'ru'
+                const browserLang = navigator.language && navigator.language.startsWith('en') ? 'en' : 'ru';
+                const initialLang = safeStorage.getItem('lang') || browserLang;
+                setLanguage(initialLang);
+
+                if (langToggle) {
+                    langToggle.addEventListener('click', function() {
+                        const currentLang = html.getAttribute('lang') || 'ru';
+                        const newLang = currentLang === 'ru' ? 'en' : 'ru';
+                        setLanguage(newLang);
+                    });
+                }
+            } catch (e) {
+                console.warn('Language switch error fallback:', e);
             }
 
             // Mobile Menu Logic
