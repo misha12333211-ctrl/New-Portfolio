@@ -7,13 +7,25 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Портфолио Станислава Алёшкина: веб-дизайн, веб-разработка, сайты на Tilda (обычные и Zero-блоки), дизайн в Figma, создание логотипов, карточек товаров и настройка серверов.">
-    <meta name="keywords" content="веб-дизайн, веб-разработка, tilda, zero block, figma, карточка товара, логотип, разработка сайтов, сервер">
+    <meta name="keywords" content="веб-дизайн, веб-разработка, tilda, zero block, figma, карточка товара, логотип, разработка сайтов, сервер, портфолио">
     <meta name="author" content="Станислав Алёшкин">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://new-portfolio-mkrg.onrender.com">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://new-portfolio-mkrg.onrender.com">
     <meta property="og:title" content="Станислав Алёшкин — Веб-дизайн & Веб-разработка">
     <meta property="og:description" content="Создаю сайты на Tilda (обычные и Zero-блоки), делаю дизайн в Figma, разрабатываю логотипы, карточки товаров и настраиваю сервера.">
+    <meta property="og:image" content="https://new-portfolio-mkrg.onrender.com/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Станислав Алёшкин — Веб-дизайн & Веб-разработка">
+    <meta name="twitter:description" content="Создаю сайты на Tilda, делаю дизайн в Figma, разрабатываю логотипы и настраиваю сервера.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Structured Data (Schema.org JSON-LD) -->
     <script type="application/ld+json">
@@ -22,6 +34,7 @@
       "@type": "Person",
       "name": "Станислав Алёшкин",
       "jobTitle": "Web Designer & Web Developer",
+      "url": "https://new-portfolio-mkrg.onrender.com",
       "sameAs": [
         "https://t.me/DaggioFellino"
       ],
@@ -34,103 +47,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- ЗАЩИТА: Ошибка при отключённом JavaScript -->
-    <noscript>
-        <style>
-            body > *:not(.noscript-overlay) { display: none !important; }
-            .noscript-overlay {
-                position: fixed;
-                inset: 0;
-                background: #090d16;
-                color: #ffffff;
-                z-index: 9999999;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                padding: 24px;
-                font-family: 'Inter', -apple-system, sans-serif;
-            }
-            .noscript-box {
-                background: #121929;
-                border: 1px solid #ef4444;
-                border-radius: 20px;
-                padding: 36px 28px;
-                max-width: 440px;
-                width: 100%;
-                box-shadow: 0 16px 32px rgba(0,0,0,0.5);
-            }
-            .noscript-icon {
-                font-size: 2.8rem;
-                margin-bottom: 12px;
-            }
-            .noscript-title {
-                font-size: 1.4rem;
-                font-weight: 800;
-                margin-bottom: 12px;
-                color: #f8fafc;
-            }
-            .noscript-desc {
-                font-size: 0.95rem;
-                color: #94a3b8;
-                line-height: 1.6;
-            }
-        </style>
-        <div class="noscript-overlay">
-            <div class="noscript-box">
-                <div class="noscript-icon">🚫</div>
-                <div class="noscript-title">Ошибка: JavaScript отключён</div>
-                <div class="noscript-desc">Этот сайт не может работать без включённого JavaScript. Пожалуйста, включите JavaScript в настройках вашего браузера для корректного отображения и работы портфолио.</div>
-            </div>
-        </div>
-    </noscript>
-
-    <style id="security-styles">
-        /* ЗАЩИТА: Запрет выделения текста, копирования и перетаскивания */
-        *, *::before, *::after {
-            -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
-            user-select: none !important;
-            -webkit-user-drag: none !important;
-            -webkit-touch-callout: none !important;
-        }
-
-        /* ЗАЩИТА: Скрытие контента при печати или сохранении в PDF */
-        @media print {
-            html, body {
-                display: none !important;
-            }
-        }
-
-        /* ЗАЩИТА ОТ СКРИНШОТОВ И ПОТЕРИ ФОКУСА */
-        body.screen-protected {
-            filter: blur(25px) grayscale(100%) !important;
-            pointer-events: none !important;
-        }
-
-        #screenshot-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(9, 13, 22, 0.97);
-            color: #ffffff;
-            z-index: 999999;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        body.screen-protected #screenshot-overlay {
-            display: flex !important;
-        }
-
+    <style>
         :root {
             color-scheme: light dark;
             
@@ -195,11 +112,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        ::selection {
-            background-color: transparent;
-            color: inherit;
-        }
-
         *:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 2px;
@@ -213,7 +125,6 @@
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -408,7 +319,6 @@
             white-space: nowrap;
         }
 
-        /* КРУГЛАЯ КНОПКА ТЕЛЕГРАМА В ХЕДЕРЕ */
         .btn-telegram.header-btn {
             padding: 0;
             width: 42px;
@@ -951,7 +861,7 @@
             flex-shrink: 0;
         }
 
-        /* HOVER STATES FOR POINTER DEVICES ONLY */
+        /* HOVER STATES */
         @media (hover: hover) {
             .nav-links a:hover {
                 color: var(--accent);
@@ -995,25 +905,19 @@
                 background: var(--accent-light);
                 transform: translateX(4px);
             }
-
-            .license-text-link:hover {
-                color: var(--accent);
-                opacity: 1;
-            }
         }
 
-        /* TOUCH / ACTIVE FEEDBACK FOR MOBILE */
+        /* TOUCH FEEDBACK FOR MOBILE */
         .btn-telegram:active,
         .btn-secondary:active,
         .contact-item-card:active,
         .card:active,
-        .filter-btn:active,
-        .license-text-link:active {
+        .filter-btn:active {
             transform: scale(0.98);
             opacity: 0.92;
         }
 
-        /* STYLISH FOOTER */
+        /* FOOTER */
         footer.site-footer {
             margin-top: clamp(40px, 8vw, 60px);
             padding: 32px 0 16px;
@@ -1054,190 +958,6 @@
             background-color: var(--accent);
             border-radius: 50%;
             display: inline-block;
-        }
-
-        .license-text-link {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            margin-top: 6px;
-            display: inline-block;
-            opacity: 0.85;
-            padding: 6px 12px;
-        }
-
-        /* LICENSE MODAL STYLES */
-        .license-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(9, 13, 22, 0.78);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(12px, 3vw, 20px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
-
-        .license-modal-overlay.is-active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .license-modal-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            max-width: 620px;
-            width: 100%;
-            max-height: calc(88vh - env(safe-area-inset-top));
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            transform: scale(0.95);
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            overflow: hidden;
-        }
-
-        .license-modal-overlay.is-active .license-modal-card {
-            transform: scale(1);
-        }
-
-        .license-modal-header {
-            padding: 14px 18px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--surface-subtle);
-            flex-shrink: 0;
-        }
-
-        .license-lang-switch {
-            display: flex;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-full);
-            padding: 3px;
-            gap: 2px;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            padding: 5px 14px;
-            border-radius: var(--radius-full);
-            font-size: 0.78rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .lang-btn.active {
-            background: var(--accent);
-            color: #ffffff;
-            box-shadow: 0 2px 6px rgba(0, 136, 204, 0.2);
-        }
-
-        .license-modal-close {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            line-height: 1;
-            cursor: pointer;
-            padding: 6px 10px;
-            border-radius: 50%;
-            transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .license-modal-close:hover {
-            color: var(--text-primary);
-            background: var(--border);
-        }
-
-        .license-modal-body {
-            padding: clamp(16px, 4vw, 24px);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            text-align: left;
-        }
-
-        .license-title {
-            font-size: clamp(1.1rem, 3vw, 1.25rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .license-copyright {
-            font-family: monospace;
-            font-size: 0.82rem;
-            background: var(--surface-subtle);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
-            color: var(--accent);
-            display: inline-block;
-            margin-bottom: 16px;
-            overflow-wrap: break-word;
-            max-width: 100%;
-        }
-
-        .license-paragraph {
-            margin-bottom: 14px;
-        }
-
-        .license-section-title {
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-top: 16px;
-            margin-bottom: 6px;
-        }
-
-        .license-list {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 14px;
-        }
-
-        .license-list li {
-            position: relative;
-            padding-left: 18px;
-            margin-bottom: 6px;
-        }
-
-        .license-list li::before {
-            content: "•";
-            position: absolute;
-            left: 4px;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .license-link {
-            color: var(--accent);
-            text-decoration: none;
-            word-break: break-all;
-            font-weight: 600;
-        }
-
-        .license-link:hover {
-            text-decoration: underline;
         }
 
         /* RESPONSIVE MEDIA QUERIES */
@@ -1314,10 +1034,6 @@
             .contact-item-card {
                 padding: 12px 14px;
             }
-
-            .license-modal-card {
-                max-height: calc(92vh - env(safe-area-inset-top));
-            }
         }
 
         @media (max-width: 360px) {
@@ -1347,14 +1063,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ЭКРАН ЗАЩИТЫ ОТ СКРИНШОТОВ -->
-    <div id="screenshot-overlay">
-        <div>🔒 Защищенный контент</div>
-        <div style="font-size: 0.88rem; font-weight: normal; margin-top: 8px; color: #94a3b8;">
-            Создание скриншотов и копирование материалов ограничено авторами.
-        </div>
-    </div>
 
     <!-- PRELOADER -->
     <div id="preloader">
@@ -1512,29 +1220,6 @@
             </div>
 
             <div class="projects-grid" id="projectsGrid">
-
-                <!-- Project 0: Yerevan Toilet Codes -->
-                <article class="card project-card" data-category="fullstack">
-                    <div>
-                        <span class="project-tag-top">Civic Web App</span>
-                        <h3 class="project-title">Yerevan Toilet Codes</h3>
-                        <p class="project-desc">
-                            Интерактивная краудсорсинговая база проверенных кодов от туалетов в заведениях Еревана для жителей и туристов.
-                        </p>
-                        <ul class="project-highlights">
-                            <li>Мультиязычность: RU, EN, AM</li>
-                            <li>Быстрый поиск по заведению или улице</li>
-                            <li>Краудсорсинг-форма и генератор QR</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="project-tags-row">
-                            <span class="tech-pill">Веб-разработка</span>
-                            <span class="tech-pill">FormSubmit API</span>
-                        </div>
-                        <a href="https://yerevan-toilet-codes-official.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сервис &rarr;</a>
-                    </div>
-                </article>
 
                 <!-- Project 1: Latin Dance Project -->
                 <article class="card project-card" data-category="nocode">
@@ -1781,216 +1466,11 @@
         <footer class="site-footer">
             <div class="footer-line-1">© 2026 Станислав Алёшкин</div>
             <div class="footer-line-3">обновлено: 25 июля</div>
-            <span class="license-text-link" id="openLicenseModal">Лицензия</span>
         </footer>
 
     </main>
 
-    <!-- MODAL LICENSE -->
-    <div class="license-modal-overlay" id="licenseModal" role="dialog" aria-modal="true" aria-labelledby="licenseModalTitle">
-        <div class="license-modal-card">
-            <div class="license-modal-header">
-                <div class="license-lang-switch">
-                    <button class="lang-btn active" data-lang="ru" type="button">RU</button>
-                    <button class="lang-btn" data-lang="en" type="button">EN</button>
-                </div>
-                <button class="license-modal-close" id="closeLicenseModal" aria-label="Закрыть" type="button">&times;</button>
-            </div>
-            <div class="license-modal-body">
-                <!-- RUSSIAN VERSION -->
-                <div id="licenseTextRU">
-                    <h3 class="license-title" id="licenseModalTitle">ПРАВА И ЛИЦЕНЗИРОВАНИЕ</h3>
-                    <div class="license-copyright">Copyright © 2026 Станислав Алёшкин. Все права защищены.</div>
-                    
-                    <p class="license-paragraph">
-                        <strong>Все материалы, опубликованные на данном сайте (включая исходный код, графический и веб-дизайн, интерфейсные решения, тексты, структурированные данные и элементы оформления), являются интеллектуальной собственностью автора.</strong>
-                    </p>
-                    <p class="license-paragraph">
-                        Категорически запрещается любое полное или частичное копирование, дублирование, воспроизведение, тиражирование, заимствование дизайна, парсинг, а также распространение материалов сайта в любых целях (как коммерческих, так и некоммерческих) без предварительного письменного согласия правообладателя.
-                    </p>
-                    <p class="license-paragraph">
-                        Использование элементов данного портфолио в качестве основы для сторонних проектов или выдача их за собственную работу влечёт ответственность в соответствии с законодательством об авторском праве.
-                    </p>
-
-                    <div class="license-section-title">Ограничения и условия:</div>
-                    <ul class="license-list">
-                        <li><strong>Запрет на копирование:</strong> Запрещено копирование кода, стилей, элементов дизайна и текста.</li>
-                        <li><strong>Запрет на коммерческое использование:</strong> Использование любых материалов сайта в коммерческих целях строго запрещено.</li>
-                        <li><strong>Правообладатель:</strong> Станислав Алёшкин (<a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="license-link">@DaggioFellino</a>).</li>
-                    </ul>
-
-                    <p class="license-paragraph" style="margin-top: 16px;">
-                        Ссылка на проект:<br>
-                        <a href="https://new-portfolio-mkrg.onrender.com" target="_blank" rel="noopener noreferrer" class="license-link">https://new-portfolio-mkrg.onrender.com</a>
-                    </p>
-                </div>
-
-                <!-- ENGLISH VERSION -->
-                <div id="licenseTextEN" style="display: none;">
-                    <h3 class="license-title">RIGHTS & LICENSE</h3>
-                    <div class="license-copyright">Copyright © 2026 Stanislav Aleshkin. All Rights Reserved.</div>
-                    
-                    <p class="license-paragraph">
-                        <strong>All content and materials on this website (including source code, UI/UX design, visual graphics, text, logos, and layouts) are the exclusive intellectual property of the author.</strong>
-                    </p>
-                    <p class="license-paragraph">
-                        Any copying, reproduction, distribution, cloning, scraping, or modification of any part of this website for commercial or non-commercial purposes without prior written authorization is strictly prohibited.
-                    </p>
-                    <p class="license-paragraph">
-                        Unauthorized use of any assets or code from this portfolio will be subject to applicable copyright and intellectual property laws.
-                    </p>
-
-                    <div class="license-section-title">Restrictions & Terms:</div>
-                    <ul class="license-list">
-                        <li><strong>No Copying / Reuse:</strong> Reproducing or reusing code, assets, or visual designs is strictly forbidden.</li>
-                        <li><strong>Non-Commercial Restriction:</strong> Commercial use of any material from this site is prohibited.</li>
-                        <li><strong>Rights Owner:</strong> Stanislav Aleshkin (<a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="license-link">@DaggioFellino</a>).</li>
-                    </ul>
-
-                    <p class="license-paragraph" style="margin-top: 16px;">
-                        Website Link:<br>
-                        <a href="https://new-portfolio-mkrg.onrender.com" target="_blank" rel="noopener noreferrer" class="license-link">https://new-portfolio-mkrg.onrender.com</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ГЛОБАЛЬНЫЙ ПЕРЕХВАТ ОШИБОК И БЕЗОПАСНАЯ СИСТЕМА ЗАЩИТЫ -->
-    <script id="security-script">
-        (function() {
-            'use strict';
-
-            // Глобальные обработчики исключений для предотвращения сбоев
-            window.addEventListener('error', function(err) {
-                console.warn('Caught runtime exception:', err.message || err);
-            }, true);
-
-            window.addEventListener('unhandledrejection', function(evt) {
-                console.warn('Unhandled promise rejection:', evt.reason);
-            }, true);
-
-            try {
-                // 1. БЛОКИРОВКА КЛАВИАТУРНЫХ СОЧЕТАНИЙ (ВКЛЮЧАЯ РУССКУЮ РАСКЛАДКУ ЧЕРЕЗ e.code)
-                const blockedCodes = new Set([
-                    'KeyS', // Ctrl + S
-                    'KeyU', // Ctrl + U
-                    'KeyP', // Ctrl + P
-                    'KeyC', // Ctrl + C
-                    'KeyX', // Ctrl + X
-                    'KeyA', // Ctrl + A
-                    'KeyI', // DevTools (Ctrl+Shift+I)
-                    'KeyJ', // DevTools (Ctrl+Shift+J)
-                    'F12'   // F12
-                ]);
-
-                window.addEventListener('keydown', function(e) {
-                    try {
-                        if (e.code === 'F12' || e.keyCode === 123) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return false;
-                        }
-
-                        if (e.ctrlKey || e.metaKey) {
-                            if (blockedCodes.has(e.code)) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                return false;
-                            }
-                        }
-                    } catch (err) {
-                        /* Safe Fail */
-                    }
-                }, true);
-
-                // 2. БЛОКИРОВКА МЫШИ (ПКМ, Выделение, Drag&Drop, Без запросов Clipboard)
-                window.addEventListener('contextmenu', function(e) { e.preventDefault(); }, true);
-                window.addEventListener('copy', function(e) { e.preventDefault(); }, true);
-                window.addEventListener('cut', function(e) { e.preventDefault(); }, true);
-                window.addEventListener('dragstart', function(e) { e.preventDefault(); }, true);
-
-                // 3. ЗАЩИТА ОТ СНИМКОВ ЭКРАНА (Anti-Screenshot / Blur Shield)
-                //function shieldOn() {
-                   // if (document.body) document.body.classList.add('screen-protected');
-              //  }
-
-              //  function shieldOff() {
-                   // if (document.body) document.body.classList.remove('screen-protected');
-              //  }
-
-                window.addEventListener('blur', shieldOn);
-                window.addEventListener('focus', shieldOff);
-
-                document.addEventListener('visibilitychange', function() {
-                    if (document.hidden) {
-                        shieldOn();
-                    } else {
-                        shieldOff();
-                    }
-                });
-
-                // Перехват клавиши PrintScreen
-                window.addEventListener('keyup', function(e) {
-                    if (e.code === 'PrintScreen' || e.key === 'PrintScreen') {
-                        shieldOn();
-                        setTimeout(shieldOff, 2000);
-                    }
-                });
-
-                // 4. ЛОВУШКА ОТЛАДЧИКА DEVTOOLS (Debugger Trap)
-                setInterval(function() {
-                    try {
-                        const startTime = performance.now();
-                        (function() {}.constructor("debugger")());
-                        const endTime = performance.now();
-
-                        if (endTime - startTime > 100) {
-                            if (document.body) {
-                                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;font-weight:bold;color:#0f172a;background:#f4f6f9;">Доступ ограничен.</div>';
-                            }
-                        }
-                    } catch (err) {
-                        /* Ignore in sandbox environments */
-                    }
-                }, 400);
-
-                // 5. ДЕТЕКТОР ИЗМЕНЕНИЯ РАЗМЕРОВ ОКОН (Side-Panel DevTools Trap)
-                window.addEventListener('resize', function() {
-                    try {
-                        const widthThreshold = window.outerWidth - window.innerWidth > 160;
-                        const heightThreshold = window.outerHeight - window.innerHeight > 160;
-                        if (widthThreshold || heightThreshold) {
-                            shieldOn();
-                        }
-                    } catch (err) {}
-                });
-
-                // 6. DOM GUARD (MUTATION OBSERVER): Защита от удаления стилей и скриптов в DevTools
-                if (window.MutationObserver) {
-                    const domGuard = new MutationObserver(function() {
-                        try {
-                            const secStyles = document.getElementById('security-styles');
-                            const secScript = document.getElementById('security-script');
-                            if (!secStyles || !secScript) {
-                                if (document.body) document.body.innerHTML = '';
-                                window.location.reload();
-                            }
-                        } catch (err) {}
-                    });
-
-                    domGuard.observe(document.documentElement, {
-                        childList: true,
-                        subtree: true
-                    });
-                }
-            } catch (globalErr) {
-                console.warn('Security initializer bypassed smoothly:', globalErr);
-            }
-        })();
-    </script>
-
-    <!-- ОСНОВНЫЕ СКРИПТЫ САЙТА С ЗАЩИТОЙ ОТ СБОЕВ -->
+    <!-- ОСНОВНЫЕ СКРИПТЫ САЙТА -->
     <script>
         (function() {
             'use strict';
@@ -2004,15 +1484,6 @@
                     try { localStorage.setItem(key, val); } catch (e) {}
                 }
             };
-
-            // Automatic Unfocus on Mobile Touch
-            document.addEventListener('touchend', function() {
-                try {
-                    if (document.activeElement && document.activeElement !== document.body) {
-                        document.activeElement.blur();
-                    }
-                } catch (e) {}
-            }, { passive: true });
 
             // Preloader Logic
             window.addEventListener('load', function() {
@@ -2162,64 +1633,6 @@
                 });
             } catch (e) {
                 console.warn('Project filter error fallback:', e);
-            }
-
-            // LICENSE MODAL LOGIC
-            try {
-                const openBtn = document.getElementById('openLicenseModal');
-                const closeBtn = document.getElementById('closeLicenseModal');
-                const modal = document.getElementById('licenseModal');
-                const langBtns = document.querySelectorAll('.lang-btn');
-                const ruText = document.getElementById('licenseTextRU');
-                const enText = document.getElementById('licenseTextEN');
-
-                function openModal() {
-                    if (modal) {
-                        modal.classList.add('is-active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                }
-
-                function closeModal() {
-                    if (modal) {
-                        modal.classList.remove('is-active');
-                        document.body.style.overflow = '';
-                    }
-                }
-
-                if (openBtn) openBtn.addEventListener('click', openModal);
-                if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-                if (modal) {
-                    modal.addEventListener('click', function(e) {
-                        if (e.target === modal) closeModal();
-                    });
-                }
-
-                window.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
-                        closeModal();
-                    }
-                });
-
-                // Language Switcher Logic inside Modal
-                langBtns.forEach(function(btn) {
-                    btn.addEventListener('click', function() {
-                        langBtns.forEach(function(b) { b.classList.remove('active'); });
-                        btn.classList.add('active');
-
-                        const lang = btn.getAttribute('data-lang');
-                        if (lang === 'en') {
-                            if (ruText) ruText.style.display = 'none';
-                            if (enText) enText.style.display = 'block';
-                        } else {
-                            if (enText) enText.style.display = 'none';
-                            if (ruText) ruText.style.display = 'block';
-                        }
-                    });
-                });
-            } catch (e) {
-                console.warn('License modal error fallback:', e);
             }
         })();
     </script>
