@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Станислав Алёшкин — Веб-дизайн & Веб-разработка</title>
+    <title>Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Портфолио Станислава Алёшкина: веб-дизайн, веб-разработка, сайты на Tilda (обычные и Zero-блоки), дизайн в Figma, создание логотипов, карточек товаров и настройка серверов.">
-    <meta name="keywords" content="веб-дизайн, веб-разработка, tilda, zero block, figma, карточка товара, логотип, разработка сайтов, сервер, портфолио">
+    <meta name="description" content="Портфолио Станислава Алёшкина: Frontend &amp; Backend разработка (HTML, CSS, JS, Node.js, Go), Tilda Zero Block, Figma, дизайн и серверная инфраструктура.">
+    <meta name="keywords" content="веб-дизайн, веб-разработка, HTML, CSS, JavaScript, Node.js, Go, Tilda, Zero Block, Figma, карточка товара, логотип, разработка сайтов, сервер, VLESS, портфолио">
     <meta name="author" content="Станислав Алёшкин">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ffffff" id="themeColorMeta">
     <link rel="canonical" href="https://new-portfolio-mkrg.onrender.com">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
     <meta property="og:url" content="https://new-portfolio-mkrg.onrender.com">
-    <meta property="og:title" content="Станислав Алёшкин — Веб-дизайн & Веб-разработка">
-    <meta property="og:description" content="Создаю сайты на Tilda (обычные и Zero-блоки), делаю дизайн в Figma, разрабатываю логотипы, карточки товаров и настраиваю сервера.">
+    <meta property="og:title" content="Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка">
+    <meta property="og:description" content="Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go (VLESS сервисы), делаю дизайн в Figma.">
     <meta property="og:image" content="https://new-portfolio-mkrg.onrender.com/og-image.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Станислав Алёшкин — Веб-дизайн & Веб-разработка">
-    <meta name="twitter:description" content="Создаю сайты на Tilda, делаю дизайн в Figma, разрабатываю логотипы и настраиваю сервера.">
+    <meta name="twitter:title" content="Станислав Алёшкин — Веб-дизайн &amp; Веб-разработка">
+    <meta name="twitter:description" content="Создаю сайты на HTML/CSS/JS, Tilda, разрабатываю backend на Node.js и Go, делаю дизайн в Figma.">
+    <meta name="twitter:image" content="https://new-portfolio-mkrg.onrender.com/og-image.jpg">
 
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -31,21 +34,48 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Станислав Алёшкин",
-      "jobTitle": "Web Designer & Web Developer",
-      "url": "https://new-portfolio-mkrg.onrender.com",
-      "sameAs": [
-        "https://t.me/DaggioFellino"
-      ],
-      "knowsAbout": ["Веб-дизайн", "Веб-разработка", "Tilda", "Zero Block", "Figma", "Дизайн логотипов", "Карточки товаров", "Сервера"]
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://new-portfolio-mkrg.onrender.com/#person",
+          "name": "Станислав Алёшкин",
+          "jobTitle": "Full-Stack Web Developer & Designer",
+          "url": "https://new-portfolio-mkrg.onrender.com",
+          "sameAs": [
+            "https://t.me/MiGiTi_official"
+          ],
+          "knowsAbout": [
+            "Веб-дизайн",
+            "Веб-разработка",
+            "HTML/CSS",
+            "JavaScript",
+            "Node.js",
+            "Go",
+            "Tilda",
+            "Zero Block",
+            "Figma",
+            "Дизайн логотипов",
+            "Администрирование серверов"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://new-portfolio-mkrg.onrender.com/#website",
+          "url": "https://new-portfolio-mkrg.onrender.com",
+          "name": "Портфолио Станислава Алёшкина",
+          "publisher": {
+            "@id": "https://new-portfolio-mkrg.onrender.com/#person"
+          },
+          "inLanguage": "ru-RU"
+        }
+      ]
     }
     </script>
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -72,7 +102,7 @@
 
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --max-width: 1040px;
-            --container-padding: clamp(14px, 4vw, 24px);
+            --container-padding: clamp(10px, 4vw, 24px);
 
             --radius-sm: 10px;
             --radius-md: 16px;
@@ -129,10 +159,24 @@
 
         body {
             line-height: 1.6;
-            padding-bottom: calc(40px + env(safe-area-inset-bottom));
+            padding-bottom: calc(20px + env(safe-area-inset-bottom));
             overflow-x: hidden;
             position: relative;
-            min-width: 280px;
+            width: 100%;
+            hyphens: auto;
+            word-wrap: break-word;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .container {
@@ -163,8 +207,8 @@
         }
 
         .loader-spinner {
-            width: 42px;
-            height: 42px;
+            width: clamp(28px, 8vw, 42px);
+            height: clamp(28px, 8vw, 42px);
             border: 3px solid var(--border);
             border-top-color: var(--accent);
             border-radius: 50%;
@@ -206,11 +250,11 @@
         }
 
         .nav-content {
-            height: 66px;
+            height: clamp(48px, 10vw, 66px);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            gap: 8px;
         }
 
         .nav-profile {
@@ -218,7 +262,7 @@
             align-items: center;
             text-decoration: none;
             color: var(--text-primary);
-            flex-shrink: 0;
+            flex-shrink: 1;
             min-width: 0;
         }
 
@@ -230,7 +274,7 @@
 
         .profile-name {
             font-weight: 800;
-            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            font-size: clamp(0.75rem, 2.8vw, 1.05rem);
             line-height: 1.2;
             white-space: nowrap;
             overflow: hidden;
@@ -238,18 +282,18 @@
         }
 
         .profile-status {
-            font-size: 0.72rem;
+            font-size: clamp(0.6rem, 1.8vw, 0.72rem);
             color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             margin-top: 2px;
             white-space: nowrap;
         }
 
         .status-dot {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             background-color: #10b981;
             border-radius: 50%;
             display: inline-block;
@@ -266,7 +310,7 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: clamp(4px, 1.5vw, 10px);
             flex-shrink: 0;
         }
 
@@ -302,29 +346,29 @@
         .btn-telegram {
             background: var(--accent);
             color: #ffffff;
-            padding: 10px 18px;
-            min-height: 44px;
+            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 18px);
+            min-height: 40px;
             border-radius: var(--radius-full);
-            font-size: 0.88rem;
+            font-size: clamp(0.75rem, 2vw, 0.88rem);
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: var(--transition-base);
             box-shadow: 0 4px 14px rgba(0, 136, 204, 0.25);
             border: none;
             cursor: pointer;
-            white-space: nowrap;
+            word-break: normal;
         }
 
         .btn-telegram.header-btn {
             padding: 0;
-            width: 42px;
-            height: 42px;
-            min-width: 42px;
-            min-height: 42px;
+            width: clamp(32px, 8vw, 42px);
+            height: clamp(32px, 8vw, 42px);
+            min-width: clamp(32px, 8vw, 42px);
+            min-height: clamp(32px, 8vw, 42px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -335,27 +379,27 @@
             background: var(--surface);
             color: var(--accent);
             border: 1.5px solid var(--accent-border);
-            padding: 10px 18px;
-            min-height: 44px;
+            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 18px);
+            min-height: 40px;
             border-radius: var(--radius-full);
-            font-size: 0.88rem;
+            font-size: clamp(0.75rem, 2vw, 0.88rem);
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: var(--transition-base);
-            white-space: nowrap;
+            word-break: normal;
         }
 
         .theme-toggle {
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-primary);
-            width: 42px;
-            height: 42px;
-            min-width: 42px;
+            width: clamp(32px, 8vw, 42px);
+            height: clamp(32px, 8vw, 42px);
+            min-width: clamp(32px, 8vw, 42px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -366,8 +410,8 @@
         }
 
         .theme-toggle svg {
-            width: 18px;
-            height: 18px;
+            width: clamp(14px, 4vw, 18px);
+            height: clamp(14px, 4vw, 18px);
         }
 
         .hamburger {
@@ -375,42 +419,42 @@
             background: var(--surface);
             border: 1px solid var(--border);
             cursor: pointer;
-            width: 42px;
-            height: 42px;
-            min-width: 42px;
+            width: clamp(32px, 8vw, 42px);
+            height: clamp(32px, 8vw, 42px);
+            min-width: clamp(32px, 8vw, 42px);
             border-radius: 50%;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
             flex-shrink: 0;
         }
 
         .hamburger .bar {
-            width: 16px;
+            width: 14px;
             height: 2px;
             background-color: var(--text-primary);
             transition: var(--transition-base);
         }
 
         .hamburger.is-active .bar:nth-child(1) {
-            transform: translateY(3px) rotate(45deg);
+            transform: translateY(2.5px) rotate(45deg);
         }
 
         .hamburger.is-active .bar:nth-child(2) {
-            transform: translateY(-3px) rotate(-45deg);
+            transform: translateY(-2.5px) rotate(-45deg);
         }
 
         /* HERO SECTION */
         .hero {
-            padding: clamp(28px, 6vw, 48px) 0 clamp(20px, 4vw, 36px);
+            padding: clamp(16px, 5vw, 48px) 0 clamp(16px, 4vw, 36px);
         }
 
         .hero-badge-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 6px;
+            margin-bottom: 12px;
         }
 
         .badge-pill {
@@ -419,22 +463,22 @@
             gap: 6px;
             background: var(--accent-light);
             color: var(--accent);
-            padding: 6px 14px;
+            padding: 4px 10px;
             border-radius: var(--radius-full);
-            font-size: clamp(0.72rem, 2vw, 0.78rem);
+            font-size: clamp(0.65rem, 2vw, 0.78rem);
             font-weight: 800;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.03em;
             text-transform: uppercase;
         }
 
         .hero-title {
-            font-size: clamp(1.75rem, 5.5vw, 3.2rem);
+            font-size: clamp(1.2rem, 5.5vw, 3.2rem);
             font-weight: 900;
-            line-height: 1.2;
-            letter-spacing: -0.03em;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 18px;
-            overflow-wrap: break-word;
+            margin-bottom: 14px;
+            overflow-wrap: anywhere;
         }
 
         .hero-title .highlight {
@@ -442,25 +486,25 @@
         }
 
         .hero-description {
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-size: clamp(0.8rem, 2.2vw, 1.1rem);
             color: var(--text-secondary);
             max-width: 680px;
-            line-height: 1.6;
-            margin-bottom: 28px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
         .hero-cta-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 32px;
+            gap: 10px;
+            margin-bottom: 24px;
         }
 
         /* BENEFITS LIST */
         .benefits-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             max-width: 540px;
             width: 100%;
         }
@@ -469,20 +513,20 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 12px 16px;
+            padding: clamp(8px, 2.5vw, 12px) clamp(10px, 3vw, 16px);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             box-shadow: var(--shadow-sm);
-            font-size: clamp(0.85rem, 2vw, 0.92rem);
+            font-size: clamp(0.75rem, 2vw, 0.92rem);
             font-weight: 600;
             color: var(--text-primary);
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
         }
 
         .benefit-icon {
-            width: 24px;
-            height: 24px;
+            width: clamp(18px, 5vw, 24px);
+            height: clamp(18px, 5vw, 24px);
             border-radius: 50%;
             background: var(--accent-light);
             color: var(--accent);
@@ -490,42 +534,42 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: 0.82rem;
+            font-size: clamp(0.65rem, 2vw, 0.82rem);
             font-weight: 800;
         }
 
         /* SECTION HEADINGS */
         section {
-            padding: clamp(32px, 6vw, 48px) 0;
-            scroll-margin-top: 76px;
+            padding: clamp(20px, 5vw, 48px) 0;
+            scroll-margin-top: clamp(50px, 10vw, 76px);
         }
 
         .section-badge {
             display: inline-block;
             background: var(--accent-light);
             color: var(--accent);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: var(--radius-full);
-            font-size: 0.75rem;
+            font-size: clamp(0.65rem, 1.8vw, 0.75rem);
             font-weight: 800;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .section-title {
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-size: clamp(1.1rem, 4vw, 2.2rem);
             font-weight: 800;
             letter-spacing: -0.02em;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--text-primary);
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
         }
 
         .section-subtitle {
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(0.8rem, 2vw, 1rem);
             color: var(--text-secondary);
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             max-width: 600px;
         }
 
@@ -534,7 +578,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: clamp(18px, 3vw, 24px);
+            padding: clamp(12px, 3vw, 24px);
             box-shadow: var(--shadow-sm);
             transition: var(--transition-base);
             width: 100%;
@@ -543,8 +587,8 @@
         /* SERVICES SECTION */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(10px, 2.5vw, 16px);
         }
 
         .service-card {
@@ -553,45 +597,45 @@
         }
 
         .service-icon-box {
-            width: 46px;
-            height: 46px;
+            width: clamp(36px, 8vw, 46px);
+            height: clamp(36px, 8vw, 46px);
             background: var(--accent-light);
             color: var(--accent);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             flex-shrink: 0;
         }
 
         .service-card h3 {
-            font-size: 1.15rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .service-card p {
-            font-size: 0.92rem;
+            font-size: clamp(0.78rem, 2vw, 0.92rem);
             color: var(--text-secondary);
-            margin-bottom: 16px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            line-height: 1.45;
         }
 
         .service-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             margin-top: auto;
         }
 
         .service-list li {
-            font-size: 0.85rem;
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
             color: var(--text-muted);
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 6px;
         }
 
         .service-list li::before {
@@ -604,18 +648,18 @@
         .projects-filter {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 6px;
+            margin-bottom: 18px;
         }
 
         .filter-btn {
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            padding: 8px 16px;
-            min-height: 38px;
+            padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 16px);
+            min-height: 34px;
             border-radius: var(--radius-full);
-            font-size: 0.85rem;
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition-fast);
@@ -633,8 +677,8 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: clamp(12px, 3vw, 20px);
         }
 
         .project-card {
@@ -648,44 +692,44 @@
         }
 
         .project-tag-top {
-            font-size: 0.72rem;
+            font-size: clamp(0.65rem, 1.6vw, 0.72rem);
             font-weight: 800;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: block;
         }
 
         .project-title {
-            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.25rem);
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--text-primary);
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
         }
 
         .project-desc {
-            font-size: 0.92rem;
+            font-size: clamp(0.78rem, 2vw, 0.92rem);
             color: var(--text-secondary);
-            margin-bottom: 16px;
-            line-height: 1.55;
+            margin-bottom: 12px;
+            line-height: 1.45;
         }
 
         .project-highlights {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .project-highlights li {
-            font-size: 0.84rem;
+            font-size: clamp(0.72rem, 1.8vw, 0.84rem);
             color: var(--text-muted);
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 6px;
         }
 
         .project-highlights li::before {
@@ -698,16 +742,16 @@
         .project-tags-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 18px;
+            gap: 4px;
+            margin-bottom: 14px;
         }
 
         .tech-pill {
-            font-size: 0.75rem;
+            font-size: clamp(0.65rem, 1.6vw, 0.75rem);
             font-weight: 600;
             background: var(--surface-subtle);
             color: var(--text-secondary);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: var(--radius-sm);
             border: 1px solid var(--border);
         }
@@ -718,7 +762,7 @@
             gap: 6px;
             color: var(--accent);
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: clamp(0.78rem, 2vw, 0.9rem);
             text-decoration: none;
             margin-top: auto;
             transition: var(--transition-fast);
@@ -728,15 +772,15 @@
         /* STACK SECTION */
         .stack-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+            gap: clamp(10px, 2.5vw, 16px);
         }
 
         .stack-card h3 {
-            font-size: 1.05rem;
+            font-size: clamp(0.9rem, 2.2vw, 1.05rem);
             font-weight: 700;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -746,24 +790,24 @@
         .stack-items {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .stack-item-box {
             background: var(--surface-subtle);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 12px;
+            padding: clamp(8px, 2vw, 12px);
         }
 
         .stack-item-name {
             font-weight: 700;
-            font-size: 0.92rem;
+            font-size: clamp(0.8rem, 2vw, 0.92rem);
             color: var(--text-primary);
         }
 
         .stack-item-sub {
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 1.6vw, 0.8rem);
             color: var(--text-muted);
             margin-top: 2px;
         }
@@ -771,20 +815,20 @@
         /* HOBBIES SECTION */
         .hobbies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+            gap: clamp(10px, 2.5vw, 16px);
         }
 
         .hobby-card h3 {
-            font-size: 1.1rem;
+            font-size: clamp(0.92rem, 2.2vw, 1.1rem);
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .hobby-card p {
-            font-size: 0.9rem;
+            font-size: clamp(0.78rem, 2vw, 0.9rem);
             color: var(--text-secondary);
-            line-height: 1.55;
+            line-height: 1.45;
         }
 
         /* CONTACT SECTION */
@@ -792,7 +836,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: clamp(20px, 4vw, 32px) clamp(16px, 3vw, 24px);
+            padding: clamp(14px, 3.5vw, 32px) clamp(12px, 3vw, 24px);
             box-shadow: var(--shadow-sm);
             width: 100%;
         }
@@ -800,37 +844,37 @@
         .contact-cards-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
+            gap: 10px;
+            margin-top: 18px;
         }
 
         .contact-item-card {
             background: var(--surface-subtle);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 14px 18px;
+            padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 18px);
             display: flex;
             align-items: center;
             justify-content: space-between;
             text-decoration: none;
             color: var(--text-primary);
             transition: var(--transition-base);
-            overflow-wrap: break-word;
-            gap: 12px;
-            min-height: 52px;
+            overflow-wrap: anywhere;
+            gap: 10px;
+            min-height: 48px;
         }
 
         .contact-item-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             min-width: 0;
         }
 
         .contact-icon-circle {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
+            width: clamp(32px, 7vw, 40px);
+            height: clamp(32px, 7vw, 40px);
+            min-width: clamp(32px, 7vw, 40px);
             border-radius: 50%;
             background: var(--accent);
             color: #ffffff;
@@ -842,16 +886,16 @@
 
         .contact-title-text {
             font-weight: 700;
-            font-size: clamp(0.88rem, 2vw, 0.95rem);
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .contact-sub-text {
-            font-size: clamp(0.78rem, 1.8vw, 0.82rem);
+            font-size: clamp(0.7rem, 1.8vw, 0.82rem);
             color: var(--text-muted);
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
             word-break: break-all;
         }
 
@@ -919,19 +963,19 @@
 
         /* FOOTER */
         footer.site-footer {
-            margin-top: clamp(40px, 8vw, 60px);
-            padding: 32px 0 16px;
+            margin-top: clamp(24px, 6vw, 60px);
+            padding: 20px 0 12px;
             border-top: 1px solid var(--border);
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         .footer-line-1 {
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.01em;
@@ -941,20 +985,20 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.78rem;
+            font-size: clamp(0.68rem, 1.8vw, 0.78rem);
             font-weight: 600;
             color: var(--text-muted);
             background: var(--surface-subtle);
             border: 1px solid var(--border);
-            padding: 4px 14px;
+            padding: 3px 10px;
             border-radius: var(--radius-full);
             margin-top: 2px;
         }
 
         .footer-line-3::before {
             content: "";
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             background-color: var(--accent);
             border-radius: 50%;
             display: inline-block;
@@ -970,27 +1014,27 @@
 
         @media (max-width: 768px) {
             .nav-content {
-                height: 60px;
+                height: 54px;
             }
 
             .nav-links {
                 display: flex;
                 position: fixed;
-                top: calc(60px + env(safe-area-inset-top) + 8px);
-                left: max(12px, env(safe-area-inset-left));
-                right: max(12px, env(safe-area-inset-right));
+                top: calc(54px + env(safe-area-inset-top) + 6px);
+                left: max(8px, env(safe-area-inset-left));
+                right: max(8px, env(safe-area-inset-right));
                 background: var(--surface);
                 border: 1px solid var(--border);
                 border-radius: var(--radius-md);
                 flex-direction: column;
-                padding: 10px;
+                padding: 8px;
                 box-shadow: var(--shadow-lg);
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-10px);
                 transition: var(--transition-base);
                 z-index: 101;
-                max-height: calc(100vh - 80px - env(safe-area-inset-top));
+                max-height: calc(100vh - 70px - env(safe-area-inset-top));
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -1004,16 +1048,8 @@
             .nav-links a {
                 width: 100%;
                 text-align: center;
-                padding: 12px;
-                font-size: 0.95rem;
-            }
-
-            .btn-telegram.header-btn {
-                padding: 0;
-                border-radius: 50%;
-                width: 42px;
-                height: 42px;
-                min-width: 42px;
+                padding: 10px;
+                font-size: 0.9rem;
             }
 
             .hamburger {
@@ -1022,7 +1058,7 @@
 
             .hero-cta-group {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
                 width: 100%;
             }
 
@@ -1030,34 +1066,82 @@
             .hero-cta-group .btn-secondary {
                 width: 100%;
             }
-
-            .contact-item-card {
-                padding: 12px 14px;
-            }
         }
 
-        @media (max-width: 360px) {
+        /* SMARTWATCHES & Apple Watch Adaptive (< 280px) */
+        @media (max-width: 280px) {
+            :root {
+                --container-padding: 6px;
+            }
+
+            body {
+                font-size: 13px;
+            }
+
             .profile-status {
                 display: none;
             }
 
             .btn-telegram.header-btn {
-                width: 38px;
-                height: 38px;
-                min-width: 38px;
-                min-height: 38px;
+                display: none;
             }
 
-            .theme-toggle, .hamburger {
-                width: 38px;
-                height: 38px;
-                min-width: 38px;
-                min-height: 38px;
+            .nav-right {
+                gap: 4px;
             }
 
-            .filter-btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+            .hero-title {
+                font-size: 1.15rem;
+            }
+
+            .hero-description, .section-subtitle {
+                font-size: 0.78rem;
+            }
+
+            .card {
+                padding: 10px;
+                border-radius: 12px;
+            }
+
+            .contact-arrow {
+                display: none;
+            }
+
+            .contact-item-card {
+                padding: 8px;
+            }
+
+            .contact-sub-text {
+                font-size: 0.68rem;
+            }
+        }
+
+        /* ULTRA SMALL WATCH DIALS (< 200px) */
+        @media (max-width: 200px) {
+            .hamburger {
+                display: none;
+            }
+
+            .profile-name {
+                font-size: 0.7rem;
+            }
+
+            .hero-cta-group .btn-telegram,
+            .hero-cta-group .btn-secondary {
+                font-size: 0.7rem;
+                min-height: 32px;
+                padding: 6px;
+            }
+        }
+
+        /* LARGE & ULTRA-WIDE SCREENS (> 1400px) */
+        @media (min-width: 1400px) {
+            :root {
+                --max-width: 1200px;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
             }
         }
     </style>
@@ -1065,7 +1149,7 @@
 <body>
 
     <!-- PRELOADER -->
-    <div id="preloader">
+    <div id="preloader" aria-hidden="true">
         <div class="loader-spinner"></div>
     </div>
 
@@ -1084,28 +1168,30 @@
                 </a>
 
                 <div class="nav-right">
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="#about" class="active">Обо мне</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#projects">Портфолио</a></li>
-                        <li><a href="#stack">Навыки</a></li>
-                        <li><a href="#life">Хобби</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                    </ul>
+                    <nav id="mainNav" aria-label="Основная навигация">
+                        <ul class="nav-links" id="navLinks">
+                            <li><a href="#about" class="active">Обо мне</a></li>
+                            <li><a href="#services">Услуги</a></li>
+                            <li><a href="#projects">Портфолио</a></li>
+                            <li><a href="#stack">Навыки</a></li>
+                            <li><a href="#life">Хобби</a></li>
+                            <li><a href="#contact">Контакты</a></li>
+                        </ul>
+                    </nav>
 
                     <button class="theme-toggle" id="themeToggle" title="Переключить тему" aria-label="Переключить тему">
-                        <svg id="themeIcon" viewBox="0 0 24 24">
+                        <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true">
                             <!-- SVG Path renders via JavaScript -->
                         </svg>
                     </button>
 
-                    <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram" aria-label="Написать в Telegram">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <a href="https://t.me/MiGiTi_official" target="_blank" rel="noopener noreferrer" class="btn-telegram header-btn" title="Написать в Telegram" aria-label="Написать в Telegram">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
                         </svg>
                     </a>
 
-                    <button class="hamburger" id="hamburger" aria-label="Открыть меню" aria-expanded="false">
+                    <button class="hamburger" id="hamburger" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
                         <span class="bar"></span>
                         <span class="bar"></span>
                     </button>
@@ -1119,21 +1205,21 @@
         <!-- HERO SECTION -->
         <section class="hero reveal-on-scroll" id="about">
             <div class="hero-badge-row">
-                <span class="badge-pill">Веб-дизайн & Веб-разработка</span>
+                <span class="badge-pill">Веб-дизайн &amp; Веб-разработка</span>
             </div>
 
             <h1 class="hero-title">
-                Веб-дизайн, сайты на Tilda, <br>
-                <span class="highlight">Figma, логотипы, карточки и сервера</span>
+                Веб-дизайн, Frontend &amp; Backend, <br>
+                <span class="highlight">Tilda, Figma, Go и серверные решения</span>
             </h1>
 
             <p class="hero-description">
-                Привет! Я занимаюсь веб-дизайном и веб-разработкой: делаю сайты на Tilda (как из обычных блоков, так и из Zero-блоков), проектирую интерфейсы в Figma, создаю логотипы, оформляю карточки товаров, подготавливаю серверы и решаю практически любые технические и визуальные задачи для проектов.
+                Привет! Я занимаюсь веб-дизайном и веб-разработкой: верстаю на HTML/CSS/JavaScript, разрабатываю бэкенд на Node.js и Go, собираю сайты на Tilda (включая Zero Block), проектирую интерфейсы в Figma, создаю логотипы и карточки товаров, а также конфигурирую и настраиваю сервера.
             </p>
 
             <div class="hero-cta-group">
-                <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="btn-telegram">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <a href="https://t.me/MiGiTi_official" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
                     </svg>
                     Обсудить проект в Telegram
@@ -1145,29 +1231,42 @@
 
             <div class="benefits-list">
                 <div class="benefit-item">
-                    <div class="benefit-icon">✓</div>
-                    <span>Сайты на Tilda (обычные блоки & Zero Block)</span>
+                    <div class="benefit-icon" aria-hidden="true">✓</div>
+                    <span>Веб-разработка: HTML, CSS, JavaScript, Node.js, Go</span>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">✓</div>
+                    <div class="benefit-icon" aria-hidden="true">✓</div>
+                    <span>Сайты на Tilda (обычные блоки &amp; Zero Block)</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon" aria-hidden="true">✓</div>
                     <span>Дизайн в Figma, карточки товаров и логотипы</span>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">✓</div>
-                    <span>Настройка серверов и веб-разработка</span>
                 </div>
             </div>
         </section>
 
         <!-- SERVICES SECTION -->
         <section id="services" class="reveal-on-scroll">
-            <span class="section-badge">УСЛУГИ</span>
+            <span class="section-badge">Услуги</span>
             <h2 class="section-title">Чем я могу помочь</h2>
             <p class="section-subtitle">Создаю визуальные материалы, разрабатываю сайты и настраиваю серверную часть.</p>
 
             <div class="services-grid">
                 <div class="card service-card">
-                    <div class="service-icon-box">
+                    <div class="service-icon-box" aria-hidden="true">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    <h3>Веб-разработка &amp; Кодинг</h3>
+                    <p>Создание чистых интерактивных сайтов и скриптов с нуля на HTML, CSS, JS, Node.js и Go.</p>
+                    <ul class="service-list">
+                        <li>Адаптивная верстка (HTML/CSS/JS)</li>
+                        <li>Разработка бэкенда и скриптов на Node.js</li>
+                        <li>Высокопроизводительные сервисы на Go</li>
+                    </ul>
+                </div>
+
+                <div class="card service-card">
+                    <div class="service-icon-box" aria-hidden="true">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     </div>
                     <h3>Сайты на Tilda</h3>
@@ -1180,28 +1279,15 @@
                 </div>
 
                 <div class="card service-card">
-                    <div class="service-icon-box">
+                    <div class="service-icon-box" aria-hidden="true">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
-                    <h3>Дизайн & Figma</h3>
-                    <p>Проектирование красивых и удобных интерфейсов для Ваших проектов: от стильного логотипа до карточки товара.</p>
+                    <h3>Дизайн &amp; Figma</h3>
+                    <p>Проектирование красивых и удобных интерфейсов: от стильного логотипа до карточки товара.</p>
                     <ul class="service-list">
                         <li>Разработка стильных логотипов</li>
                         <li>Оформление карточек товаров для маркетплейсов</li>
                         <li>Макеты сайтов и баннеры в Figma</li>
-                    </ul>
-                </div>
-
-                <div class="card service-card">
-                    <div class="service-icon-box">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                    </div>
-                    <h3>Разработка & Серверы</h3>
-                    <p>Подключение базы данных, логики, серверов и выгрузка проекта в открытый доступ.</p>
-                    <ul class="service-list">
-                        <li>Настройка серверной логики и базы данных</li>
-                        <li>Развертывание сайтов и сервисов на сервере</li>
-                        <li>Интеграция сторонних сервисов и скриптов</li>
                     </ul>
                 </div>
             </div>
@@ -1209,17 +1295,41 @@
 
         <!-- PROJECTS SECTION -->
         <section id="projects" class="reveal-on-scroll">
-            <span class="section-badge">ПОРТФОЛИО</span>
+            <span class="section-badge">Портфолио</span>
             <h2 class="section-title">Примеры моих работ</h2>
-            <p class="section-subtitle">Нажмите на карточку любого проекта, чтобы посмотреть его онлайн.</p>
+            <p class="section-subtitle">Перейдите по ссылке любого проекта, чтобы посмотреть его вживую.</p>
 
-            <div class="projects-filter" id="filterContainer">
-                <button class="filter-btn active" data-filter="all">Все проекты</button>
-                <button class="filter-btn" data-filter="nocode">Tilda & Design</button>
-                <button class="filter-btn" data-filter="fullstack">Веб-разработка</button>
+            <div class="projects-filter" id="filterContainer" role="tablist" aria-label="Фильтр проектов">
+                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Все проекты</button>
+                <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false">Веб-разработка &amp; Backend</button>
+                <button class="filter-btn" data-filter="nocode" role="tab" aria-selected="false">Tilda &amp; Design</button>
             </div>
 
             <div class="projects-grid" id="projectsGrid">
+
+                <!-- Project: VLESS Aggregator -->
+                <article class="card project-card" data-category="fullstack">
+                    <div>
+                        <span class="project-tag-top">Backend Service / Go</span>
+                        <h3 class="project-title">VLESS Sub Aggregator</h3>
+                        <p class="project-desc">
+                            Агрегатор и генератор VLESS-подписок для быстрого обхода блокировок и объединения серверов.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Высокая скорость обработки благодаря языку Go</li>
+                            <li>Автоматический парсинг, валидация и фильтрация узлов</li>
+                            <li>Удобная выдача подписки под клиенты для РФ</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags-row">
+                            <span class="tech-pill">Go (Golang)</span>
+                            <span class="tech-pill">VLESS</span>
+                            <span class="tech-pill">Network/Proxy</span>
+                        </div>
+                        <span class="project-link" style="cursor: default; opacity: 0.8;">Пет-проект (Backend)</span>
+                    </div>
+                </article>
 
                 <!-- Project 1: Latin Dance Project -->
                 <article class="card project-card" data-category="nocode">
@@ -1284,8 +1394,8 @@
                     </div>
                     <div>
                         <div class="project-tags-row">
-                            <span class="tech-pill">Веб-разработка</span>
-                            <span class="tech-pill">Сервер</span>
+                            <span class="tech-pill">HTML/CSS/JS</span>
+                            <span class="tech-pill">Node.js</span>
                             <span class="tech-pill">База данных</span>
                         </div>
                         <a href="https://aenigma-mark-2-3.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">Открыть квест &rarr;</a>
@@ -1307,8 +1417,8 @@
                     </div>
                     <div>
                         <div class="project-tags-row">
-                            <span class="tech-pill">Веб-дизайн</span>
-                            <span class="tech-pill">Веб-разработка</span>
+                            <span class="tech-pill">HTML5/CSS3</span>
+                            <span class="tech-pill">JavaScript</span>
                         </div>
                         <a href="https://busdrivecompany.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сайт &rarr;</a>
                     </div>
@@ -1329,8 +1439,8 @@
                     </div>
                     <div>
                         <div class="project-tags-row">
-                            <span class="tech-pill">Веб-разработка</span>
-                            <span class="tech-pill">JavaScript</span>
+                            <span class="tech-pill">JS Web App</span>
+                            <span class="tech-pill">Node.js</span>
                         </div>
                         <a href="https://yerevan-pulpulak-official.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">Открыть сервис &rarr;</a>
                     </div>
@@ -1341,15 +1451,32 @@
 
         <!-- STACK / SKILLS SECTION -->
         <section id="stack" class="reveal-on-scroll">
-            <span class="section-badge">НАВЫКИ & ИНСТРУМЕНТЫ</span>
+            <span class="section-badge">Навыки &amp; Инструменты</span>
             <h2 class="section-title">С чем я работаю</h2>
-            <p class="section-subtitle">Инструменты и направления, которые я использую при создании проектов.</p>
+            <p class="section-subtitle">Технологии и направления, которые я использую при создании проектов.</p>
 
             <div class="stack-grid">
                 <div class="card stack-card">
                     <h3>
-                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                        Tilda
+                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Веб-разработка
+                    </h3>
+                    <div class="stack-items">
+                        <div class="stack-item-box">
+                            <div class="stack-item-name">HTML5, CSS3, JavaScript</div>
+                            <div class="stack-item-sub">Создание верстки, интерактивных веб-страниц и скриптов</div>
+                        </div>
+                        <div class="stack-item-box">
+                            <div class="stack-item-name">Node.js &amp; Go</div>
+                            <div class="stack-item-sub">Серверная логика, работа с API, VLESS-сервисами и БД</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card stack-card">
+                    <h3>
+                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        Tilda &amp; No-Code
                     </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
@@ -1365,34 +1492,17 @@
 
                 <div class="card stack-card">
                     <h3>
-                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                        Графика & Дизайн
+                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                        Графика &amp; Дизайн
                     </h3>
                     <div class="stack-items">
                         <div class="stack-item-box">
-                            <div class="stack-item-name">Дизайн сайтов</div>
-                            <div class="stack-item-sub">Проектирование удобных интерфейсов и страниц</div>
+                            <div class="stack-item-name">Figma &amp; Дизайн сайтов</div>
+                            <div class="stack-item-sub">Проектирование удобных интерфейсов и прототипов</div>
                         </div>
                         <div class="stack-item-box">
                             <div class="stack-item-name">Логотипы и карточки товаров</div>
-                            <div class="stack-item-sub">Создание векторных логотипов и сочной инфографики</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card stack-card">
-                    <h3>
-                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        Веб-разработка
-                    </h3>
-                    <div class="stack-items">
-                        <div class="stack-item-box">
-                            <div class="stack-item-name">Серверная часть</div>
-                            <div class="stack-item-sub">Настройка серверов, хостинга, БД и логики</div>
-                        </div>
-                        <div class="stack-item-box">
-                            <div class="stack-item-name">Интерактивный веб</div>
-                            <div class="stack-item-sub">Сложные веб-сервисы, веб-приложения и ИИ</div>
+                            <div class="stack-item-sub">Создание векторных логотипов и инфографики</div>
                         </div>
                     </div>
                 </div>
@@ -1401,17 +1511,17 @@
 
         <!-- HOBBIES SECTION -->
         <section id="life" class="reveal-on-scroll">
-            <span class="section-badge">ЛИЧНОЕ</span>
+            <span class="section-badge">Личное</span>
             <h2 class="section-title">Хобби и интересы</h2>
             <p class="section-subtitle">Чем я увлекаюсь в свободное время.</p>
 
             <div class="hobbies-grid">
                 <div class="card hobby-card">
-                    <h3>🎸 Гитара & Музыка</h3>
+                    <h3>🎸 Гитара &amp; Музыка</h3>
                     <p>Учился в музыкальной школе, на гитаре играю 3 года. Развивает дисциплину, чувство ритма и творческое мышление.</p>
                 </div>
                 <div class="card hobby-card">
-                    <h3>🎭 Опера & Пение</h3>
+                    <h3>🎭 Опера &amp; Пение</h3>
                     <p>Увлекаюсь оперой и вокалом. Нравится изучать классические произведения и профессиональные партии.</p>
                 </div>
                 <div class="card hobby-card">
@@ -1424,29 +1534,29 @@
         <!-- CONTACT SECTION -->
         <section id="contact" class="reveal-on-scroll">
             <div class="contact-box">
-                <span class="section-badge">КОНТАКТЫ</span>
-                <h2 class="section-title">Готов обсудить Ваш проект</h2>
+                <span class="section-badge">Контакты</span>
+                <h2 class="section-title">Готов обсудить ваш проект</h2>
                 <p class="section-subtitle">Напишите мне в Telegram или на почту. Бесплатно проконсультирую и предложу лучшее решение.</p>
 
                 <div class="contact-cards-list">
-                    <a href="https://t.me/DaggioFellino" target="_blank" rel="noopener noreferrer" class="contact-item-card">
+                    <a href="https://t.me/MiGiTi_official" target="_blank" rel="noopener noreferrer" class="contact-item-card">
                         <div class="contact-item-left">
-                            <div class="contact-icon-circle">
+                            <div class="contact-icon-circle" aria-hidden="true">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
                                 </svg>
                             </div>
                             <div>
                                 <div class="contact-title-text">Написать в Telegram</div>
-                                <div class="contact-sub-text">@DaggioFellino — личные сообщения</div>
+                                <div class="contact-sub-text">@MiGiTi_official — личные сообщения</div>
                             </div>
                         </div>
-                        <span class="contact-arrow">&rarr;</span>
+                        <span class="contact-arrow" aria-hidden="true">&rarr;</span>
                     </a>
 
                     <a href="mailto:stasaleskin80@gmail.com" class="contact-item-card">
                         <div class="contact-item-left">
-                            <div class="contact-icon-circle" style="background: #ea4335;">
+                            <div class="contact-icon-circle" style="background: #ea4335;" aria-hidden="true">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                 </svg>
@@ -1456,7 +1566,7 @@
                                 <div class="contact-sub-text">stasaleskin80@gmail.com</div>
                             </div>
                         </div>
-                        <span class="contact-arrow">&rarr;</span>
+                        <span class="contact-arrow" aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -1464,8 +1574,8 @@
 
         <!-- FOOTER -->
         <footer class="site-footer">
-            <div class="footer-line-1">© 2026 Станислав Алёшкин</div>
-            <div class="footer-line-3">обновлено: 25 июля</div>
+            <div class="footer-line-1">&copy; 2026 Станислав Алёшкин</div>
+            <div class="footer-line-3">обновлено: 14 августа 2026 г.</div>
         </footer>
 
     </main>
@@ -1475,7 +1585,6 @@
         (function() {
             'use strict';
 
-            // Безопасная работа с LocalStorage
             const safeStorage = {
                 getItem: function(key) {
                     try { return localStorage.getItem(key); } catch (e) { return null; }
@@ -1499,6 +1608,7 @@
             try {
                 const themeToggle = document.getElementById('themeToggle');
                 const themeIcon = document.getElementById('themeIcon');
+                const themeMeta = document.getElementById('themeColorMeta');
                 const html = document.documentElement;
 
                 const sunSVG = `<path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41M16 12a4 4 0 11-8 0 4 4 0 018 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
@@ -1510,6 +1620,9 @@
                     safeStorage.setItem('theme', theme);
                     if (themeIcon) {
                         themeIcon.innerHTML = theme === 'light' ? moonSVG : sunSVG;
+                    }
+                    if (themeMeta) {
+                        themeMeta.setAttribute('content', theme === 'dark' ? '#090d16' : '#ffffff');
                     }
                 }
 
@@ -1617,8 +1730,12 @@
 
                 filterBtns.forEach(function(btn) {
                     btn.addEventListener('click', function() {
-                        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                        filterBtns.forEach(function(b) { 
+                            b.classList.remove('active'); 
+                            b.setAttribute('aria-selected', 'false');
+                        });
                         btn.classList.add('active');
+                        btn.setAttribute('aria-selected', 'true');
 
                         const filter = btn.getAttribute('data-filter');
 
