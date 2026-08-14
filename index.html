@@ -101,8 +101,8 @@
             --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.08);
 
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --max-width: 1040px;
-            --container-padding: clamp(10px, 4vw, 24px);
+            --max-width: 1080px;
+            --container-padding: clamp(12px, 4vw, 24px);
 
             --radius-sm: 10px;
             --radius-md: 16px;
@@ -152,13 +152,13 @@
             background-color: var(--bg);
             color: var(--text-primary);
             font-family: var(--font-sans);
-            font-size: 16px;
+            font-size: 16.5px; /* Увеличено для лучшей читаемости */
             -webkit-font-smoothing: antialiased;
             text-size-adjust: 100%;
         }
 
         body {
-            line-height: 1.6;
+            line-height: 1.65;
             padding-bottom: calc(20px + env(safe-area-inset-bottom));
             overflow-x: hidden;
             position: relative;
@@ -250,11 +250,11 @@
         }
 
         .nav-content {
-            height: clamp(48px, 10vw, 66px);
+            height: clamp(52px, 10vw, 72px);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 8px;
+            gap: 12px;
         }
 
         .nav-profile {
@@ -274,7 +274,7 @@
 
         .profile-name {
             font-weight: 800;
-            font-size: clamp(0.75rem, 2.8vw, 1.05rem);
+            font-size: clamp(0.85rem, 3vw, 1.15rem);
             line-height: 1.2;
             white-space: nowrap;
             overflow: hidden;
@@ -282,18 +282,18 @@
         }
 
         .profile-status {
-            font-size: clamp(0.6rem, 1.8vw, 0.72rem);
+            font-size: clamp(0.65rem, 2vw, 0.78rem);
             color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             margin-top: 2px;
             white-space: nowrap;
         }
 
         .status-dot {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             background-color: #10b981;
             border-radius: 50%;
             display: inline-block;
@@ -310,14 +310,14 @@
         .nav-right {
             display: flex;
             align-items: center;
-            gap: clamp(4px, 1.5vw, 10px);
+            gap: clamp(6px, 1.5vw, 12px);
             flex-shrink: 0;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             list-style: none;
         }
 
@@ -325,12 +325,13 @@
             display: inline-flex;
         }
 
+        /* Увеличен размер текста и кликабельная область меню */
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.98rem;
             font-weight: 600;
-            padding: 8px 12px;
+            padding: 8px 14px;
             border-radius: var(--radius-full);
             transition: var(--transition-fast);
             white-space: nowrap;
@@ -346,10 +347,10 @@
         .btn-telegram {
             background: var(--accent);
             color: #ffffff;
-            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 18px);
-            min-height: 40px;
+            padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 20px);
+            min-height: 42px;
             border-radius: var(--radius-full);
-            font-size: clamp(0.75rem, 2vw, 0.88rem);
+            font-size: clamp(0.8rem, 2vw, 0.92rem);
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
@@ -365,10 +366,10 @@
 
         .btn-telegram.header-btn {
             padding: 0;
-            width: clamp(32px, 8vw, 42px);
-            height: clamp(32px, 8vw, 42px);
-            min-width: clamp(32px, 8vw, 42px);
-            min-height: clamp(32px, 8vw, 42px);
+            width: clamp(34px, 8vw, 44px);
+            height: clamp(34px, 8vw, 44px);
+            min-width: clamp(34px, 8vw, 44px);
+            min-height: clamp(34px, 8vw, 44px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -379,10 +380,10 @@
             background: var(--surface);
             color: var(--accent);
             border: 1.5px solid var(--accent-border);
-            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 18px);
-            min-height: 40px;
+            padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 20px);
+            min-height: 42px;
             border-radius: var(--radius-full);
-            font-size: clamp(0.75rem, 2vw, 0.88rem);
+            font-size: clamp(0.8rem, 2vw, 0.92rem);
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
@@ -397,9 +398,9 @@
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-primary);
-            width: clamp(32px, 8vw, 42px);
-            height: clamp(32px, 8vw, 42px);
-            min-width: clamp(32px, 8vw, 42px);
+            width: clamp(34px, 8vw, 44px);
+            height: clamp(34px, 8vw, 44px);
+            min-width: clamp(34px, 8vw, 44px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -410,8 +411,8 @@
         }
 
         .theme-toggle svg {
-            width: clamp(14px, 4vw, 18px);
-            height: clamp(14px, 4vw, 18px);
+            width: clamp(16px, 4vw, 20px);
+            height: clamp(16px, 4vw, 20px);
         }
 
         .hamburger {
@@ -419,35 +420,35 @@
             background: var(--surface);
             border: 1px solid var(--border);
             cursor: pointer;
-            width: clamp(32px, 8vw, 42px);
-            height: clamp(32px, 8vw, 42px);
-            min-width: clamp(32px, 8vw, 42px);
+            width: clamp(36px, 8vw, 44px);
+            height: clamp(36px, 8vw, 44px);
+            min-width: clamp(36px, 8vw, 44px);
             border-radius: 50%;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 3px;
+            gap: 4px;
             flex-shrink: 0;
         }
 
         .hamburger .bar {
-            width: 14px;
+            width: 16px;
             height: 2px;
             background-color: var(--text-primary);
             transition: var(--transition-base);
         }
 
         .hamburger.is-active .bar:nth-child(1) {
-            transform: translateY(2.5px) rotate(45deg);
+            transform: translateY(3px) rotate(45deg);
         }
 
         .hamburger.is-active .bar:nth-child(2) {
-            transform: translateY(-2.5px) rotate(-45deg);
+            transform: translateY(-3px) rotate(-45deg);
         }
 
         /* HERO SECTION */
         .hero {
-            padding: clamp(16px, 5vw, 48px) 0 clamp(16px, 4vw, 36px);
+            padding: clamp(20px, 5vw, 52px) 0 clamp(16px, 4vw, 36px);
         }
 
         .hero-badge-row {
@@ -463,21 +464,21 @@
             gap: 6px;
             background: var(--accent-light);
             color: var(--accent);
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: var(--radius-full);
-            font-size: clamp(0.65rem, 2vw, 0.78rem);
+            font-size: clamp(0.7rem, 2vw, 0.82rem);
             font-weight: 800;
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
 
         .hero-title {
-            font-size: clamp(1.2rem, 5.5vw, 3.2rem);
+            font-size: clamp(1.3rem, 5.5vw, 3.2rem);
             font-weight: 900;
             line-height: 1.25;
             letter-spacing: -0.02em;
             color: var(--text-primary);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             overflow-wrap: anywhere;
         }
 
@@ -486,26 +487,26 @@
         }
 
         .hero-description {
-            font-size: clamp(0.8rem, 2.2vw, 1.1rem);
+            font-size: clamp(0.88rem, 2.2vw, 1.15rem);
             color: var(--text-secondary);
-            max-width: 680px;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            max-width: 700px;
+            line-height: 1.55;
+            margin-bottom: 22px;
         }
 
         .hero-cta-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 24px;
+            gap: 12px;
+            margin-bottom: 26px;
         }
 
         /* BENEFITS LIST */
         .benefits-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            max-width: 540px;
+            gap: 10px;
+            max-width: 560px;
             width: 100%;
         }
 
@@ -513,20 +514,20 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: clamp(8px, 2.5vw, 12px) clamp(10px, 3vw, 16px);
+            padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 18px);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             box-shadow: var(--shadow-sm);
-            font-size: clamp(0.75rem, 2vw, 0.92rem);
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
             font-weight: 600;
             color: var(--text-primary);
             overflow-wrap: anywhere;
         }
 
         .benefit-icon {
-            width: clamp(18px, 5vw, 24px);
-            height: clamp(18px, 5vw, 24px);
+            width: clamp(20px, 5vw, 26px);
+            height: clamp(20px, 5vw, 26px);
             border-radius: 50%;
             background: var(--accent-light);
             color: var(--accent);
@@ -534,23 +535,23 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: clamp(0.65rem, 2vw, 0.82rem);
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
             font-weight: 800;
         }
 
         /* SECTION HEADINGS */
         section {
-            padding: clamp(20px, 5vw, 48px) 0;
-            scroll-margin-top: clamp(50px, 10vw, 76px);
+            padding: clamp(24px, 5vw, 52px) 0;
+            scroll-margin-top: clamp(55px, 10vw, 80px);
         }
 
         .section-badge {
             display: inline-block;
             background: var(--accent-light);
             color: var(--accent);
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: var(--radius-full);
-            font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
             font-weight: 800;
             letter-spacing: 0.06em;
             text-transform: uppercase;
@@ -558,7 +559,7 @@
         }
 
         .section-title {
-            font-size: clamp(1.1rem, 4vw, 2.2rem);
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 8px;
@@ -567,10 +568,10 @@
         }
 
         .section-subtitle {
-            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-size: clamp(0.85rem, 2vw, 1.05rem);
             color: var(--text-secondary);
-            margin-bottom: 20px;
-            max-width: 600px;
+            margin-bottom: 22px;
+            max-width: 620px;
         }
 
         /* CARD COMPONENT */
@@ -578,7 +579,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: clamp(12px, 3vw, 24px);
+            padding: clamp(14px, 3vw, 24px);
             box-shadow: var(--shadow-sm);
             transition: var(--transition-base);
             width: 100%;
@@ -587,8 +588,8 @@
         /* SERVICES SECTION */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-            gap: clamp(10px, 2.5vw, 16px);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: clamp(12px, 2.5vw, 18px);
         }
 
         .service-card {
@@ -597,8 +598,8 @@
         }
 
         .service-icon-box {
-            width: clamp(36px, 8vw, 46px);
-            height: clamp(36px, 8vw, 46px);
+            width: clamp(38px, 8vw, 48px);
+            height: clamp(38px, 8vw, 48px);
             background: var(--accent-light);
             color: var(--accent);
             border-radius: var(--radius-md);
@@ -610,16 +611,16 @@
         }
 
         .service-card h3 {
-            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             font-weight: 700;
             margin-bottom: 6px;
         }
 
         .service-card p {
-            font-size: clamp(0.78rem, 2vw, 0.92rem);
+            font-size: clamp(0.82rem, 2vw, 0.95rem);
             color: var(--text-secondary);
-            margin-bottom: 12px;
-            line-height: 1.45;
+            margin-bottom: 14px;
+            line-height: 1.5;
         }
 
         .service-list {
@@ -631,7 +632,7 @@
         }
 
         .service-list li {
-            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+            font-size: clamp(0.78rem, 1.8vw, 0.88rem);
             color: var(--text-muted);
             display: flex;
             align-items: flex-start;
@@ -648,18 +649,18 @@
         .projects-filter {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 18px;
+            gap: 8px;
+            margin-bottom: 22px;
         }
 
         .filter-btn {
             background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 16px);
-            min-height: 34px;
+            padding: clamp(6px, 1.5vw, 9px) clamp(12px, 2.5vw, 18px);
+            min-height: 36px;
             border-radius: var(--radius-full);
-            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+            font-size: clamp(0.78rem, 1.8vw, 0.9rem);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition-fast);
@@ -677,8 +678,8 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-            gap: clamp(12px, 3vw, 20px);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: clamp(14px, 3vw, 22px);
         }
 
         .project-card {
@@ -692,7 +693,7 @@
         }
 
         .project-tag-top {
-            font-size: clamp(0.65rem, 1.6vw, 0.72rem);
+            font-size: clamp(0.68rem, 1.6vw, 0.75rem);
             font-weight: 800;
             color: var(--accent);
             text-transform: uppercase;
@@ -702,7 +703,7 @@
         }
 
         .project-title {
-            font-size: clamp(0.95rem, 2.5vw, 1.25rem);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             font-weight: 800;
             margin-bottom: 8px;
             color: var(--text-primary);
@@ -710,10 +711,10 @@
         }
 
         .project-desc {
-            font-size: clamp(0.78rem, 2vw, 0.92rem);
+            font-size: clamp(0.82rem, 2vw, 0.95rem);
             color: var(--text-secondary);
             margin-bottom: 12px;
-            line-height: 1.45;
+            line-height: 1.5;
         }
 
         .project-highlights {
@@ -721,11 +722,11 @@
             margin-bottom: 16px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
         }
 
         .project-highlights li {
-            font-size: clamp(0.72rem, 1.8vw, 0.84rem);
+            font-size: clamp(0.78rem, 1.8vw, 0.88rem);
             color: var(--text-muted);
             display: flex;
             align-items: flex-start;
@@ -739,19 +740,28 @@
             flex-shrink: 0;
         }
 
+        .project-links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+        }
+
         .project-tags-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 6px;
             margin-bottom: 14px;
         }
 
         .tech-pill {
-            font-size: clamp(0.65rem, 1.6vw, 0.75rem);
+            font-size: clamp(0.68rem, 1.6vw, 0.78rem);
             font-weight: 600;
             background: var(--surface-subtle);
             color: var(--text-secondary);
-            padding: 3px 8px;
+            padding: 3px 10px;
             border-radius: var(--radius-sm);
             border: 1px solid var(--border);
         }
@@ -762,22 +772,21 @@
             gap: 6px;
             color: var(--accent);
             font-weight: 700;
-            font-size: clamp(0.78rem, 2vw, 0.9rem);
+            font-size: clamp(0.82rem, 2vw, 0.92rem);
             text-decoration: none;
-            margin-top: auto;
             transition: var(--transition-fast);
-            padding: 4px 0;
+            padding: 2px 0;
         }
 
         /* STACK SECTION */
         .stack-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-            gap: clamp(10px, 2.5vw, 16px);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: clamp(12px, 2.5vw, 18px);
         }
 
         .stack-card h3 {
-            font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
             font-weight: 700;
             margin-bottom: 12px;
             padding-bottom: 8px;
@@ -790,24 +799,24 @@
         .stack-items {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .stack-item-box {
             background: var(--surface-subtle);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: clamp(8px, 2vw, 12px);
+            padding: clamp(10px, 2vw, 14px);
         }
 
         .stack-item-name {
             font-weight: 700;
-            font-size: clamp(0.8rem, 2vw, 0.92rem);
+            font-size: clamp(0.85rem, 2vw, 0.98rem);
             color: var(--text-primary);
         }
 
         .stack-item-sub {
-            font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+            font-size: clamp(0.75rem, 1.6vw, 0.85rem);
             color: var(--text-muted);
             margin-top: 2px;
         }
@@ -815,20 +824,20 @@
         /* HOBBIES SECTION */
         .hobbies-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
-            gap: clamp(10px, 2.5vw, 16px);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: clamp(12px, 2.5vw, 18px);
         }
 
         .hobby-card h3 {
-            font-size: clamp(0.92rem, 2.2vw, 1.1rem);
+            font-size: clamp(0.98rem, 2.2vw, 1.15rem);
             font-weight: 700;
             margin-bottom: 6px;
         }
 
         .hobby-card p {
-            font-size: clamp(0.78rem, 2vw, 0.9rem);
+            font-size: clamp(0.82rem, 2vw, 0.95rem);
             color: var(--text-secondary);
-            line-height: 1.45;
+            line-height: 1.5;
         }
 
         /* CONTACT SECTION */
@@ -836,7 +845,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: clamp(14px, 3.5vw, 32px) clamp(12px, 3vw, 24px);
+            padding: clamp(16px, 3.5vw, 36px) clamp(14px, 3vw, 28px);
             box-shadow: var(--shadow-sm);
             width: 100%;
         }
@@ -844,15 +853,15 @@
         .contact-cards-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 18px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .contact-item-card {
             background: var(--surface-subtle);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 18px);
+            padding: clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 20px);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -860,21 +869,21 @@
             color: var(--text-primary);
             transition: var(--transition-base);
             overflow-wrap: anywhere;
-            gap: 10px;
-            min-height: 48px;
+            gap: 12px;
+            min-height: 52px;
         }
 
         .contact-item-left {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             min-width: 0;
         }
 
         .contact-icon-circle {
-            width: clamp(32px, 7vw, 40px);
-            height: clamp(32px, 7vw, 40px);
-            min-width: clamp(32px, 7vw, 40px);
+            width: clamp(34px, 7vw, 42px);
+            height: clamp(34px, 7vw, 42px);
+            min-width: clamp(34px, 7vw, 42px);
             border-radius: 50%;
             background: var(--accent);
             color: #ffffff;
@@ -886,14 +895,14 @@
 
         .contact-title-text {
             font-weight: 700;
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            font-size: clamp(0.85rem, 2vw, 1rem);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .contact-sub-text {
-            font-size: clamp(0.7rem, 1.8vw, 0.82rem);
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
             color: var(--text-muted);
             overflow-wrap: anywhere;
             word-break: break-all;
@@ -963,19 +972,19 @@
 
         /* FOOTER */
         footer.site-footer {
-            margin-top: clamp(24px, 6vw, 60px);
-            padding: 20px 0 12px;
+            margin-top: clamp(28px, 6vw, 64px);
+            padding: 24px 0 16px;
             border-top: 1px solid var(--border);
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 6px;
         }
 
         .footer-line-1 {
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            font-size: clamp(0.85rem, 2vw, 1rem);
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.01em;
@@ -985,20 +994,20 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+            font-size: clamp(0.72rem, 1.8vw, 0.82rem);
             font-weight: 600;
             color: var(--text-muted);
             background: var(--surface-subtle);
             border: 1px solid var(--border);
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: var(--radius-full);
             margin-top: 2px;
         }
 
         .footer-line-3::before {
             content: "";
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             background-color: var(--accent);
             border-radius: 50%;
             display: inline-block;
@@ -1007,34 +1016,34 @@
         /* RESPONSIVE MEDIA QUERIES */
         @media (max-width: 900px) {
             .nav-links a {
-                padding: 6px 10px;
-                font-size: 0.84rem;
+                padding: 7px 11px;
+                font-size: 0.9rem;
             }
         }
 
         @media (max-width: 768px) {
             .nav-content {
-                height: 54px;
+                height: 58px;
             }
 
             .nav-links {
                 display: flex;
                 position: fixed;
-                top: calc(54px + env(safe-area-inset-top) + 6px);
+                top: calc(58px + env(safe-area-inset-top) + 6px);
                 left: max(8px, env(safe-area-inset-left));
                 right: max(8px, env(safe-area-inset-right));
                 background: var(--surface);
                 border: 1px solid var(--border);
                 border-radius: var(--radius-md);
                 flex-direction: column;
-                padding: 8px;
+                padding: 10px;
                 box-shadow: var(--shadow-lg);
                 opacity: 0;
                 visibility: hidden;
                 transform: translateY(-10px);
                 transition: var(--transition-base);
                 z-index: 101;
-                max-height: calc(100vh - 70px - env(safe-area-inset-top));
+                max-height: calc(100vh - 75px - env(safe-area-inset-top));
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -1048,8 +1057,8 @@
             .nav-links a {
                 width: 100%;
                 text-align: center;
-                padding: 10px;
-                font-size: 0.9rem;
+                padding: 12px;
+                font-size: 1.05rem; /* Крупное меню на мобильных */
             }
 
             .hamburger {
@@ -1058,7 +1067,7 @@
 
             .hero-cta-group {
                 flex-direction: column;
-                gap: 8px;
+                gap: 10px;
                 width: 100%;
             }
 
@@ -1075,7 +1084,7 @@
             }
 
             body {
-                font-size: 13px;
+                font-size: 13.5px;
             }
 
             .profile-status {
@@ -1091,11 +1100,11 @@
             }
 
             .hero-title {
-                font-size: 1.15rem;
+                font-size: 1.2rem;
             }
 
             .hero-description, .section-subtitle {
-                font-size: 0.78rem;
+                font-size: 0.8rem;
             }
 
             .card {
@@ -1112,7 +1121,7 @@
             }
 
             .contact-sub-text {
-                font-size: 0.68rem;
+                font-size: 0.7rem;
             }
         }
 
@@ -1123,13 +1132,13 @@
             }
 
             .profile-name {
-                font-size: 0.7rem;
+                font-size: 0.72rem;
             }
 
             .hero-cta-group .btn-telegram,
             .hero-cta-group .btn-secondary {
-                font-size: 0.7rem;
-                min-height: 32px;
+                font-size: 0.72rem;
+                min-height: 34px;
                 padding: 6px;
             }
         }
@@ -1307,7 +1316,7 @@
 
             <div class="projects-grid" id="projectsGrid">
 
-                <!-- Project: VLESS Aggregator -->
+                <!-- Project: VLESS Sub Aggregator -->
                 <article class="card project-card" data-category="fullstack">
                     <div>
                         <span class="project-tag-top">Backend Service / Go</span>
@@ -1318,16 +1327,45 @@
                         <ul class="project-highlights">
                             <li>Высокая скорость обработки благодаря языку Go</li>
                             <li>Автоматический парсинг, валидация и фильтрация узлов</li>
-                            <li>Удобная выдача подписки под клиенты для РФ</li>
+                            <li>Удобная выдача подписки под различные клиенты</li>
                         </ul>
                     </div>
                     <div>
                         <div class="project-tags-row">
                             <span class="tech-pill">Go (Golang)</span>
                             <span class="tech-pill">VLESS</span>
-                            <span class="tech-pill">Network/Proxy</span>
+                            <span class="tech-pill">Proxy</span>
                         </div>
-                        <span class="project-link" style="cursor: default; opacity: 0.8;">Пет-проект (Backend)</span>
+                        <div class="project-links-group">
+                            <a href="https://misha12333211.yonote.ru/share/f11dd25b-fdb6-4bac-b130-c92ee01b6aee" target="_blank" rel="noopener noreferrer" class="project-link">📖 Гайд по настройке v2rayNG &rarr;</a>
+                            <a href="https://t.me/MiGiTi_official_channel" target="_blank" rel="noopener noreferrer" class="project-link">📢 Telegram-канал подписок &rarr;</a>
+                            <a href="https://t.me/MiGiTiProxySubscriptionsBot" target="_blank" rel="noopener noreferrer" class="project-link">🤖 Telegram-бот &rarr;</a>
+                            <a href="https://misha12333211-ctrl.github.io/MiGiTi/" target="_blank" rel="noopener noreferrer" class="project-link">🌐 Веб-сайт с подписками &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Restaurant Menu -->
+                <article class="card project-card" data-category="fullstack">
+                    <div>
+                        <span class="project-tag-top">Web Application</span>
+                        <h3 class="project-title">Restaurant Menu &amp; QR</h3>
+                        <p class="project-desc">
+                            Интерактивное электронное меню для ресторанов и кафе с быстрой загрузкой по QR-коду.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Поддержка русского и английского языков (RU / EN)</li>
+                            <li>Динамическая конвертация валют в реальном времени</li>
+                            <li>Удобный QR-код для мгновенного доступа со смартфона</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="project-tags-row">
+                            <span class="tech-pill">JavaScript</span>
+                            <span class="tech-pill">QR-Code</span>
+                            <span class="tech-pill">i18n &amp; Currency</span>
+                        </div>
+                        <a href="https://restaurant-qr-on6v.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link">Открыть меню &rarr;</a>
                     </div>
                 </article>
 
